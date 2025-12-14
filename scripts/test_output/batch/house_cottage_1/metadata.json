@@ -1,0 +1,254 @@
+{
+  "imageName": "house_cottage_1",
+  "imageSize": {
+    "width": 2048,
+    "height": 2048
+  },
+  "totalRegions": 16,
+  "labelMapName": "house_cottage_1_labels",
+  "labelEncoding": "rgb24",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 1022.214077498074,
+        "y": 598.8176962958336
+      },
+      "boundingBox": {
+        "x": 344,
+        "y": 220,
+        "width": 1366,
+        "height": 568
+      },
+      "pixelCount": 384216,
+      "difficulty": 1
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 1446.9502112251057,
+        "y": 440.99336149668073
+      },
+      "boundingBox": {
+        "x": 1378,
+        "y": 338,
+        "width": 130,
+        "height": 230
+      },
+      "pixelCount": 26512,
+      "difficulty": 2
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 1400.3388429752067,
+        "y": 548.6528925619834
+      },
+      "boundingBox": {
+        "x": 1378,
+        "y": 512,
+        "width": 68,
+        "height": 56
+      },
+      "pixelCount": 1936,
+      "difficulty": 3
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 635.715871056567,
+        "y": 1276.0238683029886
+      },
+      "boundingBox": {
+        "x": 418,
+        "y": 818,
+        "width": 438,
+        "height": 870
+      },
+      "pixelCount": 337016,
+      "difficulty": 1
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 1027.5,
+        "y": 1006.5
+      },
+      "boundingBox": {
+        "x": 872,
+        "y": 818,
+        "width": 312,
+        "height": 378
+      },
+      "pixelCount": 117936,
+      "difficulty": 1
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 1418.4195647764827,
+        "y": 1276.1459513952684
+      },
+      "boundingBox": {
+        "x": 1200,
+        "y": 818,
+        "width": 436,
+        "height": 870
+      },
+      "pixelCount": 335276,
+      "difficulty": 1
+    },
+    {
+      "id": 7,
+      "centroid": {
+        "x": 586.5,
+        "y": 1031.5
+      },
+      "boundingBox": {
+        "x": 538,
+        "y": 998,
+        "width": 98,
+        "height": 68
+      },
+      "pixelCount": 6664,
+      "difficulty": 3
+    },
+    {
+      "id": 8,
+      "centroid": {
+        "x": 699.5,
+        "y": 1031.5
+      },
+      "boundingBox": {
+        "x": 652,
+        "y": 998,
+        "width": 96,
+        "height": 68
+      },
+      "pixelCount": 6528,
+      "difficulty": 3
+    },
+    {
+      "id": 9,
+      "centroid": {
+        "x": 1354.5,
+        "y": 1031.5
+      },
+      "boundingBox": {
+        "x": 1306,
+        "y": 998,
+        "width": 98,
+        "height": 68
+      },
+      "pixelCount": 6664,
+      "difficulty": 3
+    },
+    {
+      "id": 10,
+      "centroid": {
+        "x": 1467.5,
+        "y": 1031.5
+      },
+      "boundingBox": {
+        "x": 1420,
+        "y": 998,
+        "width": 96,
+        "height": 68
+      },
+      "pixelCount": 6528,
+      "difficulty": 3
+    },
+    {
+      "id": 11,
+      "centroid": {
+        "x": 586.5,
+        "y": 1114.5
+      },
+      "boundingBox": {
+        "x": 538,
+        "y": 1082,
+        "width": 98,
+        "height": 66
+      },
+      "pixelCount": 6468,
+      "difficulty": 3
+    },
+    {
+      "id": 12,
+      "centroid": {
+        "x": 699.5,
+        "y": 1114.5
+      },
+      "boundingBox": {
+        "x": 652,
+        "y": 1082,
+        "width": 96,
+        "height": 66
+      },
+      "pixelCount": 6336,
+      "difficulty": 3
+    },
+    {
+      "id": 13,
+      "centroid": {
+        "x": 1354.5,
+        "y": 1114.5
+      },
+      "boundingBox": {
+        "x": 1306,
+        "y": 1082,
+        "width": 98,
+        "height": 66
+      },
+      "pixelCount": 6468,
+      "difficulty": 3
+    },
+    {
+      "id": 14,
+      "centroid": {
+        "x": 1467.5,
+        "y": 1114.5
+      },
+      "boundingBox": {
+        "x": 1420,
+        "y": 1082,
+        "width": 96,
+        "height": 66
+      },
+      "pixelCount": 6336,
+      "difficulty": 3
+    },
+    {
+      "id": 15,
+      "centroid": {
+        "x": 1025.5440638830094,
+        "y": 1449.6441216086203
+      },
+      "boundingBox": {
+        "x": 872,
+        "y": 1212,
+        "width": 312,
+        "height": 476
+      },
+      "pixelCount": 145516,
+      "difficulty": 1
+    },
+    {
+      "id": 16,
+      "centroid": {
+        "x": 1122.5,
+        "y": 1442.5
+      },
+      "boundingBox": {
+        "x": 1108,
+        "y": 1428,
+        "width": 30,
+        "height": 30
+      },
+      "pixelCount": 708,
+      "difficulty": 3
+    }
+  ],
+  "qaResult": "pass",
+  "ageGroup": "kids"
+}

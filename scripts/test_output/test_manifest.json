@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "generatedAt": "2025-12-13T04:20:52.960361+00:00",
+  "baseUrl": "https://cdn.test.app/v1",
+  "labelEncoding": "rgb24",
+  "categories": [
+    {
+      "id": "animals",
+      "name": "Simple Animals",
+      "icon": "pawprint.fill",
+      "color": "#FF6B6B",
+      "ageGroup": "kids",
+      "sortOrder": 1
+    }
+  ],
+  "pages": [
+    {
+      "id": "house_cottage_1",
+      "categoryId": "animals",
+      "name": "House Cottage",
+      "ageGroup": "kids",
+      "contentTier": "mvp",
+      "difficulty": 2,
+      "regionCount": 16,
+      "imageResolution": 2048,
+      "version": "1.0.0",
+      "assets": {
+        "thumb": "house_cottage_1/thumb.png",
+        "image": "house_cottage_1/image.png",
+        "labels": "house_cottage_1/labels.png",
+        "metadata": "house_cottage_1/metadata.json"
+      },
+      "checksums": {
+        "thumb": "sha256:ddb52b6cdfefc0cd374b8ef052c69514b55e5acaafe8fa8c0a7772a15856411c",
+        "image": "sha256:aeea1dc086193efa1dabeb9907d074538d9bd2a28c938a8b92eb815e4a4e8bf4",
+        "labels": "sha256:9cd3e40d97938e26d73433c8801bb4a3af056954e785af4901c6038e8df9a06d",
+        "metadata": "sha256:8e95bf336ffd121eb6111c2a21e2e91d1b774c72575db0afc7d52c4695bc329b"
+      }
+    },
+    {
+      "id": "house_cottage_2",
+      "categoryId": "animals",
+      "name": "House Cottage",
+      "ageGroup": "kids",
+      "contentTier": "mvp",
+      "difficulty": 2,
+      "regionCount": 16,
+      "imageResolution": 2048,
+      "version": "1.0.0",
+      "assets": {
+        "thumb": "house_cottage_2/thumb.png",
+        "image": "house_cottage_2/image.png",
+        "labels": "house_cottage_2/labels.png",
+        "metadata": "house_cottage_2/metadata.json"
+      },
+      "checksums": {
+        "thumb": "sha256:ddb52b6cdfefc0cd374b8ef052c69514b55e5acaafe8fa8c0a7772a15856411c",
+        "image": "sha256:aeea1dc086193efa1dabeb9907d074538d9bd2a28c938a8b92eb815e4a4e8bf4",
+        "labels": "sha256:9cd3e40d97938e26d73433c8801bb4a3af056954e785af4901c6038e8df9a06d",
+        "metadata": "sha256:13cc8b0e2d063bcda7fdf5fdbc57e61a383e99c65f12cf859b9671be297584b3"
+      }
+    }
+  ],
+  "pageCount": 2
+}

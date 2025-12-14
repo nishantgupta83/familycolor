@@ -1,0 +1,116 @@
+{
+  "imageName": "ocean_fish",
+  "imageSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "totalRegions": 7,
+  "labelMapName": "ocean_fish_labels",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 517.39,
+        "y": 254.36
+      },
+      "boundingBox": {
+        "x": 467,
+        "y": 179,
+        "width": 77,
+        "height": 115
+      },
+      "pixelCount": 4599,
+      "difficulty": 3
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 478.28,
+        "y": 502.11
+      },
+      "boundingBox": {
+        "x": 209,
+        "y": 309,
+        "width": 529,
+        "height": 385
+      },
+      "pixelCount": 150008,
+      "difficulty": 1
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 837.3,
+        "y": 501.0
+      },
+      "boundingBox": {
+        "x": 748,
+        "y": 321,
+        "width": 146,
+        "height": 361
+      },
+      "pixelCount": 31644,
+      "difficulty": 2
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 340.98,
+        "y": 460.96
+      },
+      "boundingBox": {
+        "x": 309,
+        "y": 429,
+        "width": 65,
+        "height": 65
+      },
+      "pixelCount": 2009,
+      "difficulty": 3
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 341.0,
+        "y": 461.0
+      },
+      "boundingBox": {
+        "x": 329,
+        "y": 449,
+        "width": 25,
+        "height": 25
+      },
+      "pixelCount": 497,
+      "difficulty": 3
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 732.17,
+        "y": 501.0
+      },
+      "boundingBox": {
+        "x": 713,
+        "y": 474,
+        "width": 31,
+        "height": 55
+      },
+      "pixelCount": 955,
+      "difficulty": 3
+    },
+    {
+      "id": 7,
+      "centroid": {
+        "x": 517.39,
+        "y": 747.64
+      },
+      "boundingBox": {
+        "x": 467,
+        "y": 709,
+        "width": 77,
+        "height": 115
+      },
+      "pixelCount": 4599,
+      "difficulty": 3
+    }
+  ]
+}

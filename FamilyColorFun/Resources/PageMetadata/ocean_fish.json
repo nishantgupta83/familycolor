@@ -1,0 +1,101 @@
+{
+  "imageName": "ocean_fish",
+  "imageSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "totalRegions": 6,
+  "labelMapName": "ocean_fish_labels",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 517.3898673624701,
+        "y": 254.35551206784083
+      },
+      "boundingBox": {
+        "x": 467,
+        "y": 179,
+        "width": 77,
+        "height": 115
+      },
+      "pixelCount": 4599,
+      "difficulty": 3
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 478.2771585515439,
+        "y": 502.105881019679
+      },
+      "boundingBox": {
+        "x": 209,
+        "y": 309,
+        "width": 529,
+        "height": 385
+      },
+      "pixelCount": 150008,
+      "difficulty": 1
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 837.2963911009986,
+        "y": 501.0
+      },
+      "boundingBox": {
+        "x": 748,
+        "y": 321,
+        "width": 146,
+        "height": 361
+      },
+      "pixelCount": 31644,
+      "difficulty": 2
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 340.9835739173718,
+        "y": 460.9552015928323
+      },
+      "boundingBox": {
+        "x": 309,
+        "y": 429,
+        "width": 65,
+        "height": 65
+      },
+      "pixelCount": 2009,
+      "difficulty": 3
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 732.165445026178,
+        "y": 501.0
+      },
+      "boundingBox": {
+        "x": 713,
+        "y": 474,
+        "width": 31,
+        "height": 55
+      },
+      "pixelCount": 955,
+      "difficulty": 3
+    },
+    {
+      "id": 7,
+      "centroid": {
+        "x": 517.3898673624701,
+        "y": 747.6444879321591
+      },
+      "boundingBox": {
+        "x": 467,
+        "y": 709,
+        "width": 77,
+        "height": 115
+      },
+      "pixelCount": 4599,
+      "difficulty": 3
+    }
+  ]
+}

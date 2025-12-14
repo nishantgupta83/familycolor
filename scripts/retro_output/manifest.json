@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "generatedAt": "2025-12-13T06:08:10.457957+00:00",
+  "baseUrl": "https://cdn.familycolorfun.app/v1",
+  "labelEncoding": "rgb24",
+  "categories": [
+    {
+      "id": "retro90s",
+      "name": "Retro 90s",
+      "icon": "star.fill",
+      "color": "#00CED1",
+      "ageGroup": "kids",
+      "sortOrder": 0
+    }
+  ],
+  "pages": [
+    {
+      "id": "retro_boombox",
+      "categoryId": "retro90s",
+      "name": "Boombox",
+      "ageGroup": "kids",
+      "contentTier": "mvp",
+      "difficulty": 3,
+      "regionCount": 118,
+      "imageResolution": 2048,
+      "version": "1.0.0",
+      "assets": {
+        "thumb": "retro_boombox/thumb.png",
+        "image": "retro_boombox/image.png",
+        "labels": "retro_boombox/labels.png",
+        "metadata": "retro_boombox/metadata.json"
+      },
+      "checksums": {
+        "thumb": "sha256:63af0e6c9e41ef219d0df1b3d15f263583eb8da5afa76f86e48f55e36a7697c8",
+        "image": "sha256:6cf570f0f5fdf4a58b98775df4688b2ae6f2a8096d32fb97ec5f9262b9828c28",
+        "labels": "sha256:33dfc33c839dc12ad10eb5226c82b34ae4ffcbd7e86d61135519dced90245fab",
+        "metadata": "sha256:c7402e9034207314451382b9f8e958e891cfd09187b4511f79258157f5b83ec3"
+      }
+    },
+    {
+      "id": "retro_turntable",
+      "categoryId": "retro90s",
+      "name": "Turntable",
+      "ageGroup": "kids",
+      "contentTier": "mvp",
+      "difficulty": 3,
+      "regionCount": 150,
+      "imageResolution": 2048,
+      "version": "1.0.0",
+      "assets": {
+        "thumb": "retro_turntable/thumb.png",
+        "image": "retro_turntable/image.png",
+        "labels": "retro_turntable/labels.png",
+        "metadata": "retro_turntable/metadata.json"
+      },
+      "checksums": {
+        "thumb": "sha256:d74bdea759929caf920b2ff696a8ea4d2eec0fd69f31176360c4b7a6ceab628e",
+        "image": "sha256:a43e0c923ecd8944af7e0581262cd6fe64c6339152ba3ba1f852de9d5d275e46",
+        "labels": "sha256:f262bd9593942b5f1a7bc1ef61d153d199a1f3384c8d55f5a0a200b7896c9a1c",
+        "metadata": "sha256:37a4096903bcaa910bb3f2e952ac45d7a20c55768d2c4de24328d11adfdc4e8b"
+      }
+    }
+  ],
+  "pageCount": 2
+}

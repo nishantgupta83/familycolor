@@ -1,0 +1,161 @@
+{
+  "imageName": "nature_flower",
+  "imageSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "totalRegions": 10,
+  "labelMapName": "nature_flower_labels",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 412.0,
+        "y": 277.0
+      },
+      "boundingBox": {
+        "x": 340,
+        "y": 205,
+        "width": 145,
+        "height": 145
+      },
+      "pixelCount": 16541,
+      "difficulty": 2
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 613.0,
+        "y": 277.0
+      },
+      "boundingBox": {
+        "x": 541,
+        "y": 205,
+        "width": 145,
+        "height": 145
+      },
+      "pixelCount": 16541,
+      "difficulty": 2
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 512.99,
+        "y": 450.08
+      },
+      "boundingBox": {
+        "x": 421,
+        "y": 359,
+        "width": 185,
+        "height": 185
+      },
+      "pixelCount": 26549,
+      "difficulty": 2
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 313.0,
+        "y": 451.0
+      },
+      "boundingBox": {
+        "x": 241,
+        "y": 379,
+        "width": 145,
+        "height": 145
+      },
+      "pixelCount": 16541,
+      "difficulty": 2
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 713.0,
+        "y": 451.0
+      },
+      "boundingBox": {
+        "x": 641,
+        "y": 379,
+        "width": 145,
+        "height": 145
+      },
+      "pixelCount": 16541,
+      "difficulty": 2
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 413.0,
+        "y": 624.0
+      },
+      "boundingBox": {
+        "x": 341,
+        "y": 552,
+        "width": 145,
+        "height": 145
+      },
+      "pixelCount": 16541,
+      "difficulty": 2
+    },
+    {
+      "id": 7,
+      "centroid": {
+        "x": 614.21,
+        "y": 609.99
+      },
+      "boundingBox": {
+        "x": 541,
+        "y": 552,
+        "width": 145,
+        "height": 120
+      },
+      "pixelCount": 12828,
+      "difficulty": 2
+    },
+    {
+      "id": 8,
+      "centroid": {
+        "x": 608.53,
+        "y": 676.66
+      },
+      "boundingBox": {
+        "x": 557,
+        "y": 659,
+        "width": 104,
+        "height": 38
+      },
+      "pixelCount": 2784,
+      "difficulty": 3
+    },
+    {
+      "id": 9,
+      "centroid": {
+        "x": 596.47,
+        "y": 714.05
+      },
+      "boundingBox": {
+        "x": 529,
+        "y": 673,
+        "width": 145,
+        "height": 71
+      },
+      "pixelCount": 5910,
+      "difficulty": 3
+    },
+    {
+      "id": 10,
+      "centroid": {
+        "x": 425.0,
+        "y": 751.0
+      },
+      "boundingBox": {
+        "x": 353,
+        "y": 709,
+        "width": 145,
+        "height": 85
+      },
+      "pixelCount": 9701,
+      "difficulty": 3
+    }
+  ]
+}

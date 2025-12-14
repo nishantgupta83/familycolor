@@ -1,0 +1,101 @@
+{
+  "imageName": "animal_cat",
+  "imageSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "totalRegions": 6,
+  "labelMapName": "animal_cat_labels",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 271.46,
+        "y": 179.74
+      },
+      "boundingBox": {
+        "x": 197,
+        "y": 100,
+        "width": 165,
+        "height": 141
+      },
+      "pixelCount": 8992,
+      "difficulty": 3
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 754.54,
+        "y": 179.74
+      },
+      "boundingBox": {
+        "x": 665,
+        "y": 100,
+        "width": 165,
+        "height": 141
+      },
+      "pixelCount": 8992,
+      "difficulty": 3
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 513.01,
+        "y": 514.8
+      },
+      "boundingBox": {
+        "x": 209,
+        "y": 209,
+        "width": 609,
+        "height": 609
+      },
+      "pixelCount": 263508,
+      "difficulty": 1
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 371.0,
+        "y": 441.0
+      },
+      "boundingBox": {
+        "x": 329,
+        "y": 389,
+        "width": 85,
+        "height": 105
+      },
+      "pixelCount": 7029,
+      "difficulty": 3
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 655.0,
+        "y": 441.0
+      },
+      "boundingBox": {
+        "x": 613,
+        "y": 389,
+        "width": 85,
+        "height": 105
+      },
+      "pixelCount": 7029,
+      "difficulty": 3
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 513.0,
+        "y": 574.1
+      },
+      "boundingBox": {
+        "x": 478,
+        "y": 537,
+        "width": 71,
+        "height": 57
+      },
+      "pixelCount": 2115,
+      "difficulty": 3
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "imageName": "nature_star",
+  "imageSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "totalRegions": 3,
+  "labelMapName": "nature_star_labels",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 512.4700099659857,
+        "y": 514.5773392984813
+      },
+      "boundingBox": {
+        "x": 152,
+        "y": 134,
+        "width": 722,
+        "height": 685
+      },
+      "pixelCount": 184628,
+      "difficulty": 1
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 451.0,
+        "y": 431.0
+      },
+      "boundingBox": {
+        "x": 429,
+        "y": 409,
+        "width": 45,
+        "height": 45
+      },
+      "pixelCount": 1601,
+      "difficulty": 3
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 575.0,
+        "y": 431.0
+      },
+      "boundingBox": {
+        "x": 553,
+        "y": 409,
+        "width": 45,
+        "height": 45
+      },
+      "pixelCount": 1601,
+      "difficulty": 3
+    }
+  ]
+}

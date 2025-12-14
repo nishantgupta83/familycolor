@@ -1,0 +1,221 @@
+{
+  "imageName": "house_cottage",
+  "imageSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "totalRegions": 14,
+  "labelMapName": "house_cottage_labels",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 510.8569718170555,
+        "y": 299.15886352042145
+      },
+      "boundingBox": {
+        "x": 173,
+        "y": 111,
+        "width": 681,
+        "height": 283
+      },
+      "pixelCount": 96051,
+      "difficulty": 1
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 723.2251056125529,
+        "y": 220.24668074834037
+      },
+      "boundingBox": {
+        "x": 689,
+        "y": 169,
+        "width": 65,
+        "height": 115
+      },
+      "pixelCount": 6628,
+      "difficulty": 3
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 317.6079355282835,
+        "y": 637.7619341514943
+      },
+      "boundingBox": {
+        "x": 209,
+        "y": 409,
+        "width": 219,
+        "height": 435
+      },
+      "pixelCount": 84254,
+      "difficulty": 1
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 513.5,
+        "y": 503.0
+      },
+      "boundingBox": {
+        "x": 436,
+        "y": 409,
+        "width": 156,
+        "height": 189
+      },
+      "pixelCount": 29484,
+      "difficulty": 2
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 708.9597823882414,
+        "y": 637.8229756976342
+      },
+      "boundingBox": {
+        "x": 600,
+        "y": 409,
+        "width": 218,
+        "height": 435
+      },
+      "pixelCount": 83819,
+      "difficulty": 1
+    },
+    {
+      "id": 7,
+      "centroid": {
+        "x": 293.0,
+        "y": 515.5
+      },
+      "boundingBox": {
+        "x": 269,
+        "y": 499,
+        "width": 49,
+        "height": 34
+      },
+      "pixelCount": 1666,
+      "difficulty": 3
+    },
+    {
+      "id": 8,
+      "centroid": {
+        "x": 349.5,
+        "y": 515.5
+      },
+      "boundingBox": {
+        "x": 326,
+        "y": 499,
+        "width": 48,
+        "height": 34
+      },
+      "pixelCount": 1632,
+      "difficulty": 3
+    },
+    {
+      "id": 9,
+      "centroid": {
+        "x": 677.0,
+        "y": 515.5
+      },
+      "boundingBox": {
+        "x": 653,
+        "y": 499,
+        "width": 49,
+        "height": 34
+      },
+      "pixelCount": 1666,
+      "difficulty": 3
+    },
+    {
+      "id": 10,
+      "centroid": {
+        "x": 733.5,
+        "y": 515.5
+      },
+      "boundingBox": {
+        "x": 710,
+        "y": 499,
+        "width": 48,
+        "height": 34
+      },
+      "pixelCount": 1632,
+      "difficulty": 3
+    },
+    {
+      "id": 11,
+      "centroid": {
+        "x": 293.0,
+        "y": 557.0
+      },
+      "boundingBox": {
+        "x": 269,
+        "y": 541,
+        "width": 49,
+        "height": 33
+      },
+      "pixelCount": 1617,
+      "difficulty": 3
+    },
+    {
+      "id": 12,
+      "centroid": {
+        "x": 349.5,
+        "y": 557.0
+      },
+      "boundingBox": {
+        "x": 326,
+        "y": 541,
+        "width": 48,
+        "height": 33
+      },
+      "pixelCount": 1584,
+      "difficulty": 3
+    },
+    {
+      "id": 13,
+      "centroid": {
+        "x": 677.0,
+        "y": 557.0
+      },
+      "boundingBox": {
+        "x": 653,
+        "y": 541,
+        "width": 49,
+        "height": 33
+      },
+      "pixelCount": 1617,
+      "difficulty": 3
+    },
+    {
+      "id": 14,
+      "centroid": {
+        "x": 733.5,
+        "y": 557.0
+      },
+      "boundingBox": {
+        "x": 710,
+        "y": 541,
+        "width": 48,
+        "height": 33
+      },
+      "pixelCount": 1584,
+      "difficulty": 3
+    },
+    {
+      "id": 15,
+      "centroid": {
+        "x": 512.5220319415047,
+        "y": 724.5720608043101
+      },
+      "boundingBox": {
+        "x": 436,
+        "y": 606,
+        "width": 156,
+        "height": 238
+      },
+      "pixelCount": 36379,
+      "difficulty": 2
+    }
+  ]
+}

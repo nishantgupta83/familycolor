@@ -1,0 +1,146 @@
+{
+  "imageName": "animal_dog",
+  "imageSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "totalRegions": 9,
+  "labelMapName": "animal_dog_labels",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 185.93505193342511,
+        "y": 334.999593292454
+      },
+      "boundingBox": {
+        "x": 109,
+        "y": 209,
+        "width": 178,
+        "height": 285
+      },
+      "pixelCount": 31964,
+      "difficulty": 2
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 512.9989763209147,
+        "y": 511.95396914214825
+      },
+      "boundingBox": {
+        "x": 209,
+        "y": 209,
+        "width": 609,
+        "height": 608
+      },
+      "pixelCount": 230541,
+      "difficulty": 1
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 840.0649480665749,
+        "y": 334.999593292454
+      },
+      "boundingBox": {
+        "x": 740,
+        "y": 209,
+        "width": 178,
+        "height": 285
+      },
+      "pixelCount": 31964,
+      "difficulty": 2
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 255.41927618069815,
+        "y": 407.4512320328542
+      },
+      "boundingBox": {
+        "x": 210,
+        "y": 308,
+        "width": 84,
+        "height": 185
+      },
+      "pixelCount": 7792,
+      "difficulty": 3
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 770.5807238193019,
+        "y": 407.4512320328542
+      },
+      "boundingBox": {
+        "x": 733,
+        "y": 308,
+        "width": 84,
+        "height": 185
+      },
+      "pixelCount": 7792,
+      "difficulty": 3
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 391.0,
+        "y": 431.0
+      },
+      "boundingBox": {
+        "x": 349,
+        "y": 389,
+        "width": 85,
+        "height": 85
+      },
+      "pixelCount": 5697,
+      "difficulty": 3
+    },
+    {
+      "id": 7,
+      "centroid": {
+        "x": 635.0,
+        "y": 431.0
+      },
+      "boundingBox": {
+        "x": 593,
+        "y": 389,
+        "width": 85,
+        "height": 85
+      },
+      "pixelCount": 5697,
+      "difficulty": 3
+    },
+    {
+      "id": 8,
+      "centroid": {
+        "x": 513.0,
+        "y": 596.0
+      },
+      "boundingBox": {
+        "x": 439,
+        "y": 539,
+        "width": 149,
+        "height": 115
+      },
+      "pixelCount": 13479,
+      "difficulty": 2
+    },
+    {
+      "id": 12,
+      "centroid": {
+        "x": 513.0,
+        "y": 784.6506824050166
+      },
+      "boundingBox": {
+        "x": 480,
+        "y": 743,
+        "width": 67,
+        "height": 71
+      },
+      "pixelCount": 2711,
+      "difficulty": 3
+    }
+  ]
+}
