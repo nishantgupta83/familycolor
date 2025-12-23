@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		P1000001243B1A00009F1234 /* UserGeneratedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1000000243B1A00009F1234 /* UserGeneratedPage.swift */; };
+		P1100001243B1A00009F1234 /* PhotoUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1100000243B1A00009F1234 /* PhotoUploadView.swift */; };
+		P1200001243B1A00009F1234 /* AdjustmentSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1200000243B1A00009F1234 /* AdjustmentSliders.swift */; };
+		P1300001243B1A00009F1234 /* LineArtEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1300000243B1A00009F1234 /* LineArtEngineProtocol.swift */; };
+		P1400001243B1A00009F1234 /* LineArtSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1400000243B1A00009F1234 /* LineArtSettings.swift */; };
+		P1500001243B1A00009F1234 /* ImagePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1500000243B1A00009F1234 /* ImagePreprocessor.swift */; };
+		P1600001243B1A00009F1234 /* VisionContoursEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1600000243B1A00009F1234 /* VisionContoursEngine.swift */; };
+		P1700001243B1A00009F1234 /* UserContentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1700000243B1A00009F1234 /* UserContentStorage.swift */; };
+		P2000001243B1A00009F1234 /* FillabilityResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1800010243B1A00009F1234 /* FillabilityResult.swift */; };
+		P2100001243B1A00009F1234 /* FillabilityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1900010243B1A00009F1234 /* FillabilityValidator.swift */; };
 		A1000001243B1A00009F1234 /* FamilyColorFunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000243B1A00009F1234 /* FamilyColorFunApp.swift */; };
 		A1000003243B1A00009F1234 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002243B1A00009F1234 /* ContentView.swift */; };
 		A1000005243B1A01009F1234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000004243B1A01009F1234 /* Assets.xcassets */; };
@@ -35,6 +45,11 @@
 		A1500001243B1A00009F1234 /* Color+Kids.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1500000243B1A00009F1234 /* Color+Kids.swift */; };
 		E1400010243B1A00009F1234 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1400011243B1A00009F1234 /* SettingsManager.swift */; };
 		E1200010243B1A00009F1234 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1200011243B1A00009F1234 /* SettingsView.swift */; };
+		F1100010243B1A00009F1234 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1100011243B1A00009F1234 /* Reward.swift */; };
+		F1400010243B1A00009F1234 /* ProgressionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1400011243B1A00009F1234 /* ProgressionManager.swift */; };
+		G1100010243B1A00009F1234 /* ChildProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = G1100011243B1A00009F1234 /* ChildProfile.swift */; };
+		G1400010243B1A00009F1234 /* ParentalControlsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = G1400011243B1A00009F1234 /* ParentalControlsManager.swift */; };
+		G1200010243B1A00009F1234 /* ParentZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = G1200011243B1A00009F1234 /* ParentZoneView.swift */; };
 		B1600001243B1A00009F1234 /* FamilyColorFunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600000243B1A00009F1234 /* FamilyColorFunTests.swift */; };
 		B1600003243B1A00009F1234 /* StateManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600002243B1A00009F1234 /* StateManagementTests.swift */; };
 		B1600005243B1A00009F1234 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600004243B1A00009F1234 /* PerformanceTests.swift */; };
@@ -42,6 +57,15 @@
 		B1700003243B1A00009F1234 /* CanvasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700002243B1A00009F1234 /* CanvasUITests.swift */; };
 		B1700005243B1A00009F1234 /* GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700004243B1A00009F1234 /* GalleryUITests.swift */; };
 		B1700007243B1A00009F1234 /* FamilyColorFunUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700006243B1A00009F1234 /* FamilyColorFunUITestsLaunchTests.swift */; };
+		H1700001243B1A00009F1234 /* PersonaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = H1700000243B1A00009F1234 /* PersonaUITests.swift */; };
+		H1700011243B1A00009F1234 /* UserPersona.swift in Sources */ = {isa = PBXBuildFile; fileRef = H1700010243B1A00009F1234 /* UserPersona.swift */; };
+		H1700021243B1A00009F1234 /* UITestAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = H1700020243B1A00009F1234 /* UITestAgent.swift */; };
+		H1700031243B1A00009F1234 /* YoungChildAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = H1700030243B1A00009F1234 /* YoungChildAgent.swift */; };
+		H1700041243B1A00009F1234 /* OlderChildAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = H1700040243B1A00009F1234 /* OlderChildAgent.swift */; };
+		H1700051243B1A00009F1234 /* ParentAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = H1700050243B1A00009F1234 /* ParentAgent.swift */; };
+		T1700001243B1A00009F1234 /* PageTestOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1700000243B1A00009F1234 /* PageTestOrchestrator.swift */; };
+		T1700011243B1A00009F1234 /* ComprehensivePageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1700010243B1A00009F1234 /* ComprehensivePageTests.swift */; };
+		T1700021243B1A00009F1234 /* ColoringAppQATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1700020243B1A00009F1234 /* ColoringAppQATests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +86,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		P1000000243B1A00009F1234 /* UserGeneratedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratedPage.swift; sourceTree = "<group>"; };
+		P1100000243B1A00009F1234 /* PhotoUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadView.swift; sourceTree = "<group>"; };
+		P1200000243B1A00009F1234 /* AdjustmentSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustmentSliders.swift; sourceTree = "<group>"; };
+		P1300000243B1A00009F1234 /* LineArtEngineProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineArtEngineProtocol.swift; sourceTree = "<group>"; };
+		P1400000243B1A00009F1234 /* LineArtSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineArtSettings.swift; sourceTree = "<group>"; };
+		P1500000243B1A00009F1234 /* ImagePreprocessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreprocessor.swift; sourceTree = "<group>"; };
+		P1600000243B1A00009F1234 /* VisionContoursEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionContoursEngine.swift; sourceTree = "<group>"; };
+		P1700000243B1A00009F1234 /* UserContentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentStorage.swift; sourceTree = "<group>"; };
+		P1800010243B1A00009F1234 /* FillabilityResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillabilityResult.swift; sourceTree = "<group>"; };
+		P1900010243B1A00009F1234 /* FillabilityValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillabilityValidator.swift; sourceTree = "<group>"; };
 		A0FFFFFD243B1A00009F1234 /* FamilyColorFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyColorFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1000000243B1A00009F1234 /* FamilyColorFunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyColorFunApp.swift; sourceTree = "<group>"; };
 		A1000002243B1A00009F1234 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +125,11 @@
 		A1500000243B1A00009F1234 /* Color+Kids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Kids.swift"; sourceTree = "<group>"; };
 		E1400011243B1A00009F1234 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		E1200011243B1A00009F1234 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F1100011243B1A00009F1234 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		F1400011243B1A00009F1234 /* ProgressionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionManager.swift; sourceTree = "<group>"; };
+		G1100011243B1A00009F1234 /* ChildProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildProfile.swift; sourceTree = "<group>"; };
+		G1400011243B1A00009F1234 /* ParentalControlsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentalControlsManager.swift; sourceTree = "<group>"; };
+		G1200011243B1A00009F1234 /* ParentZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentZoneView.swift; sourceTree = "<group>"; };
 		B1600000243B1A00009F1234 /* FamilyColorFunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyColorFunTests.swift; sourceTree = "<group>"; };
 		B1600002243B1A00009F1234 /* StateManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManagementTests.swift; sourceTree = "<group>"; };
 		B1600004243B1A00009F1234 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
@@ -99,6 +138,15 @@
 		B1700002243B1A00009F1234 /* CanvasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasUITests.swift; sourceTree = "<group>"; };
 		B1700004243B1A00009F1234 /* GalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUITests.swift; sourceTree = "<group>"; };
 		B1700006243B1A00009F1234 /* FamilyColorFunUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyColorFunUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		H1700000243B1A00009F1234 /* PersonaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaUITests.swift; sourceTree = "<group>"; };
+		H1700010243B1A00009F1234 /* UserPersona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPersona.swift; sourceTree = "<group>"; };
+		H1700020243B1A00009F1234 /* UITestAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestAgent.swift; sourceTree = "<group>"; };
+		H1700030243B1A00009F1234 /* YoungChildAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoungChildAgent.swift; sourceTree = "<group>"; };
+		H1700040243B1A00009F1234 /* OlderChildAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlderChildAgent.swift; sourceTree = "<group>"; };
+		H1700050243B1A00009F1234 /* ParentAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentAgent.swift; sourceTree = "<group>"; };
+		T1700000243B1A00009F1234 /* PageTestOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTestOrchestrator.swift; sourceTree = "<group>"; };
+		T1700010243B1A00009F1234 /* ComprehensivePageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprehensivePageTests.swift; sourceTree = "<group>"; };
+		T1700020243B1A00009F1234 /* ColoringAppQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoringAppQATests.swift; sourceTree = "<group>"; };
 		B1700010243B1A00009F1234 /* FamilyColorFunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FamilyColorFunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -179,6 +227,9 @@
 				C1100008243B1A00009F1234 /* ColoringPageMetadata.swift */,
 				A1100004243B1A00009F1234 /* Artwork.swift */,
 				A1100006243B1A00009F1234 /* DrawingPath.swift */,
+				F1100011243B1A00009F1234 /* Reward.swift */,
+				G1100011243B1A00009F1234 /* ChildProfile.swift */,
+				P1000000243B1A00009F1234 /* UserGeneratedPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,6 +242,8 @@
 				A1200004243B1A00009F1234 /* CanvasView.swift */,
 				A1200006243B1A00009F1234 /* GalleryView.swift */,
 				E1200011243B1A00009F1234 /* SettingsView.swift */,
+				G1200011243B1A00009F1234 /* ParentZoneView.swift */,
+				P1100000243B1A00009F1234 /* PhotoUploadView.swift */,
 				A1300008243B1A00009F1234 /* Components */,
 			);
 			path = Views;
@@ -205,6 +258,7 @@
 				A1300006243B1A00009F1234 /* ProgressHintOverlay.swift */,
 				A1300010243B1A00009F1234 /* TapFillCanvas.swift */,
 				A1300012243B1A00009F1234 /* PencilKitCanvas.swift */,
+				P1200000243B1A00009F1234 /* AdjustmentSliders.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -218,8 +272,73 @@
 				A1400006243B1A00009F1234 /* DrawingEngine.swift */,
 				C1400008243B1A00009F1234 /* CoordinateMapper.swift */,
 				E1400011243B1A00009F1234 /* SettingsManager.swift */,
+				F1400011243B1A00009F1234 /* ProgressionManager.swift */,
+				G1400011243B1A00009F1234 /* ParentalControlsManager.swift */,
+				P1800000243B1A00009F1234 /* PhotoProcessing */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		P1800000243B1A00009F1234 /* PhotoProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				P1800001243B1A00009F1234 /* Protocols */,
+				P1800002243B1A00009F1234 /* Settings */,
+				P1800003243B1A00009F1234 /* Preprocessing */,
+				P1800004243B1A00009F1234 /* Engines */,
+				P1800005243B1A00009F1234 /* Storage */,
+				P1800006243B1A00009F1234 /* Validation */,
+			);
+			path = PhotoProcessing;
+			sourceTree = "<group>";
+		};
+		P1800001243B1A00009F1234 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				P1300000243B1A00009F1234 /* LineArtEngineProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		P1800002243B1A00009F1234 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				P1400000243B1A00009F1234 /* LineArtSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		P1800003243B1A00009F1234 /* Preprocessing */ = {
+			isa = PBXGroup;
+			children = (
+				P1500000243B1A00009F1234 /* ImagePreprocessor.swift */,
+			);
+			path = Preprocessing;
+			sourceTree = "<group>";
+		};
+		P1800004243B1A00009F1234 /* Engines */ = {
+			isa = PBXGroup;
+			children = (
+				P1600000243B1A00009F1234 /* VisionContoursEngine.swift */,
+			);
+			path = Engines;
+			sourceTree = "<group>";
+		};
+		P1800005243B1A00009F1234 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				P1700000243B1A00009F1234 /* UserContentStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		P1800006243B1A00009F1234 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				P1800010243B1A00009F1234 /* FillabilityResult.swift */,
+				P1900010243B1A00009F1234 /* FillabilityValidator.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 		A1500002243B1A00009F1234 /* Extensions */ = {
@@ -248,13 +367,30 @@
 			path = FamilyColorFunTests;
 			sourceTree = "<group>";
 		};
+		H1700060243B1A00009F1234 /* TestAgents */ = {
+			isa = PBXGroup;
+			children = (
+				H1700010243B1A00009F1234 /* UserPersona.swift */,
+				H1700020243B1A00009F1234 /* UITestAgent.swift */,
+				H1700030243B1A00009F1234 /* YoungChildAgent.swift */,
+				H1700040243B1A00009F1234 /* OlderChildAgent.swift */,
+				H1700050243B1A00009F1234 /* ParentAgent.swift */,
+			);
+			path = TestAgents;
+			sourceTree = "<group>";
+		};
 		B1700008243B1A00009F1234 /* FamilyColorFunUITests */ = {
 			isa = PBXGroup;
 			children = (
+				H1700060243B1A00009F1234 /* TestAgents */,
+				H1700000243B1A00009F1234 /* PersonaUITests.swift */,
 				B1700000243B1A00009F1234 /* NavigationUITests.swift */,
 				B1700002243B1A00009F1234 /* CanvasUITests.swift */,
 				B1700004243B1A00009F1234 /* GalleryUITests.swift */,
 				B1700006243B1A00009F1234 /* FamilyColorFunUITestsLaunchTests.swift */,
+				T1700000243B1A00009F1234 /* PageTestOrchestrator.swift */,
+				T1700010243B1A00009F1234 /* ComprehensivePageTests.swift */,
+				T1700020243B1A00009F1234 /* ColoringAppQATests.swift */,
 			);
 			path = FamilyColorFunUITests;
 			sourceTree = "<group>";
@@ -415,6 +551,21 @@
 				A1500001243B1A00009F1234 /* Color+Kids.swift in Sources */,
 				E1400010243B1A00009F1234 /* SettingsManager.swift in Sources */,
 				E1200010243B1A00009F1234 /* SettingsView.swift in Sources */,
+				F1100010243B1A00009F1234 /* Reward.swift in Sources */,
+				F1400010243B1A00009F1234 /* ProgressionManager.swift in Sources */,
+				G1100010243B1A00009F1234 /* ChildProfile.swift in Sources */,
+				G1400010243B1A00009F1234 /* ParentalControlsManager.swift in Sources */,
+				G1200010243B1A00009F1234 /* ParentZoneView.swift in Sources */,
+				P1000001243B1A00009F1234 /* UserGeneratedPage.swift in Sources */,
+				P1100001243B1A00009F1234 /* PhotoUploadView.swift in Sources */,
+				P1200001243B1A00009F1234 /* AdjustmentSliders.swift in Sources */,
+				P1300001243B1A00009F1234 /* LineArtEngineProtocol.swift in Sources */,
+				P1400001243B1A00009F1234 /* LineArtSettings.swift in Sources */,
+				P1500001243B1A00009F1234 /* ImagePreprocessor.swift in Sources */,
+				P1600001243B1A00009F1234 /* VisionContoursEngine.swift in Sources */,
+				P1700001243B1A00009F1234 /* UserContentStorage.swift in Sources */,
+				P2000001243B1A00009F1234 /* FillabilityResult.swift in Sources */,
+				P2100001243B1A00009F1234 /* FillabilityValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +587,15 @@
 				B1700003243B1A00009F1234 /* CanvasUITests.swift in Sources */,
 				B1700005243B1A00009F1234 /* GalleryUITests.swift in Sources */,
 				B1700007243B1A00009F1234 /* FamilyColorFunUITestsLaunchTests.swift in Sources */,
+				H1700001243B1A00009F1234 /* PersonaUITests.swift in Sources */,
+				H1700011243B1A00009F1234 /* UserPersona.swift in Sources */,
+				H1700021243B1A00009F1234 /* UITestAgent.swift in Sources */,
+				H1700031243B1A00009F1234 /* YoungChildAgent.swift in Sources */,
+				H1700041243B1A00009F1234 /* OlderChildAgent.swift in Sources */,
+				H1700051243B1A00009F1234 /* ParentAgent.swift in Sources */,
+				T1700001243B1A00009F1234 /* PageTestOrchestrator.swift in Sources */,
+				T1700011243B1A00009F1234 /* ComprehensivePageTests.swift in Sources */,
+				T1700021243B1A00009F1234 /* ColoringAppQATests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,539 @@
+{
+  "imageName": "abstract_04",
+  "imageSize": {
+    "width": 2048,
+    "height": 2048
+  },
+  "totalRegions": 35,
+  "labelMapName": "abstract_04_labels",
+  "labelEncoding": "rgb24",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 514.4995158850227,
+        "y": 274.4905597579425
+      },
+      "boundingBox": {
+        "x": 370,
+        "y": 130,
+        "width": 290,
+        "height": 290
+      },
+      "pixelCount": 66100,
+      "difficulty": 1
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 553.2947934652676,
+        "y": 566.4957497675654
+      },
+      "boundingBox": {
+        "x": 456,
+        "y": 468,
+        "width": 198,
+        "height": 198
+      },
+      "pixelCount": 30116,
+      "difficulty": 2
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 750.6276911655531,
+        "y": 568.6046770601337
+      },
+      "boundingBox": {
+        "x": 668,
+        "y": 486,
+        "width": 166,
+        "height": 166
+      },
+      "pixelCount": 21552,
+      "difficulty": 2
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 1141.8975903614457,
+        "y": 777.4165894346618
+      },
+      "boundingBox": {
+        "x": 922,
+        "y": 552,
+        "width": 358,
+        "height": 394
+      },
+      "pixelCount": 69056,
+      "difficulty": 1
+    },
+    {
+      "id": 16,
+      "centroid": {
+        "x": 1455.6101694915253,
+        "y": 779.9067796610169
+      },
+      "boundingBox": {
+        "x": 1434,
+        "y": 750,
+        "width": 54,
+        "height": 58
+      },
+      "pixelCount": 944,
+      "difficulty": 3
+    },
+    {
+      "id": 17,
+      "centroid": {
+        "x": 780.5204429301533,
+        "y": 818.5422487223169
+      },
+      "boundingBox": {
+        "x": 720,
+        "y": 758,
+        "width": 122,
+        "height": 122
+      },
+      "pixelCount": 11740,
+      "difficulty": 2
+    },
+    {
+      "id": 18,
+      "centroid": {
+        "x": 1290.8829172684134,
+        "y": 925.7168351557665
+      },
+      "boundingBox": {
+        "x": 1184,
+        "y": 790,
+        "width": 254,
+        "height": 290
+      },
+      "pixelCount": 19388,
+      "difficulty": 2
+    },
+    {
+      "id": 22,
+      "centroid": {
+        "x": 1295.5027786353812,
+        "y": 1014.1424822476073
+      },
+      "boundingBox": {
+        "x": 1198,
+        "y": 822,
+        "width": 244,
+        "height": 316
+      },
+      "pixelCount": 12956,
+      "difficulty": 2
+    },
+    {
+      "id": 23,
+      "centroid": {
+        "x": 1457.3016766281146,
+        "y": 1151.6606768609795
+      },
+      "boundingBox": {
+        "x": 1254,
+        "y": 832,
+        "width": 388,
+        "height": 626
+      },
+      "pixelCount": 103064,
+      "difficulty": 1
+    },
+    {
+      "id": 24,
+      "centroid": {
+        "x": 836.6302185000944,
+        "y": 1083.0109250047226
+      },
+      "boundingBox": {
+        "x": 620,
+        "y": 848,
+        "width": 444,
+        "height": 430
+      },
+      "pixelCount": 63524,
+      "difficulty": 1
+    },
+    {
+      "id": 25,
+      "centroid": {
+        "x": 1081.2642379891822,
+        "y": 929.3087814190264
+      },
+      "boundingBox": {
+        "x": 978,
+        "y": 878,
+        "width": 196,
+        "height": 122
+      },
+      "pixelCount": 12572,
+      "difficulty": 2
+    },
+    {
+      "id": 27,
+      "centroid": {
+        "x": 970.9419338760591,
+        "y": 1005.0572354211663
+      },
+      "boundingBox": {
+        "x": 892,
+        "y": 896,
+        "width": 198,
+        "height": 222
+      },
+      "pixelCount": 24076,
+      "difficulty": 2
+    },
+    {
+      "id": 29,
+      "centroid": {
+        "x": 1162.104797979798,
+        "y": 1014.5328282828283
+      },
+      "boundingBox": {
+        "x": 1102,
+        "y": 956,
+        "width": 96,
+        "height": 126
+      },
+      "pixelCount": 6336,
+      "difficulty": 3
+    },
+    {
+      "id": 31,
+      "centroid": {
+        "x": 1061.6002918138536,
+        "y": 1107.7477346029796
+      },
+      "boundingBox": {
+        "x": 924,
+        "y": 1008,
+        "width": 262,
+        "height": 176
+      },
+      "pixelCount": 26044,
+      "difficulty": 2
+    },
+    {
+      "id": 34,
+      "centroid": {
+        "x": 553.9597701149426,
+        "y": 1105.5498084291187
+      },
+      "boundingBox": {
+        "x": 478,
+        "y": 1066,
+        "width": 128,
+        "height": 74
+      },
+      "pixelCount": 2088,
+      "difficulty": 3
+    },
+    {
+      "id": 36,
+      "centroid": {
+        "x": 1169.2312079555425,
+        "y": 1185.8547821000293
+      },
+      "boundingBox": {
+        "x": 1076,
+        "y": 1096,
+        "width": 172,
+        "height": 168
+      },
+      "pixelCount": 13676,
+      "difficulty": 2
+    },
+    {
+      "id": 38,
+      "centroid": {
+        "x": 824.6138514864684,
+        "y": 1246.9588721503799
+      },
+      "boundingBox": {
+        "x": 594,
+        "y": 1122,
+        "width": 420,
+        "height": 246
+      },
+      "pixelCount": 30004,
+      "difficulty": 2
+    },
+    {
+      "id": 42,
+      "centroid": {
+        "x": 994.2730358874878,
+        "y": 1178.6862269641126
+      },
+      "boundingBox": {
+        "x": 884,
+        "y": 1128,
+        "width": 224,
+        "height": 94
+      },
+      "pixelCount": 4124,
+      "difficulty": 3
+    },
+    {
+      "id": 44,
+      "centroid": {
+        "x": 700.4566762565578,
+        "y": 1261.4866305635471
+      },
+      "boundingBox": {
+        "x": 528,
+        "y": 1148,
+        "width": 402,
+        "height": 240
+      },
+      "pixelCount": 23636,
+      "difficulty": 2
+    },
+    {
+      "id": 45,
+      "centroid": {
+        "x": 1239.4178082191781,
+        "y": 1260.7368537339814
+      },
+      "boundingBox": {
+        "x": 1148,
+        "y": 1148,
+        "width": 176,
+        "height": 204
+      },
+      "pixelCount": 18104,
+      "difficulty": 2
+    },
+    {
+      "id": 49,
+      "centroid": {
+        "x": 561.0156238724111,
+        "y": 1415.1056866565634
+      },
+      "boundingBox": {
+        "x": 214,
+        "y": 1228,
+        "width": 700,
+        "height": 376
+      },
+      "pixelCount": 110856,
+      "difficulty": 1
+    },
+    {
+      "id": 50,
+      "centroid": {
+        "x": 1103.011100148002,
+        "y": 1276.8473112974839
+      },
+      "boundingBox": {
+        "x": 1024,
+        "y": 1228,
+        "width": 152,
+        "height": 100
+      },
+      "pixelCount": 8108,
+      "difficulty": 3
+    },
+    {
+      "id": 51,
+      "centroid": {
+        "x": 1038.0293775450843,
+        "y": 1349.2364746945898
+      },
+      "boundingBox": {
+        "x": 942,
+        "y": 1286,
+        "width": 198,
+        "height": 120
+      },
+      "pixelCount": 13752,
+      "difficulty": 2
+    },
+    {
+      "id": 52,
+      "centroid": {
+        "x": 1153.3197879858658,
+        "y": 1353.899293286219
+      },
+      "boundingBox": {
+        "x": 1124,
+        "y": 1336,
+        "width": 70,
+        "height": 36
+      },
+      "pixelCount": 1132,
+      "difficulty": 3
+    },
+    {
+      "id": 53,
+      "centroid": {
+        "x": 1723.1182754182755,
+        "y": 1414.2127413127414
+      },
+      "boundingBox": {
+        "x": 1650,
+        "y": 1336,
+        "width": 136,
+        "height": 176
+      },
+      "pixelCount": 15540,
+      "difficulty": 2
+    },
+    {
+      "id": 55,
+      "centroid": {
+        "x": 1649.6709443099273,
+        "y": 1441.497578692494
+      },
+      "boundingBox": {
+        "x": 1608,
+        "y": 1354,
+        "width": 98,
+        "height": 160
+      },
+      "pixelCount": 8260,
+      "difficulty": 3
+    },
+    {
+      "id": 56,
+      "centroid": {
+        "x": 1158.2330399706636,
+        "y": 1413.8223322332233
+      },
+      "boundingBox": {
+        "x": 1074,
+        "y": 1358,
+        "width": 164,
+        "height": 106
+      },
+      "pixelCount": 10908,
+      "difficulty": 2
+    },
+    {
+      "id": 57,
+      "centroid": {
+        "x": 950.6363636363636,
+        "y": 1395.25
+      },
+      "boundingBox": {
+        "x": 924,
+        "y": 1378,
+        "width": 58,
+        "height": 34
+      },
+      "pixelCount": 704,
+      "difficulty": 3
+    },
+    {
+      "id": 58,
+      "centroid": {
+        "x": 1059.801724137931,
+        "y": 1416.0387931034484
+      },
+      "boundingBox": {
+        "x": 1000,
+        "y": 1382,
+        "width": 112,
+        "height": 76
+      },
+      "pixelCount": 3712,
+      "difficulty": 3
+    },
+    {
+      "id": 59,
+      "centroid": {
+        "x": 922.5141843971631,
+        "y": 1413.7482269503546
+      },
+      "boundingBox": {
+        "x": 888,
+        "y": 1396,
+        "width": 74,
+        "height": 36
+      },
+      "pixelCount": 1128,
+      "difficulty": 3
+    },
+    {
+      "id": 61,
+      "centroid": {
+        "x": 950.9585663446874,
+        "y": 1452.414590747331
+      },
+      "boundingBox": {
+        "x": 842,
+        "y": 1418,
+        "width": 224,
+        "height": 64
+      },
+      "pixelCount": 7868,
+      "difficulty": 3
+    },
+    {
+      "id": 66,
+      "centroid": {
+        "x": 1227.778146823369,
+        "y": 1549.7175097939023
+      },
+      "boundingBox": {
+        "x": 1136,
+        "y": 1460,
+        "width": 178,
+        "height": 176
+      },
+      "pixelCount": 23484,
+      "difficulty": 2
+    },
+    {
+      "id": 67,
+      "centroid": {
+        "x": 1133.4923664122136,
+        "y": 1478.2811704834605
+      },
+      "boundingBox": {
+        "x": 1090,
+        "y": 1464,
+        "width": 86,
+        "height": 40
+      },
+      "pixelCount": 1572,
+      "difficulty": 3
+    },
+    {
+      "id": 68,
+      "centroid": {
+        "x": 1165.9246575342465,
+        "y": 1492.7922374429224
+      },
+      "boundingBox": {
+        "x": 1146,
+        "y": 1466,
+        "width": 44,
+        "height": 52
+      },
+      "pixelCount": 876,
+      "difficulty": 3
+    },
+    {
+      "id": 69,
+      "centroid": {
+        "x": 1702.695652173913,
+        "y": 1533.8152173913043
+      },
+      "boundingBox": {
+        "x": 1676,
+        "y": 1518,
+        "width": 48,
+        "height": 44
+      },
+      "pixelCount": 736,
+      "difficulty": 3
+    }
+  ],
+  "qaResult": "pass",
+  "ageGroup": "kids"
+}

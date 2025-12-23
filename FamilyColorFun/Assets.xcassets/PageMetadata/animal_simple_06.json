@@ -1,0 +1,164 @@
+{
+  "imageName": "animal_simple_06",
+  "imageSize": {
+    "width": 2048,
+    "height": 2048
+  },
+  "totalRegions": 10,
+  "labelMapName": "animal_simple_06_labels",
+  "labelEncoding": "rgb24",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 855.7726275370269,
+        "y": 533.9602303894679
+      },
+      "boundingBox": {
+        "x": 794,
+        "y": 440,
+        "width": 114,
+        "height": 182
+      },
+      "pixelCount": 7292,
+      "difficulty": 3
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 1197.2072368421052,
+        "y": 533.9649122807018
+      },
+      "boundingBox": {
+        "x": 1146,
+        "y": 440,
+        "width": 114,
+        "height": 182
+      },
+      "pixelCount": 7296,
+      "difficulty": 3
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 1026.4928771480932,
+        "y": 831.584540645206
+      },
+      "boundingBox": {
+        "x": 732,
+        "y": 532,
+        "width": 590,
+        "height": 568
+      },
+      "pixelCount": 231368,
+      "difficulty": 1
+    },
+    {
+      "id": 4,
+      "centroid": {
+        "x": 885.9280792420327,
+        "y": 597.8626184323858
+      },
+      "boundingBox": {
+        "x": 816,
+        "y": 556,
+        "width": 124,
+        "height": 66
+      },
+      "pixelCount": 4644,
+      "difficulty": 3
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 1167.0077720207255,
+        "y": 597.8955094991364
+      },
+      "boundingBox": {
+        "x": 1114,
+        "y": 556,
+        "width": 124,
+        "height": 66
+      },
+      "pixelCount": 4632,
+      "difficulty": 3
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 906.462984384037,
+        "y": 786.462984384037
+      },
+      "boundingBox": {
+        "x": 860,
+        "y": 740,
+        "width": 94,
+        "height": 94
+      },
+      "pixelCount": 6916,
+      "difficulty": 3
+    },
+    {
+      "id": 7,
+      "centroid": {
+        "x": 1146.462984384037,
+        "y": 786.462984384037
+      },
+      "boundingBox": {
+        "x": 1100,
+        "y": 740,
+        "width": 94,
+        "height": 94
+      },
+      "pixelCount": 6916,
+      "difficulty": 3
+    },
+    {
+      "id": 8,
+      "centroid": {
+        "x": 1026.5,
+        "y": 953.0217391304348
+      },
+      "boundingBox": {
+        "x": 1004,
+        "y": 932,
+        "width": 46,
+        "height": 32
+      },
+      "pixelCount": 736,
+      "difficulty": 3
+    },
+    {
+      "id": 9,
+      "centroid": {
+        "x": 1026.4744214372715,
+        "y": 1098.1272838002435
+      },
+      "boundingBox": {
+        "x": 928,
+        "y": 1072,
+        "width": 198,
+        "height": 50
+      },
+      "pixelCount": 6568,
+      "difficulty": 3
+    },
+    {
+      "id": 10,
+      "centroid": {
+        "x": 1026.4951622083097,
+        "y": 1437.5181812432809
+      },
+      "boundingBox": {
+        "x": 792,
+        "y": 1112,
+        "width": 470,
+        "height": 670
+      },
+      "pixelCount": 253008,
+      "difficulty": 1
+    }
+  ],
+  "qaResult": "pass",
+  "ageGroup": "kids"
+}

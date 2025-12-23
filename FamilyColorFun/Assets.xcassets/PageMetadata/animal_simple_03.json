@@ -1,0 +1,104 @@
+{
+  "imageName": "animal_simple_03",
+  "imageSize": {
+    "width": 2048,
+    "height": 2048
+  },
+  "totalRegions": 6,
+  "labelMapName": "animal_simple_03_labels",
+  "labelEncoding": "rgb24",
+  "regions": [
+    {
+      "id": 1,
+      "centroid": {
+        "x": 1026.5,
+        "y": 792.3037318590186
+      },
+      "boundingBox": {
+        "x": 962,
+        "y": 732,
+        "width": 130,
+        "height": 92
+      },
+      "pixelCount": 5788,
+      "difficulty": 3
+    },
+    {
+      "id": 2,
+      "centroid": {
+        "x": 1026.4702892885066,
+        "y": 848.6939014855355
+      },
+      "boundingBox": {
+        "x": 934,
+        "y": 832,
+        "width": 186,
+        "height": 32
+      },
+      "pixelCount": 5116,
+      "difficulty": 3
+    },
+    {
+      "id": 3,
+      "centroid": {
+        "x": 1030.6849675668877,
+        "y": 1033.4422313262537
+      },
+      "boundingBox": {
+        "x": 632,
+        "y": 836,
+        "width": 784,
+        "height": 386
+      },
+      "pixelCount": 222612,
+      "difficulty": 1
+    },
+    {
+      "id": 5,
+      "centroid": {
+        "x": 1523.0293855081088,
+        "y": 1026.5446362148489
+      },
+      "boundingBox": {
+        "x": 1428,
+        "y": 878,
+        "width": 154,
+        "height": 298
+      },
+      "pixelCount": 26884,
+      "difficulty": 2
+    },
+    {
+      "id": 6,
+      "centroid": {
+        "x": 866.4614689945815,
+        "y": 986.6444912703191
+      },
+      "boundingBox": {
+        "x": 820,
+        "y": 940,
+        "width": 94,
+        "height": 94
+      },
+      "pixelCount": 6644,
+      "difficulty": 3
+    },
+    {
+      "id": 9,
+      "centroid": {
+        "x": 1412.121212121212,
+        "y": 1026.560606060606
+      },
+      "boundingBox": {
+        "x": 1396,
+        "y": 1008,
+        "width": 26,
+        "height": 38
+      },
+      "pixelCount": 528,
+      "difficulty": 3
+    }
+  ],
+  "qaResult": "pass",
+  "ageGroup": "kids"
+}

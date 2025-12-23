@@ -27,3 +27,15 @@ venv/
 # Project specific
 .claude/
 RESUME.md
+
+# Debug outputs
+scripts/*_debug*.png
+scripts/*.json
+scripts/test_output/
+scripts/processed/
+scripts/raw_downloads/
+scripts/retro_input/
+scripts/retro_output/
+
+# Local environment
+.env.local

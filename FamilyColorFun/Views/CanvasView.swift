@@ -29,6 +29,10 @@ struct CanvasView: View {
     // Exit confirmation
     @State private var showExitConfirmation = false
 
+    // Auto-complete hint tracking
+    @State private var hasShownAutofillHint = false
+    private let autofillThreshold: Double = 0.90 // 90% threshold for auto-fill suggestion
+
     @Environment(\.dismiss) private var dismiss
 
     private var hasUnsavedChanges: Bool {
@@ -259,6 +263,21 @@ struct CanvasView: View {
         .onChange(of: fillEngine.regionProgress) { newValue in
             // Check completion based on region count if metadata available
             if let totalRegions = fillEngine.metadata?.totalRegions, totalRegions > 0 {
+                let progressPercent = Double(newValue) / Double(totalRegions)
+
+                // Auto-show autofill suggestion at 90%+ progress
+                if progressPercent >= autofillThreshold &&
+                   !hasShownAutofillHint &&
+                   newValue < totalRegions &&
+                   coloringMode == .fill {
+                    hasShownAutofillHint = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showAutofillConfirmation = true
+                        SoundManager.shared.playTap()
+                    }
+                }
+
+                // Check for full completion
                 if newValue >= totalRegions && !showCompletion && coloringMode == .fill {
                     withAnimation(.spring()) {
                         showCompletion = true

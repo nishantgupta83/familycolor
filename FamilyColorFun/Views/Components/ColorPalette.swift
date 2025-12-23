@@ -1,5 +1,81 @@
 import SwiftUI
 
+// MARK: - Crayon Shape
+struct CrayonShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let tipHeight = rect.height * 0.18
+        let bodyTop = tipHeight
+
+        // Crayon tip (pointed triangle)
+        path.move(to: CGPoint(x: rect.midX, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX - 2, y: bodyTop))
+        path.addLine(to: CGPoint(x: rect.minX + 2, y: bodyTop))
+        path.closeSubpath()
+
+        // Crayon body (rounded rectangle)
+        let bodyRect = CGRect(x: 2, y: bodyTop - 1,
+                              width: rect.width - 4,
+                              height: rect.height - bodyTop + 1)
+        path.addRoundedRect(in: bodyRect, cornerSize: CGSize(width: 3, height: 3))
+
+        return path
+    }
+}
+
+// MARK: - Crayon Button
+struct CrayonButton: View {
+    let color: Color
+    let isSelected: Bool
+    let action: () -> Void
+    var onLongPress: (() -> Void)? = nil
+
+    @State private var isPressed = false
+
+    private let crayonWidth: CGFloat = 26
+    private let crayonHeight: CGFloat = 52
+
+    var body: some View {
+        ZStack {
+            // Main crayon
+            CrayonShape()
+                .fill(color)
+                .frame(width: crayonWidth, height: crayonHeight)
+
+            // Highlight stripe (makes it look more 3D)
+            CrayonShape()
+                .fill(
+                    LinearGradient(
+                        colors: [.white.opacity(0.3), .clear, .black.opacity(0.1)],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .frame(width: crayonWidth, height: crayonHeight)
+
+            // Border
+            CrayonShape()
+                .stroke(isSelected ? Color.white : Color.black.opacity(0.2), lineWidth: isSelected ? 2.5 : 1)
+                .frame(width: crayonWidth, height: crayonHeight)
+        }
+        .shadow(color: isSelected ? color.opacity(0.5) : .black.opacity(0.15), radius: isSelected ? 4 : 2, y: 2)
+        .scaleEffect(isPressed ? 0.9 : (isSelected ? 1.15 : 1.0))
+        .rotationEffect(.degrees(isSelected ? -5 : 0))
+        .offset(y: isSelected ? -4 : 0)
+        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: isPressed)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
+        .onTapGesture {
+            action()
+        }
+        .onLongPressGesture(minimumDuration: 0.4) {
+            onLongPress?()
+        } onPressingChanged: { pressing in
+            isPressed = pressing
+        }
+    }
+}
+
+// MARK: - Color Palette
 struct ColorPalette: View {
     @Binding var selectedColor: Color
     @ObservedObject private var settings = SettingsManager.shared
@@ -9,14 +85,13 @@ struct ColorPalette: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            // Main color palette
+            // Main crayon palette
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
+                HStack(spacing: 6) {
                     ForEach(Array(settings.currentColors.enumerated()), id: \.offset) { index, color in
-                        ColorButton(
+                        CrayonButton(
                             color: color,
-                            isSelected: selectedColor == color,
-                            size: 40
+                            isSelected: selectedColor == color
                         ) {
                             selectedColor = color
                             SoundManager.shared.playTap()
@@ -28,11 +103,16 @@ struct ColorPalette: View {
                     }
                 }
                 .padding(.horizontal, 12)
-                .padding(.vertical, 4)
+                .padding(.vertical, 8)
             }
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(.systemGray6).opacity(0.8))
+            )
+            .padding(.horizontal, 8)
 
             // Shade picker overlay
-            if showingShades, let baseColor = longPressedColor {
+            if showingShades, let _ = longPressedColor {
                 ShadePickerView(
                     shades: shadeColors,
                     onSelect: { shade in
@@ -68,53 +148,17 @@ struct ColorPalette: View {
 
         uiColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
-        // Generate 5 shades: 2 lighter, original, 2 darker
         return [
             Color(UIColor(hue: hue, saturation: max(0, saturation - 0.3), brightness: min(1, brightness + 0.3), alpha: alpha)),
             Color(UIColor(hue: hue, saturation: max(0, saturation - 0.15), brightness: min(1, brightness + 0.15), alpha: alpha)),
-            color, // Original
+            color,
             Color(UIColor(hue: hue, saturation: min(1, saturation + 0.15), brightness: max(0, brightness - 0.15), alpha: alpha)),
             Color(UIColor(hue: hue, saturation: min(1, saturation + 0.3), brightness: max(0, brightness - 0.3), alpha: alpha))
         ]
     }
 }
 
-struct ColorButton: View {
-    let color: Color
-    let isSelected: Bool
-    let size: CGFloat
-    let action: () -> Void
-    var onLongPress: (() -> Void)? = nil
-
-    @State private var isPressed = false
-
-    var body: some View {
-        Circle()
-            .fill(color)
-            .frame(width: size, height: size)
-            .overlay(
-                Circle()
-                    .stroke(Color.white, lineWidth: isSelected ? 3 : 0)
-            )
-            .overlay(
-                Circle()
-                    .stroke(Color.black.opacity(0.15), lineWidth: 1)
-            )
-            .shadow(color: isSelected ? color.opacity(0.4) : .clear, radius: 4)
-            .scaleEffect(isPressed ? 0.9 : (isSelected ? 1.1 : 1.0))
-            .animation(.spring(response: 0.2), value: isPressed)
-            .animation(.spring(response: 0.3), value: isSelected)
-            .onTapGesture {
-                action()
-            }
-            .onLongPressGesture(minimumDuration: 0.4) {
-                onLongPress?()
-            } onPressingChanged: { pressing in
-                isPressed = pressing
-            }
-    }
-}
-
+// MARK: - Shade Picker (uses small crayons)
 struct ShadePickerView: View {
     let shades: [Color]
     let onSelect: (Color) -> Void
@@ -122,33 +166,41 @@ struct ShadePickerView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Dismiss area
             Color.clear
                 .contentShape(Rectangle())
                 .onTapGesture {
                     onDismiss()
                 }
 
-            // Shade picker
             VStack(spacing: 12) {
                 Text("Select Shade")
                     .font(.caption)
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
 
-                HStack(spacing: 12) {
+                HStack(spacing: 10) {
                     ForEach(Array(shades.enumerated()), id: \.offset) { index, shade in
                         Button {
                             onSelect(shade)
                         } label: {
-                            Circle()
-                                .fill(shade)
-                                .frame(width: 44, height: 44)
-                                .overlay(
-                                    Circle()
-                                        .stroke(Color.black.opacity(0.1), lineWidth: 1)
-                                )
-                                .shadow(color: shade.opacity(0.3), radius: 2, y: 1)
+                            ZStack {
+                                CrayonShape()
+                                    .fill(shade)
+                                    .frame(width: 22, height: 44)
+                                CrayonShape()
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [.white.opacity(0.25), .clear],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .frame(width: 22, height: 44)
+                                CrayonShape()
+                                    .stroke(Color.black.opacity(0.15), lineWidth: 1)
+                                    .frame(width: 22, height: 44)
+                            }
+                            .shadow(color: shade.opacity(0.3), radius: 2, y: 1)
                         }
                     }
                 }
@@ -166,10 +218,23 @@ struct ShadePickerView: View {
     }
 }
 
+// MARK: - Legacy ColorButton (for compatibility)
+struct ColorButton: View {
+    let color: Color
+    let isSelected: Bool
+    let size: CGFloat
+    let action: () -> Void
+    var onLongPress: (() -> Void)? = nil
+
+    var body: some View {
+        CrayonButton(color: color, isSelected: isSelected, action: action, onLongPress: onLongPress)
+    }
+}
+
 #Preview {
     VStack {
         Spacer()
-        ColorPalette(selectedColor: .constant(.kidColors[0]))
+        ColorPalette(selectedColor: .constant(.red))
             .padding()
             .background(Color(.systemBackground))
     }

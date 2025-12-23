@@ -56,7 +56,7 @@ final class FamilyColorFunTests: XCTestCase {
     }
 
     func testNaturePageCount() {
-        XCTAssertEqual(ColoringPage.nature.count, 2)
+        XCTAssertEqual(ColoringPage.nature.count, 5)
     }
 
     func testOceanPageCount() {

@@ -224,9 +224,7 @@ class FillEngine: ObservableObject {
 
         // Try label-map based fill first
         if hasLabelMap, let regionId = regionId(at: pixelPoint) {
-            // Skip if already filled
-            guard !filledRegions.contains(regionId) else { return }
-
+            // Allow re-filling with different color
             if let filled = FloodFillService.applyMaskFill(
                 image: currentImage,
                 labelMapBuffer: labelMapBuffer,
