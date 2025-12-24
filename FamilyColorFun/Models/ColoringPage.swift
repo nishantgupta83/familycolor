@@ -5,6 +5,9 @@ struct ColoringPage: Identifiable, Hashable {
     let name: String
     let imageName: String
 
+    /// Stable ID for unlock/journey tracking (uses imageName)
+    var pageId: String { imageName }
+
     // MARK: - All pages from coloringlover.com (cute kawaii style)
 
     static let animals: [ColoringPage] = [
@@ -163,16 +166,4 @@ struct ColoringPage: Identifiable, Hashable {
         ColoringPage(name: "Birthday Turtle", imageName: "cute_turtle_birthday"),
     ]
 
-    // Keep these categories with placeholder - will add more from coloringlover.com later
-    static let retro90s: [ColoringPage] = []
-    static let mandalas: [ColoringPage] = []
-    static let geometric: [ColoringPage] = []
-    static let abstract: [ColoringPage] = []
-    static let space: [ColoringPage] = []
-    static let food: [ColoringPage] = []
-    static let sports: [ColoringPage] = []
-    static let music: [ColoringPage] = []
-    static let robots: [ColoringPage] = []
-    static let zenPatterns: [ColoringPage] = []
-    static let portraits: [ColoringPage] = []
 }

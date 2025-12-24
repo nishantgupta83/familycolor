@@ -1,0 +1,31 @@
+{
+  "starEarning": {
+    "progress25": 1,
+    "progress50": 1,
+    "progress75": 1,
+    "complete": 5,
+    "categoryBonus": 10,
+    "dailyFirst": 5,
+    "helperStar": 1
+  },
+  "unlockCosts": {
+    "pageUnlock": 5,
+    "patternFill": 15,
+    "companionOutfit": 50
+  },
+  "freePages": 3,
+  "milestones": {
+    "goldColor": 10,
+    "silverColor": 25,
+    "bronzeColor": 50,
+    "roseGoldColor": 100,
+    "platinumColor": 200
+  },
+  "streakRewards": {
+    "3": "copper_color",
+    "7": "companion_hat",
+    "14": "pattern_hearts",
+    "30": "companion_cape"
+  },
+  "categoryBonusInterval": 3
+}
