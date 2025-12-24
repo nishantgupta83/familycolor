@@ -5,11 +5,9 @@ struct ColoringPage: Identifiable, Hashable {
     let name: String
     let imageName: String
 
-    // MARK: - Page Definitions
-    // Includes cute kawaii-style pages from coloringlover.com
+    // MARK: - All pages from coloringlover.com (cute kawaii style)
 
     static let animals: [ColoringPage] = [
-        // Cute animals (kawaii style)
         ColoringPage(name: "Cute Lion", imageName: "cute_lion"),
         ColoringPage(name: "Cute Elephant", imageName: "cute_elephant"),
         ColoringPage(name: "Cute Bunny", imageName: "cute_bunny"),
@@ -19,87 +17,98 @@ struct ColoringPage: Identifiable, Hashable {
         ColoringPage(name: "Cute Giraffe", imageName: "cute_giraffe"),
         ColoringPage(name: "Cute Koala", imageName: "cute_koala"),
         ColoringPage(name: "Cute Penguin", imageName: "cute_penguin"),
-        // Easy animals
         ColoringPage(name: "Happy Dog", imageName: "easy_dog"),
         ColoringPage(name: "Sitting Cat", imageName: "easy_cat"),
         ColoringPage(name: "Happy Rabbit", imageName: "easy_rabbit"),
         ColoringPage(name: "Smiling Turtle", imageName: "easy_turtle"),
-        // Original animals
-        ColoringPage(name: "Cat", imageName: "animal_cat"),
-        ColoringPage(name: "Dog", imageName: "animal_dog"),
-        ColoringPage(name: "Elephant", imageName: "animal_elephant"),
-        ColoringPage(name: "Bunny", imageName: "animal_simple_01"),
-        ColoringPage(name: "Bear", imageName: "animal_simple_03"),
-        ColoringPage(name: "Bird", imageName: "animal_simple_04"),
-        ColoringPage(name: "Fox", imageName: "animal_simple_06")
+        ColoringPage(name: "Wise Owl", imageName: "easy_owl"),
+        ColoringPage(name: "Rearing Horse", imageName: "easy_horse"),
     ]
 
     static let vehicles: [ColoringPage] = [
-        // Easy vehicles
-        ColoringPage(name: "Cute Car", imageName: "easy_car"),
+        ColoringPage(name: "Smiling Car", imageName: "cute_car_smiling"),
+        ColoringPage(name: "Bunny's Truck", imageName: "cute_bunny_truck"),
+        ColoringPage(name: "Bunny Driving", imageName: "cute_bunny_car"),
+        ColoringPage(name: "Puppy Road Trip", imageName: "cute_puppy_roadtrip"),
+        ColoringPage(name: "Rainbow Car", imageName: "cute_car_rainbow"),
+        ColoringPage(name: "Truck with Hearts", imageName: "cute_truck_hearts"),
+        ColoringPage(name: "Police Car", imageName: "cute_police_car"),
+        ColoringPage(name: "Race Car", imageName: "cute_race_car"),
+        ColoringPage(name: "Easy Car", imageName: "easy_car"),
+        ColoringPage(name: "Toddler Car", imageName: "easy_car_toddler"),
+        ColoringPage(name: "Car & Rainbow", imageName: "easy_car_rainbow"),
         ColoringPage(name: "Steam Train", imageName: "easy_train"),
         ColoringPage(name: "Airplane", imageName: "easy_airplane"),
-        // Original
-        ColoringPage(name: "Car", imageName: "vehicle_car")
+        ColoringPage(name: "Tractor", imageName: "easy_tractor"),
+        ColoringPage(name: "Sailboat", imageName: "easy_sailboat"),
     ]
 
     static let houses: [ColoringPage] = [
-        ColoringPage(name: "Cozy House", imageName: "easy_house"),
-        ColoringPage(name: "Cottage", imageName: "house_cottage")
+        ColoringPage(name: "Cozy House", imageName: "cute_cozy_house"),
+        ColoringPage(name: "Cute House", imageName: "cute_house"),
+        ColoringPage(name: "House & Garden", imageName: "cute_house_garden"),
+        ColoringPage(name: "House & Butterflies", imageName: "cute_house_butterflies"),
+        ColoringPage(name: "House & Chimney", imageName: "cute_house_chimney"),
+        ColoringPage(name: "House & Trees", imageName: "cute_house_trees"),
+        ColoringPage(name: "House & Sun", imageName: "cute_house_sun"),
+        ColoringPage(name: "House & Rainbow", imageName: "cute_house_rainbow"),
+        ColoringPage(name: "Gingerbread House", imageName: "cute_gingerbread"),
+        ColoringPage(name: "Gingerbread Rainbow", imageName: "cute_gingerbread_rainbow"),
+        ColoringPage(name: "Candy House", imageName: "cute_gingerbread_candy"),
+        ColoringPage(name: "Countryside House", imageName: "easy_house"),
     ]
 
     static let nature: [ColoringPage] = [
-        // Easy nature
-        ColoringPage(name: "Rainbow", imageName: "easy_rainbow"),
+        ColoringPage(name: "Rainbow & Clouds", imageName: "easy_rainbow"),
         ColoringPage(name: "Balloons", imageName: "easy_balloons"),
         ColoringPage(name: "Sunflower", imageName: "easy_sunflower"),
-        // Original
-        ColoringPage(name: "Flower", imageName: "nature_flower"),
-        ColoringPage(name: "Star", imageName: "nature_star"),
-        ColoringPage(name: "Rose", imageName: "flower_01"),
-        ColoringPage(name: "Daisy", imageName: "flower_02"),
-        ColoringPage(name: "Tulip", imageName: "flower_03")
+        ColoringPage(name: "Daisy", imageName: "easy_daisy"),
+        ColoringPage(name: "Rose", imageName: "easy_rose"),
+        ColoringPage(name: "Tulip", imageName: "easy_tulip"),
+        ColoringPage(name: "Lily", imageName: "easy_lily"),
+        ColoringPage(name: "Tree", imageName: "easy_tree"),
+        ColoringPage(name: "Mountains Sunrise", imageName: "easy_mountains"),
+        ColoringPage(name: "Waterfall", imageName: "easy_waterfall"),
+        ColoringPage(name: "Night Sky", imageName: "easy_night_sky"),
+        ColoringPage(name: "Butterfly Wreath", imageName: "cute_butterfly_wreath"),
+        ColoringPage(name: "Butterfly & Roses", imageName: "cute_butterfly_roses"),
+        ColoringPage(name: "Butterfly on Rose", imageName: "cute_butterfly_rose"),
     ]
 
     static let ocean: [ColoringPage] = [
-        // Easy ocean
-        ColoringPage(name: "Happy Whale", imageName: "easy_whale"),
+        ColoringPage(name: "Cute Dolphin", imageName: "cute_dolphin"),
+        ColoringPage(name: "Dolphin & Fish", imageName: "cute_dolphin_fish"),
+        ColoringPage(name: "Dolphin & Pearl", imageName: "cute_dolphin_pearl"),
+        ColoringPage(name: "Dolphin Ice Cream", imageName: "cute_dolphin_icecream"),
+        ColoringPage(name: "Dolphin Family", imageName: "cute_dolphin_family"),
+        ColoringPage(name: "Dolphin & Beach Ball", imageName: "cute_dolphin_beachball"),
+        ColoringPage(name: "Dolphin Rainbow", imageName: "cute_dolphin_rainbow"),
+        ColoringPage(name: "Clownfish", imageName: "cute_clownfish"),
+        ColoringPage(name: "Fish in Love", imageName: "cute_fish_hearts"),
+        ColoringPage(name: "Angelfish", imageName: "cute_angelfish"),
+        ColoringPage(name: "Pufferfish", imageName: "cute_pufferfish"),
+        ColoringPage(name: "Betta Fish", imageName: "cute_betafish"),
+        ColoringPage(name: "Smiling Whale", imageName: "easy_whale"),
+        ColoringPage(name: "Shark", imageName: "easy_shark"),
+    ]
+
+    static let underwater: [ColoringPage] = [
+        ColoringPage(name: "Seahorse & Dolphin", imageName: "cute_seahorse_dolphin"),
+        ColoringPage(name: "Easy Seahorse", imageName: "easy_seahorse"),
+        ColoringPage(name: "Baby Turtle", imageName: "cute_baby_turtle"),
+        ColoringPage(name: "Turtle on Mushroom", imageName: "cute_turtle_mushroom"),
+        ColoringPage(name: "Party Turtle", imageName: "cute_turtle_balloon"),
+        ColoringPage(name: "Turtle on Cloud", imageName: "cute_turtle_cloud"),
+        ColoringPage(name: "Sea Turtle", imageName: "cute_sea_turtle"),
+        ColoringPage(name: "Turtle Treasure", imageName: "cute_turtle_treasure"),
         ColoringPage(name: "Happy Octopus", imageName: "easy_octopus"),
-        // Original
-        ColoringPage(name: "Fish", imageName: "ocean_fish")
-    ]
-
-    static let retro90s: [ColoringPage] = [
-        ColoringPage(name: "Boombox", imageName: "retro_boombox"),
-        ColoringPage(name: "Turntable", imageName: "retro_turntable")
-    ]
-
-    static let mandalas: [ColoringPage] = [
-        ColoringPage(name: "Mandala 1", imageName: "mandala_01"),
-        ColoringPage(name: "Mandala 2", imageName: "mandala_02"),
-        ColoringPage(name: "Mandala 3", imageName: "mandala_03"),
-        ColoringPage(name: "Mandala 4", imageName: "mandala_04"),
-        ColoringPage(name: "Mandala 5", imageName: "mandala_05"),
-        ColoringPage(name: "Mandala 6", imageName: "mandala_06")
-    ]
-
-    static let geometric: [ColoringPage] = [
-        ColoringPage(name: "Pattern 1", imageName: "geometric_01"),
-        ColoringPage(name: "Pattern 2", imageName: "geometric_02"),
-        ColoringPage(name: "Pattern 3", imageName: "geometric_03"),
-        ColoringPage(name: "Pattern 4", imageName: "geometric_04"),
-        ColoringPage(name: "Pattern 5", imageName: "geometric_05"),
-        ColoringPage(name: "Pattern 6", imageName: "geometric_06")
-    ]
-
-    static let abstract: [ColoringPage] = [
-        ColoringPage(name: "Abstract 1", imageName: "abstract_01"),
-        ColoringPage(name: "Abstract 2", imageName: "abstract_04")
+        ColoringPage(name: "Lobster", imageName: "easy_lobster"),
+        ColoringPage(name: "Dolphin Waves", imageName: "cute_dolphin_waves"),
+        ColoringPage(name: "Dolphin Sunglasses", imageName: "cute_dolphin_sunglasses"),
     ]
 
     static let dinosaurs: [ColoringPage] = [
-        // Cute dinosaurs (kawaii style)
-        ColoringPage(name: "Dino with Balloon", imageName: "cute_dino_balloon"),
+        ColoringPage(name: "Dino & Balloon", imageName: "cute_dino_balloon"),
         ColoringPage(name: "Jumping Dino", imageName: "cute_dino_trampoline"),
         ColoringPage(name: "Forest Dino", imageName: "cute_dino_forest"),
         ColoringPage(name: "Dino on Tricycle", imageName: "cute_dino_tricycle"),
@@ -108,69 +117,62 @@ struct ColoringPage: Identifiable, Hashable {
         ColoringPage(name: "Dino & Rainbow", imageName: "cute_dino_rainbow"),
         ColoringPage(name: "Cute Triceratops", imageName: "cute_triceratops"),
         ColoringPage(name: "T-Rex Ice Cream", imageName: "cute_trex_icecream"),
-        // Original
-        ColoringPage(name: "T-Rex", imageName: "dino_trex"),
-        ColoringPage(name: "Triceratops", imageName: "dino_triceratops"),
-        ColoringPage(name: "Stegosaurus", imageName: "dino_stegosaurus")
-    ]
-
-    static let space: [ColoringPage] = [
-        ColoringPage(name: "Rocket", imageName: "space_rocket"),
-        ColoringPage(name: "Astronaut", imageName: "space_astronaut"),
-        ColoringPage(name: "Planet", imageName: "space_planet")
-    ]
-
-    static let food: [ColoringPage] = [
-        ColoringPage(name: "Cupcake", imageName: "food_cupcake"),
-        ColoringPage(name: "Ice Cream", imageName: "food_icecream"),
-        ColoringPage(name: "Pizza", imageName: "food_pizza")
-    ]
-
-    static let holidays: [ColoringPage] = [
-        ColoringPage(name: "Christmas Tree", imageName: "holiday_christmas"),
-        ColoringPage(name: "Easter Egg", imageName: "holiday_easter"),
-        ColoringPage(name: "Pumpkin", imageName: "holiday_pumpkin")
-    ]
-
-    static let sports: [ColoringPage] = [
-        ColoringPage(name: "Soccer Ball", imageName: "sport_soccer"),
-        ColoringPage(name: "Basketball", imageName: "sport_basketball"),
-        ColoringPage(name: "Baseball", imageName: "sport_baseball")
-    ]
-
-    static let music: [ColoringPage] = [
-        ColoringPage(name: "Guitar", imageName: "music_guitar"),
-        ColoringPage(name: "Piano", imageName: "music_piano"),
-        ColoringPage(name: "Drums", imageName: "music_drums")
-    ]
-
-    static let robots: [ColoringPage] = [
-        ColoringPage(name: "Robot 1", imageName: "robot_01"),
-        ColoringPage(name: "Robot 2", imageName: "robot_02"),
-        ColoringPage(name: "Robot 3", imageName: "robot_03")
+        ColoringPage(name: "Dino Picnic", imageName: "cute_dino_watermelon"),
+        ColoringPage(name: "Dino & Leaves", imageName: "cute_dino_leaves"),
+        ColoringPage(name: "Dino & Clouds", imageName: "cute_dino_clouds"),
+        ColoringPage(name: "T-Rex Exercise", imageName: "cute_trex_exercise"),
+        ColoringPage(name: "T-Rex Skateboard", imageName: "cute_trex_skateboard"),
+        ColoringPage(name: "Dino Lemonade", imageName: "cute_dino_lemonade"),
+        ColoringPage(name: "Chef Dino", imageName: "cute_dino_chef"),
+        ColoringPage(name: "Dino in Rain", imageName: "cute_dino_umbrella"),
+        ColoringPage(name: "Flying Dino", imageName: "cute_flying_dino"),
     ]
 
     static let fantasy: [ColoringPage] = [
-        ColoringPage(name: "Unicorn", imageName: "fantasy_unicorn"),
-        ColoringPage(name: "Dragon", imageName: "fantasy_dragon"),
-        ColoringPage(name: "Castle", imageName: "fantasy_castle")
+        ColoringPage(name: "Unicorn & Flowers", imageName: "cute_unicorn_flowers"),
+        ColoringPage(name: "Princess Unicorn", imageName: "cute_unicorn_princess"),
+        ColoringPage(name: "Fairy & Unicorn", imageName: "cute_unicorn_fairy"),
+        ColoringPage(name: "Unicorn on Cloud", imageName: "cute_unicorn_cloud"),
+        ColoringPage(name: "Unicorn Balloon", imageName: "cute_unicorn_balloon"),
+        ColoringPage(name: "Unicorn Rainbow", imageName: "cute_unicorn_rainbow"),
+        ColoringPage(name: "Unicorn Crown", imageName: "cute_unicorn_crown"),
+        ColoringPage(name: "Unicorn Watering", imageName: "cute_unicorn_watering"),
+        ColoringPage(name: "Unicorn Painting", imageName: "cute_unicorn_painting"),
+        ColoringPage(name: "Beach Unicorn", imageName: "cute_unicorn_beach"),
+        ColoringPage(name: "Mermaid Unicorn", imageName: "cute_unicorn_mermaid"),
+        ColoringPage(name: "Carousel Unicorn", imageName: "cute_unicorn_carousel"),
+        ColoringPage(name: "Ice Cream Unicorn", imageName: "cute_unicorn_icecream"),
+        ColoringPage(name: "Reading Unicorn", imageName: "cute_unicorn_reading"),
+        ColoringPage(name: "Ballerina Unicorn", imageName: "cute_unicorn_ballerina"),
+        ColoringPage(name: "Baking Unicorn", imageName: "cute_unicorn_baking"),
+        ColoringPage(name: "Biking Unicorn", imageName: "cute_unicorn_bike"),
+        ColoringPage(name: "Waterfall Unicorn", imageName: "cute_unicorn_waterfall"),
     ]
 
-    static let underwater: [ColoringPage] = [
-        ColoringPage(name: "Octopus", imageName: "underwater_octopus"),
-        ColoringPage(name: "Seahorse", imageName: "underwater_seahorse"),
-        ColoringPage(name: "Turtle", imageName: "underwater_turtle")
+    static let holidays: [ColoringPage] = [
+        ColoringPage(name: "Christmas House", imageName: "cute_christmas_house"),
+        ColoringPage(name: "Snowman House", imageName: "cute_christmas_snowman"),
+        ColoringPage(name: "Hot Cocoa House", imageName: "cute_christmas_cocoa"),
+        ColoringPage(name: "Haunted House", imageName: "cute_haunted_house"),
+        ColoringPage(name: "Halloween House", imageName: "cute_halloween_house"),
+        ColoringPage(name: "Christmas Flowers", imageName: "cute_christmas_flowers"),
+        ColoringPage(name: "Valentine Roses", imageName: "cute_valentines_roses"),
+        ColoringPage(name: "Birthday Bouquet", imageName: "cute_birthday_bouquet"),
+        ColoringPage(name: "Mother's Day", imageName: "cute_mothers_day"),
+        ColoringPage(name: "Birthday Dolphin", imageName: "cute_dolphin_birthday"),
+        ColoringPage(name: "Birthday Turtle", imageName: "cute_turtle_birthday"),
     ]
 
-    static let zenPatterns: [ColoringPage] = [
-        ColoringPage(name: "Zen 1", imageName: "zen_01"),
-        ColoringPage(name: "Zen 2", imageName: "zen_02"),
-        ColoringPage(name: "Zen 3", imageName: "zen_03")
-    ]
-
-    static let portraits: [ColoringPage] = [
-        ColoringPage(name: "Princess", imageName: "portrait_princess"),
-        ColoringPage(name: "Superhero", imageName: "portrait_superhero"),
-        ColoringPage(name: "Fairy", imageName: "portrait_fairy")
-    ]
+    // Keep these categories with placeholder - will add more from coloringlover.com later
+    static let retro90s: [ColoringPage] = []
+    static let mandalas: [ColoringPage] = []
+    static let geometric: [ColoringPage] = []
+    static let abstract: [ColoringPage] = []
+    static let space: [ColoringPage] = []
+    static let food: [ColoringPage] = []
+    static let sports: [ColoringPage] = []
+    static let music: [ColoringPage] = []
+    static let robots: [ColoringPage] = []
+    static let zenPatterns: [ColoringPage] = []
+    static let portraits: [ColoringPage] = []
 }
