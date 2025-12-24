@@ -53,6 +53,7 @@
 		B1600001243B1A00009F1234 /* FamilyColorFunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600000243B1A00009F1234 /* FamilyColorFunTests.swift */; };
 		B1600003243B1A00009F1234 /* StateManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600002243B1A00009F1234 /* StateManagementTests.swift */; };
 		B1600005243B1A00009F1234 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600004243B1A00009F1234 /* PerformanceTests.swift */; };
+		TS001001243B1A00009F1234 /* ProcessingStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = TS001000243B1A00009F1234 /* ProcessingStateTests.swift */; };
 		B1700001243B1A00009F1234 /* NavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700000243B1A00009F1234 /* NavigationUITests.swift */; };
 		B1700003243B1A00009F1234 /* CanvasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700002243B1A00009F1234 /* CanvasUITests.swift */; };
 		B1700005243B1A00009F1234 /* GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700004243B1A00009F1234 /* GalleryUITests.swift */; };
@@ -66,6 +67,18 @@
 		T1700001243B1A00009F1234 /* PageTestOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1700000243B1A00009F1234 /* PageTestOrchestrator.swift */; };
 		T1700011243B1A00009F1234 /* ComprehensivePageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1700010243B1A00009F1234 /* ComprehensivePageTests.swift */; };
 		T1700021243B1A00009F1234 /* ColoringAppQATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1700020243B1A00009F1234 /* ColoringAppQATests.swift */; };
+		ML001001243B1A00009F1234 /* EdgeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML001000243B1A00009F1234 /* EdgeMap.swift */; };
+		ML002001243B1A00009F1234 /* LineArtIntermediate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML002000243B1A00009F1234 /* LineArtIntermediate.swift */; };
+		ML003001243B1A00009F1234 /* LineArtResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML003000243B1A00009F1234 /* LineArtResult.swift */; };
+		ML004001243B1A00009F1234 /* ProcessingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML004000243B1A00009F1234 /* ProcessingState.swift */; };
+		ML005001243B1A00009F1234 /* ProcessingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML005000243B1A00009F1234 /* ProcessingContext.swift */; };
+		ML006001243B1A00009F1234 /* EngineRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML006000243B1A00009F1234 /* EngineRegistry.swift */; };
+		ML007001243B1A00009F1234 /* LineArtOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML007000243B1A00009F1234 /* LineArtOrchestrator.swift */; };
+		ML008001243B1A00009F1234 /* LineArtPostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML008000243B1A00009F1234 /* LineArtPostProcessor.swift */; };
+		ML009001243B1A00009F1234 /* VisionExtractorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML009000243B1A00009F1234 /* VisionExtractorAdapter.swift */; };
+		ML010001243B1A00009F1234 /* HEDEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML010000243B1A00009F1234 /* HEDEngine.swift */; };
+		ML011001243B1A00009F1234 /* PhotoAnalysisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML011000243B1A00009F1234 /* PhotoAnalysisEngine.swift */; };
+		ML012001243B1A00009F1234 /* LineArtExtractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ML012000243B1A00009F1234 /* LineArtExtractorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +146,7 @@
 		B1600000243B1A00009F1234 /* FamilyColorFunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyColorFunTests.swift; sourceTree = "<group>"; };
 		B1600002243B1A00009F1234 /* StateManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManagementTests.swift; sourceTree = "<group>"; };
 		B1600004243B1A00009F1234 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		TS001000243B1A00009F1234 /* ProcessingStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingStateTests.swift; sourceTree = "<group>"; };
 		B1600010243B1A00009F1234 /* FamilyColorFunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FamilyColorFunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1700000243B1A00009F1234 /* NavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUITests.swift; sourceTree = "<group>"; };
 		B1700002243B1A00009F1234 /* CanvasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasUITests.swift; sourceTree = "<group>"; };
@@ -148,6 +162,18 @@
 		T1700010243B1A00009F1234 /* ComprehensivePageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprehensivePageTests.swift; sourceTree = "<group>"; };
 		T1700020243B1A00009F1234 /* ColoringAppQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoringAppQATests.swift; sourceTree = "<group>"; };
 		B1700010243B1A00009F1234 /* FamilyColorFunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FamilyColorFunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ML001000243B1A00009F1234 /* EdgeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeMap.swift; sourceTree = "<group>"; };
+		ML002000243B1A00009F1234 /* LineArtIntermediate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineArtIntermediate.swift; sourceTree = "<group>"; };
+		ML003000243B1A00009F1234 /* LineArtResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineArtResult.swift; sourceTree = "<group>"; };
+		ML004000243B1A00009F1234 /* ProcessingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingState.swift; sourceTree = "<group>"; };
+		ML005000243B1A00009F1234 /* ProcessingContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingContext.swift; sourceTree = "<group>"; };
+		ML006000243B1A00009F1234 /* EngineRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineRegistry.swift; sourceTree = "<group>"; };
+		ML007000243B1A00009F1234 /* LineArtOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineArtOrchestrator.swift; sourceTree = "<group>"; };
+		ML008000243B1A00009F1234 /* LineArtPostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineArtPostProcessor.swift; sourceTree = "<group>"; };
+		ML009000243B1A00009F1234 /* VisionExtractorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionExtractorAdapter.swift; sourceTree = "<group>"; };
+		ML010000243B1A00009F1234 /* HEDEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEDEngine.swift; sourceTree = "<group>"; };
+		ML011000243B1A00009F1234 /* PhotoAnalysisEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnalysisEngine.swift; sourceTree = "<group>"; };
+		ML012000243B1A00009F1234 /* LineArtExtractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineArtExtractorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +314,9 @@
 				P1800004243B1A00009F1234 /* Engines */,
 				P1800005243B1A00009F1234 /* Storage */,
 				P1800006243B1A00009F1234 /* Validation */,
+				ML100000243B1A00009F1234 /* Models */,
+				ML101000243B1A00009F1234 /* Orchestration */,
+				ML102000243B1A00009F1234 /* Pipeline */,
 			);
 			path = PhotoProcessing;
 			sourceTree = "<group>";
@@ -296,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				P1300000243B1A00009F1234 /* LineArtEngineProtocol.swift */,
+				ML012000243B1A00009F1234 /* LineArtExtractorProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -320,6 +350,9 @@
 			isa = PBXGroup;
 			children = (
 				P1600000243B1A00009F1234 /* VisionContoursEngine.swift */,
+				ML009000243B1A00009F1234 /* VisionExtractorAdapter.swift */,
+				ML010000243B1A00009F1234 /* HEDEngine.swift */,
+				ML011000243B1A00009F1234 /* PhotoAnalysisEngine.swift */,
 			);
 			path = Engines;
 			sourceTree = "<group>";
@@ -339,6 +372,35 @@
 				P1900010243B1A00009F1234 /* FillabilityValidator.swift */,
 			);
 			path = Validation;
+			sourceTree = "<group>";
+		};
+		ML100000243B1A00009F1234 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ML001000243B1A00009F1234 /* EdgeMap.swift */,
+				ML002000243B1A00009F1234 /* LineArtIntermediate.swift */,
+				ML003000243B1A00009F1234 /* LineArtResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ML101000243B1A00009F1234 /* Orchestration */ = {
+			isa = PBXGroup;
+			children = (
+				ML004000243B1A00009F1234 /* ProcessingState.swift */,
+				ML005000243B1A00009F1234 /* ProcessingContext.swift */,
+				ML006000243B1A00009F1234 /* EngineRegistry.swift */,
+				ML007000243B1A00009F1234 /* LineArtOrchestrator.swift */,
+			);
+			path = Orchestration;
+			sourceTree = "<group>";
+		};
+		ML102000243B1A00009F1234 /* Pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				ML008000243B1A00009F1234 /* LineArtPostProcessor.swift */,
+			);
+			path = Pipeline;
 			sourceTree = "<group>";
 		};
 		A1500002243B1A00009F1234 /* Extensions */ = {
@@ -363,6 +425,7 @@
 				B1600000243B1A00009F1234 /* FamilyColorFunTests.swift */,
 				B1600002243B1A00009F1234 /* StateManagementTests.swift */,
 				B1600004243B1A00009F1234 /* PerformanceTests.swift */,
+				TS001000243B1A00009F1234 /* ProcessingStateTests.swift */,
 			);
 			path = FamilyColorFunTests;
 			sourceTree = "<group>";
@@ -566,6 +629,18 @@
 				P1700001243B1A00009F1234 /* UserContentStorage.swift in Sources */,
 				P2000001243B1A00009F1234 /* FillabilityResult.swift in Sources */,
 				P2100001243B1A00009F1234 /* FillabilityValidator.swift in Sources */,
+				ML001001243B1A00009F1234 /* EdgeMap.swift in Sources */,
+				ML002001243B1A00009F1234 /* LineArtIntermediate.swift in Sources */,
+				ML003001243B1A00009F1234 /* LineArtResult.swift in Sources */,
+				ML004001243B1A00009F1234 /* ProcessingState.swift in Sources */,
+				ML005001243B1A00009F1234 /* ProcessingContext.swift in Sources */,
+				ML006001243B1A00009F1234 /* EngineRegistry.swift in Sources */,
+				ML007001243B1A00009F1234 /* LineArtOrchestrator.swift in Sources */,
+				ML008001243B1A00009F1234 /* LineArtPostProcessor.swift in Sources */,
+				ML009001243B1A00009F1234 /* VisionExtractorAdapter.swift in Sources */,
+				ML010001243B1A00009F1234 /* HEDEngine.swift in Sources */,
+				ML011001243B1A00009F1234 /* PhotoAnalysisEngine.swift in Sources */,
+				ML012001243B1A00009F1234 /* LineArtExtractorProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +651,7 @@
 				B1600001243B1A00009F1234 /* FamilyColorFunTests.swift in Sources */,
 				B1600003243B1A00009F1234 /* StateManagementTests.swift in Sources */,
 				B1600005243B1A00009F1234 /* PerformanceTests.swift in Sources */,
+				TS001001243B1A00009F1234 /* ProcessingStateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

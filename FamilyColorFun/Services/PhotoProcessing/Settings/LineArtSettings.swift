@@ -8,38 +8,92 @@ struct LineArtSettings {
     /// Contrast adjustment for contour detection (1.0-3.0)
     var contrastAdjustment: Float
 
-    /// Line thickness after dilation (1-8 pixels)
-    var thickness: Int
-
-    /// Whether to apply large gap closing
-    var closeLargeGaps: Bool
-
-    /// Kernel size for large gap closing (3-8 pixels)
-    var largeGapKernel: Int
-
     /// Contrast boost during preprocessing
     var contrastBoost: Float
 
     /// Blur amount for preprocessing (0 = none, higher = more blur)
     var blurAmount: Float
 
-    /// Minimum region area in pixels (for toddler mode)
-    var minRegionArea: Int
+    /// Engine type to use for extraction
+    var engineType: EngineType
 
-    /// Whether to merge tiny regions into neighbors
-    var simplifyRegions: Bool
+    /// Post-processing configuration
+    var postProcess: PostProcessConfig
+
+    /// Post-processing configuration (grouped for clarity)
+    struct PostProcessConfig {
+        /// Kernel size for gap sealing (1-8 pixels)
+        var closeKernel: Int
+
+        /// Line thickness after dilation (1-8 pixels)
+        var thickness: Int
+
+        /// Minimum area for speckle removal
+        var minSpeckleArea: Int
+
+        /// Whether to merge tiny regions (toddler mode)
+        var simplifyRegions: Bool
+
+        /// Minimum region area for simplification
+        var minRegionArea: Int
+
+        static let `default` = PostProcessConfig(
+            closeKernel: 1,
+            thickness: 2,
+            minSpeckleArea: 30,
+            simplifyRegions: false,
+            minRegionArea: 500
+        )
+
+        static let toddler = PostProcessConfig(
+            closeKernel: 8,
+            thickness: 6,
+            minSpeckleArea: 100,
+            simplifyRegions: true,
+            minRegionArea: 2000
+        )
+    }
 
     static let `default` = LineArtSettings(
         maxDimension: 768,
         contrastAdjustment: 2.0,
-        thickness: 2,
-        closeLargeGaps: false,
-        largeGapKernel: 3,
         contrastBoost: 1.2,
         blurAmount: 0,
-        minRegionArea: 500,
-        simplifyRegions: false
+        engineType: .vision,
+        postProcess: .default
     )
+
+    // MARK: - Legacy Compatibility
+
+    /// Line thickness (delegates to postProcess)
+    var thickness: Int {
+        get { postProcess.thickness }
+        set { postProcess.thickness = newValue }
+    }
+
+    /// Whether to apply large gap closing (delegates to postProcess)
+    var closeLargeGaps: Bool {
+        get { postProcess.closeKernel > 1 }
+        set { postProcess.closeKernel = newValue ? 3 : 1 }
+    }
+
+    /// Kernel size for large gap closing (delegates to postProcess)
+    var largeGapKernel: Int {
+        get { postProcess.closeKernel }
+        set { postProcess.closeKernel = newValue }
+    }
+
+    /// Minimum region area (delegates to postProcess)
+    var minRegionArea: Int {
+        get { postProcess.minRegionArea }
+        set { postProcess.minRegionArea = newValue }
+    }
+
+    /// Whether to simplify regions (delegates to postProcess)
+    var simplifyRegions: Bool {
+        get { postProcess.simplifyRegions }
+        set { postProcess.simplifyRegions = newValue }
+    }
 }
 
 /// Preset configurations for different photo types
@@ -55,80 +109,76 @@ enum LineArtPreset: String, CaseIterable {
         switch self {
         case .toddler:
             // Optimized for toddlers: simple, bold lines, large tap targets
-            // Key: low resolution (256) = fewer contours detected
-            // High thickness (6) = bold, easy-to-see lines
-            // Aggressive gap closing (kernel 8) = 100% closure rate
-            // Large minRegionArea (2000) = only big, easy-to-tap regions
             return LineArtSettings(
                 maxDimension: 256,
                 contrastAdjustment: 1.2,
-                thickness: 6,
-                closeLargeGaps: true,
-                largeGapKernel: 8,
                 contrastBoost: 1.1,
                 blurAmount: 3.0,
-                minRegionArea: 2000,
-                simplifyRegions: true
+                engineType: .vision,
+                postProcess: .toddler
             )
         case .portrait:
             return LineArtSettings(
                 maxDimension: 768,
                 contrastAdjustment: 2.5,
-                thickness: 3,
-                closeLargeGaps: false,
-                largeGapKernel: 3,
                 contrastBoost: 1.3,
                 blurAmount: 0,
-                minRegionArea: 500,
-                simplifyRegions: false
+                engineType: .hed,  // HED better for portraits
+                postProcess: LineArtSettings.PostProcessConfig(
+                    closeKernel: 1,
+                    thickness: 3,
+                    minSpeckleArea: 30,
+                    simplifyRegions: false,
+                    minRegionArea: 500
+                )
             )
         case .landscape:
             return LineArtSettings(
                 maxDimension: 512,
                 contrastAdjustment: 2.0,
-                thickness: 2,
-                closeLargeGaps: false,
-                largeGapKernel: 3,
                 contrastBoost: 1.2,
                 blurAmount: 0,
-                minRegionArea: 500,
-                simplifyRegions: false
+                engineType: .vision,
+                postProcess: .default
             )
         case .object:
             return LineArtSettings(
                 maxDimension: 768,
                 contrastAdjustment: 2.8,
-                thickness: 2,
-                closeLargeGaps: false,
-                largeGapKernel: 3,
                 contrastBoost: 1.4,
                 blurAmount: 0,
-                minRegionArea: 500,
-                simplifyRegions: false
+                engineType: .vision,
+                postProcess: .default
             )
         case .pet:
             return LineArtSettings(
                 maxDimension: 512,
                 contrastAdjustment: 2.2,
-                thickness: 3,
-                closeLargeGaps: true,
-                largeGapKernel: 4,
                 contrastBoost: 1.3,
                 blurAmount: 0,
-                minRegionArea: 500,
-                simplifyRegions: false
+                engineType: .vision,
+                postProcess: LineArtSettings.PostProcessConfig(
+                    closeKernel: 4,
+                    thickness: 3,
+                    minSpeckleArea: 30,
+                    simplifyRegions: false,
+                    minRegionArea: 500
+                )
             )
         case .abstract:
             return LineArtSettings(
                 maxDimension: 384,
                 contrastAdjustment: 1.5,
-                thickness: 4,
-                closeLargeGaps: true,
-                largeGapKernel: 5,
                 contrastBoost: 1.1,
                 blurAmount: 1.0,
-                minRegionArea: 500,
-                simplifyRegions: false
+                engineType: .vision,
+                postProcess: LineArtSettings.PostProcessConfig(
+                    closeKernel: 5,
+                    thickness: 4,
+                    minSpeckleArea: 30,
+                    simplifyRegions: false,
+                    minRegionArea: 500
+                )
             )
         }
     }

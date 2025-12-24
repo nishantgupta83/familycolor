@@ -17,8 +17,13 @@ struct PhotoUploadView: View {
     @State private var selectedPreset: LineArtPreset? = .toddler
     @State private var pageName: String = ""
     @State private var isToddlerMode = true  // Toggle for toddler-friendly output
+    @State private var selectedEngine: EngineType = .vision
 
-    private let engine = VisionContoursEngine()
+    // Processing components
+    private let legacyEngine = VisionContoursEngine()
+    @StateObject private var orchestrator = LineArtOrchestrator()
+    private let registry = EngineRegistry.shared
+    private let photoAnalyzer = PhotoAnalysisEngine()
 
     var onComplete: ((UserGeneratedPage) -> Void)?
 
@@ -172,6 +177,11 @@ struct PhotoUploadView: View {
             // Toddler mode toggle - prominent at top
             toddlerModeToggle
 
+            // Engine selector (only show if not in toddler mode)
+            if !isToddlerMode {
+                engineSelector
+            }
+
             // Before/After comparison
             HStack(spacing: 12) {
                 imagePreview(photo, label: "Original")
@@ -198,6 +208,97 @@ struct PhotoUploadView: View {
             // Action buttons
             actionButtons
         }
+    }
+
+    // MARK: - Engine Selector
+
+    private var engineSelector: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "cpu")
+                    .foregroundColor(.blue)
+                Text("Processing Engine")
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                Spacer()
+            }
+
+            HStack(spacing: 12) {
+                engineButton(
+                    engine: .vision,
+                    icon: "eye.fill",
+                    name: "Vision",
+                    description: "Fast, reliable contours"
+                )
+
+                engineButton(
+                    engine: .hed,
+                    icon: "brain",
+                    name: "HED",
+                    description: "Deep learning edges"
+                )
+            }
+
+            // Show availability info
+            if !registry.isAvailable(.hed) {
+                HStack(spacing: 6) {
+                    Image(systemName: "info.circle")
+                        .foregroundColor(.orange)
+                    Text("HED model not installed. Using Vision as fallback.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.top, 4)
+            }
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+
+    private func engineButton(engine: EngineType, icon: String, name: String, description: String) -> some View {
+        let isSelected = selectedEngine == engine
+        let isAvailable = registry.isAvailable(engine)
+
+        return Button {
+            if isAvailable {
+                selectedEngine = engine
+                updatePreview()
+            }
+        } label: {
+            VStack(spacing: 8) {
+                HStack(spacing: 6) {
+                    Image(systemName: icon)
+                        .font(.title3)
+                    Text(name)
+                        .fontWeight(.medium)
+                }
+
+                Text(description)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+
+                if !isAvailable {
+                    Text("Not Available")
+                        .font(.caption2)
+                        .foregroundColor(.orange)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .padding(.horizontal, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(isSelected ? Color.blue.opacity(0.15) : Color(.systemBackground))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(isSelected ? Color.blue : Color.gray.opacity(0.3), lineWidth: isSelected ? 2 : 1)
+            )
+        }
+        .buttonStyle(.plain)
+        .opacity(isAvailable ? 1.0 : 0.5)
     }
 
     private var toddlerModeToggle: some View {
@@ -313,6 +414,8 @@ struct PhotoUploadView: View {
                     originalPhoto = image
                     pageName = "My Coloring Page"
                 }
+                // Run auto-analysis to suggest best engine/preset
+                analyzePhotoAndSuggest()
                 updatePreview()
             }
         } catch {
@@ -329,7 +432,7 @@ struct PhotoUploadView: View {
         Task {
             do {
                 let settings = currentSettings()
-                let lineArt = try await engine.extractLines(from: photo, settings: settings)
+                let lineArt = try await legacyEngine.extractLines(from: photo, settings: settings)
                 await MainActor.run {
                     lineArtPreview = lineArt
                 }
@@ -346,7 +449,7 @@ struct PhotoUploadView: View {
 
         do {
             let settings = currentSettings()
-            let lineArt = try await engine.extractLines(from: photo, settings: settings)
+            let lineArt = try await legacyEngine.extractLines(from: photo, settings: settings)
 
             let page = try UserContentStorage.shared.save(
                 lineArt: lineArt,
@@ -382,17 +485,44 @@ struct PhotoUploadView: View {
         // Custom settings from sliders
         let maxDimension = Int(384 + detail * 640)  // 384-1024
         let contrastAdjustment = Float(1.0 + detail * 2.0)  // 1.0-3.0
+        let closeKernel = thickness >= 4 ? 5 : (thickness >= 3 ? 3 : 1)
 
         return LineArtSettings(
             maxDimension: maxDimension,
             contrastAdjustment: contrastAdjustment,
-            thickness: Int(thickness),
-            closeLargeGaps: thickness >= 3,
-            largeGapKernel: thickness >= 4 ? 5 : 3,
             contrastBoost: 1.2 + Float(detail) * 0.2,
             blurAmount: 0,
-            minRegionArea: 500,
-            simplifyRegions: false
+            engineType: selectedEngine,
+            postProcess: LineArtSettings.PostProcessConfig(
+                closeKernel: closeKernel,
+                thickness: Int(thickness),
+                minSpeckleArea: 30,
+                simplifyRegions: false,
+                minRegionArea: 500
+            )
         )
+    }
+
+    // MARK: - Auto-Analysis
+
+    /// Analyze photo and suggest best engine/preset
+    private func analyzePhotoAndSuggest() {
+        guard let photo = originalPhoto else { return }
+
+        Task {
+            do {
+                let analysis = try await photoAnalyzer.analyze(photo: photo)
+
+                await MainActor.run {
+                    // Apply suggestions if not in toddler mode
+                    if !isToddlerMode {
+                        selectedPreset = analysis.suggestedPreset
+                        selectedEngine = analysis.suggestedEngine
+                    }
+                }
+            } catch {
+                // Analysis failed - use defaults
+            }
+        }
     }
 }
