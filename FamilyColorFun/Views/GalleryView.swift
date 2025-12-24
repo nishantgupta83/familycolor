@@ -106,24 +106,40 @@ struct GalleryView: View {
 struct GalleryHeader: View {
     let totalArtworks: Int
 
-    var badgeInfo: (name: String, icon: String, color: Color) {
+    var badgeInfo: (name: String, icon: String, color: Color, emoji: String) {
         switch totalArtworks {
-        case 0..<3: return ("Beginner Artist", "star", .gray)
-        case 3..<10: return ("Rising Star", "star.fill", .yellow)
-        case 10..<25: return ("Color Champion", "trophy.fill", .orange)
-        default: return ("Master Artist", "crown.fill", .purple)
+        case 0..<3: return ("Beginner Artist", "star", .gray, "⭐")
+        case 3..<10: return ("Rising Star", "star.fill", .yellow, "🌟")
+        case 10..<25: return ("Color Champion", "trophy.fill", .orange, "🏆")
+        default: return ("Master Artist", "crown.fill", .purple, "👑")
         }
     }
 
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: badgeInfo.icon)
-                .font(.title2)
-                .foregroundStyle(badgeInfo.color)
+            // Decorative stars
+            Text("✨")
+                .font(.title3)
 
-            VStack(alignment: .leading, spacing: 2) {
+            ZStack {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [badgeInfo.color, badgeInfo.color.opacity(0.7)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 50, height: 50)
+
+                Text(badgeInfo.emoji)
+                    .font(.title2)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
                 Text(badgeInfo.name)
                     .font(.headline)
+                    .fontWeight(.bold)
                     .foregroundStyle(badgeInfo.color)
                 Text("\(totalArtworks) masterpiece\(totalArtworks == 1 ? "" : "s")")
                     .font(.caption)
@@ -131,11 +147,25 @@ struct GalleryHeader: View {
             }
 
             Spacer()
+
+            // More decorations
+            Text("🎨")
+                .font(.title3)
         }
-        .padding(12)
+        .padding(16)
         .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(badgeInfo.color.opacity(0.1))
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [badgeInfo.color.opacity(0.15), badgeInfo.color.opacity(0.05)],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(badgeInfo.color.opacity(0.3), lineWidth: 2)
         )
     }
 }
@@ -171,29 +201,43 @@ struct ArtworkCard: View {
 
     @State private var image: UIImage?
 
-    private var borderColor: Color {
+    // Colorful frame colors based on progress
+    private var frameColors: [Color] {
         switch artwork.progress {
-        case 1.0: return .green
-        case 0.75..<1.0: return .yellow
-        case 0.5..<0.75: return .orange
-        default: return .gray.opacity(0.3)
+        case 1.0: return [Color(hex: "56AB2F"), Color(hex: "A8E063")] // Green
+        case 0.75..<1.0: return [Color(hex: "F7B733"), Color(hex: "FC4A1A")] // Orange-Yellow
+        case 0.5..<0.75: return [Color(hex: "FF416C"), Color(hex: "FF4B2B")] // Pink-Red
+        case 0.25..<0.5: return [Color(hex: "8E2DE2"), Color(hex: "4A00E0")] // Purple
+        default: return [Color(hex: "2193B0"), Color(hex: "6DD5ED")] // Blue
         }
     }
 
     var body: some View {
         VStack(spacing: 0) {
-            // Image section
+            // Image section with colorful frame
             ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.white)
+                // Colorful frame background
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: frameColors,
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
                     .aspectRatio(1, contentMode: .fit)
+
+                // White inner area
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.white)
+                    .padding(6)
 
                 if let image = image {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding(6)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding(10)
                 } else {
                     ProgressView()
                 }
@@ -203,21 +247,21 @@ struct ArtworkCard: View {
                     VStack {
                         HStack {
                             Spacer()
-                            Image(systemName: "checkmark.seal.fill")
-                                .font(.title3)
-                                .foregroundStyle(.green)
-                                .background(Circle().fill(.white).padding(-4))
-                                .padding(8)
+                            ZStack {
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 28, height: 28)
+                                Text("⭐")
+                                    .font(.system(size: 18))
+                            }
+                            .shadow(color: .black.opacity(0.2), radius: 2, y: 1)
+                            .padding(6)
                         }
                         Spacer()
                     }
                 }
             }
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(borderColor, lineWidth: 3)
-            )
-            .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
+            .shadow(color: frameColors[0].opacity(0.4), radius: 6, y: 3)
 
             // Page name
             Text(artwork.pageName)

@@ -6,10 +6,25 @@ struct ColoringPage: Identifiable, Hashable {
     let imageName: String
 
     // MARK: - Page Definitions
-    // Note: A pages.json file exists in Resources/ for future dynamic loading.
-    // To enable JSON-based loading, add PageDataLoader.swift and pages.json to the Xcode project.
+    // Includes cute kawaii-style pages from coloringlover.com
 
     static let animals: [ColoringPage] = [
+        // Cute animals (kawaii style)
+        ColoringPage(name: "Cute Lion", imageName: "cute_lion"),
+        ColoringPage(name: "Cute Elephant", imageName: "cute_elephant"),
+        ColoringPage(name: "Cute Bunny", imageName: "cute_bunny"),
+        ColoringPage(name: "Cute Cat", imageName: "cute_cat"),
+        ColoringPage(name: "Cute Fox", imageName: "cute_fox"),
+        ColoringPage(name: "Cute Panda", imageName: "cute_panda"),
+        ColoringPage(name: "Cute Giraffe", imageName: "cute_giraffe"),
+        ColoringPage(name: "Cute Koala", imageName: "cute_koala"),
+        ColoringPage(name: "Cute Penguin", imageName: "cute_penguin"),
+        // Easy animals
+        ColoringPage(name: "Happy Dog", imageName: "easy_dog"),
+        ColoringPage(name: "Sitting Cat", imageName: "easy_cat"),
+        ColoringPage(name: "Happy Rabbit", imageName: "easy_rabbit"),
+        ColoringPage(name: "Smiling Turtle", imageName: "easy_turtle"),
+        // Original animals
         ColoringPage(name: "Cat", imageName: "animal_cat"),
         ColoringPage(name: "Dog", imageName: "animal_dog"),
         ColoringPage(name: "Elephant", imageName: "animal_elephant"),
@@ -20,14 +35,25 @@ struct ColoringPage: Identifiable, Hashable {
     ]
 
     static let vehicles: [ColoringPage] = [
+        // Easy vehicles
+        ColoringPage(name: "Cute Car", imageName: "easy_car"),
+        ColoringPage(name: "Steam Train", imageName: "easy_train"),
+        ColoringPage(name: "Airplane", imageName: "easy_airplane"),
+        // Original
         ColoringPage(name: "Car", imageName: "vehicle_car")
     ]
 
     static let houses: [ColoringPage] = [
+        ColoringPage(name: "Cozy House", imageName: "easy_house"),
         ColoringPage(name: "Cottage", imageName: "house_cottage")
     ]
 
     static let nature: [ColoringPage] = [
+        // Easy nature
+        ColoringPage(name: "Rainbow", imageName: "easy_rainbow"),
+        ColoringPage(name: "Balloons", imageName: "easy_balloons"),
+        ColoringPage(name: "Sunflower", imageName: "easy_sunflower"),
+        // Original
         ColoringPage(name: "Flower", imageName: "nature_flower"),
         ColoringPage(name: "Star", imageName: "nature_star"),
         ColoringPage(name: "Rose", imageName: "flower_01"),
@@ -36,6 +62,10 @@ struct ColoringPage: Identifiable, Hashable {
     ]
 
     static let ocean: [ColoringPage] = [
+        // Easy ocean
+        ColoringPage(name: "Happy Whale", imageName: "easy_whale"),
+        ColoringPage(name: "Happy Octopus", imageName: "easy_octopus"),
+        // Original
         ColoringPage(name: "Fish", imageName: "ocean_fish")
     ]
 
@@ -68,6 +98,17 @@ struct ColoringPage: Identifiable, Hashable {
     ]
 
     static let dinosaurs: [ColoringPage] = [
+        // Cute dinosaurs (kawaii style)
+        ColoringPage(name: "Dino with Balloon", imageName: "cute_dino_balloon"),
+        ColoringPage(name: "Jumping Dino", imageName: "cute_dino_trampoline"),
+        ColoringPage(name: "Forest Dino", imageName: "cute_dino_forest"),
+        ColoringPage(name: "Dino on Tricycle", imageName: "cute_dino_tricycle"),
+        ColoringPage(name: "Dino & Stars", imageName: "cute_dino_stars"),
+        ColoringPage(name: "Dino & Hearts", imageName: "cute_dino_hearts"),
+        ColoringPage(name: "Dino & Rainbow", imageName: "cute_dino_rainbow"),
+        ColoringPage(name: "Cute Triceratops", imageName: "cute_triceratops"),
+        ColoringPage(name: "T-Rex Ice Cream", imageName: "cute_trex_icecream"),
+        // Original
         ColoringPage(name: "T-Rex", imageName: "dino_trex"),
         ColoringPage(name: "Triceratops", imageName: "dino_triceratops"),
         ColoringPage(name: "Stegosaurus", imageName: "dino_stegosaurus")
