@@ -36,6 +36,11 @@ scripts/processed/
 scripts/raw_downloads/
 scripts/retro_input/
 scripts/retro_output/
+scripts/outputs/
+
+# Generated intermediate files
+*_debug_*.png
+*_debug.png
 
 # Local environment
 .env.local

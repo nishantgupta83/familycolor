@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Build and test iOS app
+  ios-build:
+    name: iOS Build & Test
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Build for testing
+        run: |
+          xcodebuild build-for-testing \
+            -project FamilyColorFun.xcodeproj \
+            -scheme FamilyColorFun \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -quiet
+
+      - name: Run unit tests
+        run: |
+          xcodebuild test-without-building \
+            -project FamilyColorFun.xcodeproj \
+            -scheme FamilyColorFun \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -only-testing:FamilyColorFunTests \
+            -resultBundlePath TestResults.xcresult \
+            -quiet || true
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: TestResults.xcresult
+
+  # Validate Python scripts
+  python-lint:
+    name: Python Lint & Syntax
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 black
+          pip install -r scripts/requirements.txt
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile scripts/generate_improved_animals.py
+          python -m py_compile scripts/add_borders.py
+          python -m py_compile scripts/generate_new_categories.py
+
+      - name: Lint with flake8
+        run: |
+          flake8 scripts/ --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 scripts/ --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
+
+      - name: Check formatting with black
+        run: black --check --diff scripts/ || true
+
+  # Code quality checks
+  swift-lint:
+    name: Swift Lint
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SwiftLint
+        run: brew install swiftlint || true
+
+      - name: Run SwiftLint
+        run: swiftlint lint --reporter github-actions-logging || true
