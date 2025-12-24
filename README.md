@@ -1,6 +1,6 @@
 # FamilyColorFun
 
-A delightful iOS coloring app designed for kids and families. Features tap-to-fill coloring, drawing mode, and photo-to-coloring page conversion.
+A delightful iOS coloring app designed for kids and families. Features tap-to-fill coloring, drawing mode, photo-to-coloring page conversion, and a special **Toddler Mode** optimized for ages 2-5.
 
 ## Features
 
@@ -11,11 +11,16 @@ A delightful iOS coloring app designed for kids and families. Features tap-to-fi
 - **Auto-Complete**: Automatically suggests filling remaining regions at 90%+ progress
 - **Save & Share**: Export completed artwork to Photos or share directly
 
-### Photo-to-Coloring
+### Photo-to-Coloring (NEW)
 - Upload any photo and convert it to a coloring page
 - Vision framework-based line art extraction
+- **Toddler Mode**: Optimized for ages 2-5 with:
+  - Bold, thick lines (6-8px)
+  - Simplified shapes (10-25 regions vs 100+)
+  - Large tap targets for little fingers
+  - 100% closure rate (no color leaks)
 - Adjustable thickness and detail settings
-- Preset modes: Portrait, Landscape, Object, Pet
+- Preset modes: Toddler, Portrait, Landscape, Object, Pet, Abstract
 
 ### Categories (20 Total)
 | Category | Pages | Category | Pages |
@@ -41,8 +46,8 @@ A delightful iOS coloring app designed for kids and families. Features tap-to-fi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/nishantgupta83/familycolor.git
-cd familycolor
+git clone https://github.com/nishantgupta83/familycolorfun.git
+cd familycolorfun
 ```
 
 2. Open the project in Xcode:
@@ -76,12 +81,23 @@ FamilyColorFun/
 │   ├── StorageService.swift     # Artwork persistence
 │   ├── SoundManager.swift       # Audio feedback
 │   └── PhotoProcessing/         # Photo-to-coloring
-│       ├── VisionContoursEngine.swift
-│       ├── ImagePreprocessor.swift
-│       └── FillabilityValidator.swift
-└── Assets.xcassets/
-    ├── ColoringPages/           # Line art images
-    └── PageMetadata/            # Region metadata
+│       ├── Engines/
+│       │   └── VisionContoursEngine.swift
+│       ├── Preprocessing/
+│       │   └── ImagePreprocessor.swift
+│       ├── Settings/
+│       │   └── LineArtSettings.swift
+│       ├── Validation/
+│       │   └── FillabilityValidator.swift
+│       └── Storage/
+│           └── UserContentStorage.swift
+├── Assets.xcassets/
+│   ├── ColoringPages/           # Line art images
+│   └── PageMetadata/            # Region metadata
+└── scripts/
+    ├── add_borders.py           # Border processing
+    ├── generate_new_categories.py
+    └── generate_improved_animals.py
 ```
 
 ## Testing
@@ -96,6 +112,7 @@ xcodebuild test -project FamilyColorFun.xcodeproj -scheme FamilyColorFun -destin
 | Suite | Tests | Description |
 |-------|-------|-------------|
 | FamilyColorFunTests | 28 | Unit tests for models and services |
+| StateManagementTests | 20 | FillEngine and DrawingEngine tests |
 | PerformanceTests | 8 | Performance benchmarks |
 | ColoringAppQATests | 50 | Comprehensive QA test cases |
 | ComprehensivePageTests | 65+ | All pages navigation and fill |
@@ -105,11 +122,11 @@ xcodebuild test -project FamilyColorFun.xcodeproj -scheme FamilyColorFun -destin
 # Unit tests only
 xcodebuild test -only-testing:FamilyColorFunTests ...
 
+# State management tests
+xcodebuild test -only-testing:FamilyColorFunTests/StateManagementTests ...
+
 # QA tests only
 xcodebuild test -only-testing:FamilyColorFunUITests/ColoringAppQATests ...
-
-# Batch tests (5 batches covering all pages)
-xcodebuild test -only-testing:FamilyColorFunUITests/ComprehensivePageTests/testBatch1_Animals ...
 ```
 
 ## Scripts
@@ -121,24 +138,57 @@ cd scripts
 python3 add_borders.py --assets ../FamilyColorFun/Assets.xcassets
 ```
 
+### Generate Animal Images
+Creates improved cartoon-style animal coloring pages:
+```bash
+python3 generate_improved_animals.py
+python3 add_borders.py --raw raw_downloads/improved_animals
+```
+
 ### Generate New Category Images
-Creates procedural coloring pages:
+Creates procedural coloring pages for various categories:
 ```bash
 python3 generate_new_categories.py
 ```
 
-## Architecture
+## Key Technologies
+
+- **SwiftUI**: Modern declarative UI framework
+- **Vision Framework**: On-device contour detection for photo-to-coloring
+- **Core Image**: Image preprocessing and morphological operations
+- **Accelerate**: High-performance flood fill algorithms
+- **PhotosUI**: Native photo picker integration
+
+## Architecture Highlights
 
 ### Fill Engine
 - Uses pre-computed region label maps for instant fills
 - Supports up to 500+ regions per page
 - Memory-efficient with lazy loading
+- 10-step undo stack
 
 ### Photo Processing Pipeline
-1. **Preprocessing**: Resize, contrast enhancement, denoising
-2. **Line Extraction**: Vision framework contour detection
-3. **Post-processing**: Morphological operations for fillability
-4. **Validation**: Region count, closure rate, tap usability metrics
+1. **Preprocessing**: Resize, Gaussian blur (toddler mode), contrast enhancement
+2. **Line Extraction**: Vision framework contour detection with polarity detection
+3. **Post-processing**: Morphological close, dilate, threshold, noise removal
+4. **Region Simplification**: Fills small regions for toddler-friendly output
+5. **Validation**: Region count, closure rate, leak potential, tap usability
+
+### Toddler Mode Optimization
+| Parameter | Toddler | Standard |
+|-----------|---------|----------|
+| Max Dimension | 256px | 768px |
+| Line Thickness | 6-8px | 2-3px |
+| Min Region Area | 2000px | 500px |
+| Target Regions | 10-25 | 50-500 |
+| Closure Rate | 100% | 70%+ |
+
+## Privacy & Compliance
+
+- **No data collection**: All processing happens on-device
+- **No network calls**: Works completely offline
+- **COPPA compliant**: Safe for children under 13
+- **No ads**: Clean, distraction-free experience
 
 ## License
 
