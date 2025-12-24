@@ -1,0 +1,208 @@
+{
+  "categories": [
+    {
+      "id": "animals",
+      "name": "Animals",
+      "icon": "hare.fill",
+      "pages": [
+        {"name": "Cat", "imageName": "animal_cat"},
+        {"name": "Dog", "imageName": "animal_dog"},
+        {"name": "Elephant", "imageName": "animal_elephant"},
+        {"name": "Bunny", "imageName": "animal_simple_01"},
+        {"name": "Bear", "imageName": "animal_simple_03"},
+        {"name": "Bird", "imageName": "animal_simple_04"},
+        {"name": "Fox", "imageName": "animal_simple_06"}
+      ]
+    },
+    {
+      "id": "vehicles",
+      "name": "Vehicles",
+      "icon": "car.fill",
+      "pages": [
+        {"name": "Car", "imageName": "vehicle_car"}
+      ]
+    },
+    {
+      "id": "houses",
+      "name": "Houses",
+      "icon": "house.fill",
+      "pages": [
+        {"name": "Cottage", "imageName": "house_cottage"}
+      ]
+    },
+    {
+      "id": "nature",
+      "name": "Nature",
+      "icon": "leaf.fill",
+      "pages": [
+        {"name": "Flower", "imageName": "nature_flower"},
+        {"name": "Star", "imageName": "nature_star"},
+        {"name": "Rose", "imageName": "flower_01"},
+        {"name": "Daisy", "imageName": "flower_02"},
+        {"name": "Tulip", "imageName": "flower_03"}
+      ]
+    },
+    {
+      "id": "ocean",
+      "name": "Ocean",
+      "icon": "fish.fill",
+      "pages": [
+        {"name": "Fish", "imageName": "ocean_fish"}
+      ]
+    },
+    {
+      "id": "retro90s",
+      "name": "Retro 90s",
+      "icon": "radio.fill",
+      "pages": [
+        {"name": "Boombox", "imageName": "retro_boombox"},
+        {"name": "Turntable", "imageName": "retro_turntable"}
+      ]
+    },
+    {
+      "id": "mandalas",
+      "name": "Mandalas",
+      "icon": "circle.hexagongrid.fill",
+      "pages": [
+        {"name": "Mandala 1", "imageName": "mandala_01"},
+        {"name": "Mandala 2", "imageName": "mandala_02"},
+        {"name": "Mandala 3", "imageName": "mandala_03"},
+        {"name": "Mandala 4", "imageName": "mandala_04"},
+        {"name": "Mandala 5", "imageName": "mandala_05"},
+        {"name": "Mandala 6", "imageName": "mandala_06"}
+      ]
+    },
+    {
+      "id": "geometric",
+      "name": "Geometric",
+      "icon": "square.on.circle.fill",
+      "pages": [
+        {"name": "Pattern 1", "imageName": "geometric_01"},
+        {"name": "Pattern 2", "imageName": "geometric_02"},
+        {"name": "Pattern 3", "imageName": "geometric_03"},
+        {"name": "Pattern 4", "imageName": "geometric_04"},
+        {"name": "Pattern 5", "imageName": "geometric_05"},
+        {"name": "Pattern 6", "imageName": "geometric_06"}
+      ]
+    },
+    {
+      "id": "abstract",
+      "name": "Abstract",
+      "icon": "scribble.variable",
+      "pages": [
+        {"name": "Abstract 1", "imageName": "abstract_01"},
+        {"name": "Abstract 2", "imageName": "abstract_04"}
+      ]
+    },
+    {
+      "id": "dinosaurs",
+      "name": "Dinosaurs",
+      "icon": "fossil.shell.fill",
+      "pages": [
+        {"name": "T-Rex", "imageName": "dino_trex"},
+        {"name": "Triceratops", "imageName": "dino_triceratops"},
+        {"name": "Stegosaurus", "imageName": "dino_stegosaurus"}
+      ]
+    },
+    {
+      "id": "space",
+      "name": "Space",
+      "icon": "moon.stars.fill",
+      "pages": [
+        {"name": "Rocket", "imageName": "space_rocket"},
+        {"name": "Astronaut", "imageName": "space_astronaut"},
+        {"name": "Planet", "imageName": "space_planet"}
+      ]
+    },
+    {
+      "id": "food",
+      "name": "Food",
+      "icon": "fork.knife",
+      "pages": [
+        {"name": "Cupcake", "imageName": "food_cupcake"},
+        {"name": "Ice Cream", "imageName": "food_icecream"},
+        {"name": "Pizza", "imageName": "food_pizza"}
+      ]
+    },
+    {
+      "id": "holidays",
+      "name": "Holidays",
+      "icon": "gift.fill",
+      "pages": [
+        {"name": "Christmas Tree", "imageName": "holiday_christmas"},
+        {"name": "Easter Egg", "imageName": "holiday_easter"},
+        {"name": "Pumpkin", "imageName": "holiday_pumpkin"}
+      ]
+    },
+    {
+      "id": "sports",
+      "name": "Sports",
+      "icon": "sportscourt.fill",
+      "pages": [
+        {"name": "Soccer Ball", "imageName": "sport_soccer"},
+        {"name": "Basketball", "imageName": "sport_basketball"},
+        {"name": "Baseball", "imageName": "sport_baseball"}
+      ]
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "icon": "music.note",
+      "pages": [
+        {"name": "Guitar", "imageName": "music_guitar"},
+        {"name": "Piano", "imageName": "music_piano"},
+        {"name": "Drums", "imageName": "music_drums"}
+      ]
+    },
+    {
+      "id": "robots",
+      "name": "Robots",
+      "icon": "cpu.fill",
+      "pages": [
+        {"name": "Robot 1", "imageName": "robot_01"},
+        {"name": "Robot 2", "imageName": "robot_02"},
+        {"name": "Robot 3", "imageName": "robot_03"}
+      ]
+    },
+    {
+      "id": "fantasy",
+      "name": "Fantasy",
+      "icon": "wand.and.stars",
+      "pages": [
+        {"name": "Unicorn", "imageName": "fantasy_unicorn"},
+        {"name": "Dragon", "imageName": "fantasy_dragon"},
+        {"name": "Castle", "imageName": "fantasy_castle"}
+      ]
+    },
+    {
+      "id": "underwater",
+      "name": "Underwater",
+      "icon": "drop.fill",
+      "pages": [
+        {"name": "Octopus", "imageName": "underwater_octopus"},
+        {"name": "Seahorse", "imageName": "underwater_seahorse"},
+        {"name": "Turtle", "imageName": "underwater_turtle"}
+      ]
+    },
+    {
+      "id": "zenPatterns",
+      "name": "Zen Patterns",
+      "icon": "circle.grid.cross.fill",
+      "pages": [
+        {"name": "Zen 1", "imageName": "zen_01"},
+        {"name": "Zen 2", "imageName": "zen_02"},
+        {"name": "Zen 3", "imageName": "zen_03"}
+      ]
+    },
+    {
+      "id": "portraits",
+      "name": "Portraits",
+      "icon": "person.crop.circle.fill",
+      "pages": [
+        {"name": "Princess", "imageName": "portrait_princess"},
+        {"name": "Superhero", "imageName": "portrait_superhero"},
+        {"name": "Fairy", "imageName": "portrait_fairy"}
+      ]
+    }
+  ]
+}

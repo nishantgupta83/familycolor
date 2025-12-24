@@ -1,10 +1,56 @@
 #!/usr/bin/env python3
-"""Generate improved, kid-friendly animal coloring pages."""
+"""Generate improved, kid-friendly animal coloring pages.
+
+This script generates cartoon-style animal coloring pages suitable for children.
+Each animal is drawn with bold lines and simple shapes for easy coloring.
+
+Usage:
+    python3 generate_improved_animals.py [--output DIR] [--size SIZE]
+
+Requirements:
+    - opencv-python
+    - numpy
+"""
+import argparse
+import logging
+import sys
+from pathlib import Path
+from typing import Callable, List, Tuple
+
 import cv2
 import numpy as np
-from pathlib import Path
 
-OUTPUT_DIR = Path(__file__).parent / "raw_downloads" / "improved_animals"
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(levelname)s: %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# Default configuration
+DEFAULT_OUTPUT_DIR = Path(__file__).parent / "raw_downloads" / "improved_animals"
+DEFAULT_IMAGE_SIZE = 1024
+
+# Drawing constants - extracted for easy tuning
+class DrawingConfig:
+    """Configuration for drawing parameters."""
+    OUTLINE_THICKNESS = 3
+    DETAIL_THICKNESS = 2
+    WHISKER_THICKNESS = 2
+    TAIL_THICKNESS = 3
+    FILL_COLOR = 0  # Black
+    BACKGROUND_COLOR = 255  # White
+    LINE_TYPE = cv2.LINE_AA  # Anti-aliased
+
+
+class ImageGenerationError(Exception):
+    """Raised when image generation fails."""
+    pass
+
+
+class ImageSaveError(Exception):
+    """Raised when saving an image fails."""
+    pass
 
 
 def draw_smooth_curve(img, points, color=0, thickness=3):
@@ -546,11 +592,9 @@ def generate_fox(size: int) -> np.ndarray:
     return img
 
 
-def main():
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    size = 1024
-
-    generators = [
+def get_generators() -> List[Tuple[str, Callable[[int], np.ndarray]]]:
+    """Return list of (name, generator_function) tuples."""
+    return [
         ("animal_cat", generate_cute_cat),
         ("animal_dog", generate_cute_dog),
         ("animal_elephant", generate_elephant),
@@ -560,22 +604,139 @@ def main():
         ("animal_simple_06", generate_fox),     # Fox
     ]
 
-    print(f"Generating {len(generators)} improved animal coloring pages...")
+
+def generate_image(name: str, gen_func: Callable[[int], np.ndarray], size: int) -> np.ndarray:
+    """Generate a single image with error handling.
+
+    Args:
+        name: Name of the image for error reporting
+        gen_func: Generator function to call
+        size: Image size in pixels
+
+    Returns:
+        Generated image as numpy array
+
+    Raises:
+        ImageGenerationError: If generation fails
+    """
+    try:
+        img = gen_func(size)
+        if img is None:
+            raise ImageGenerationError(f"Generator returned None for {name}")
+        if img.shape[0] != size or img.shape[1] != size:
+            raise ImageGenerationError(
+                f"Generator returned wrong size for {name}: "
+                f"expected {size}x{size}, got {img.shape[1]}x{img.shape[0]}"
+            )
+        return img
+    except cv2.error as e:
+        raise ImageGenerationError(f"OpenCV error generating {name}: {e}") from e
+    except ValueError as e:
+        raise ImageGenerationError(f"Value error generating {name}: {e}") from e
+
+
+def save_image(img: np.ndarray, path: Path) -> None:
+    """Save image to file with error handling.
+
+    Args:
+        img: Image to save
+        path: Output path
+
+    Raises:
+        ImageSaveError: If saving fails
+    """
+    try:
+        success = cv2.imwrite(str(path), img)
+        if not success:
+            raise ImageSaveError(f"cv2.imwrite returned False for {path}")
+    except cv2.error as e:
+        raise ImageSaveError(f"OpenCV error saving {path}: {e}") from e
+    except OSError as e:
+        raise ImageSaveError(f"OS error saving {path}: {e}") from e
+
+
+def parse_args() -> argparse.Namespace:
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Generate kid-friendly animal coloring pages",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    parser.add_argument(
+        "--output", "-o",
+        type=Path,
+        default=DEFAULT_OUTPUT_DIR,
+        help="Output directory for generated images"
+    )
+    parser.add_argument(
+        "--size", "-s",
+        type=int,
+        default=DEFAULT_IMAGE_SIZE,
+        help="Image size in pixels (square)"
+    )
+    parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose output"
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    """Main entry point.
+
+    Returns:
+        Exit code (0 for success, non-zero for failure)
+    """
+    args = parse_args()
+
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+
+    output_dir = args.output
+    size = args.size
+
+    # Validate size
+    if size < 256 or size > 4096:
+        logger.error(f"Invalid size {size}: must be between 256 and 4096")
+        return 1
+
+    # Create output directory
+    try:
+        output_dir.mkdir(parents=True, exist_ok=True)
+    except OSError as e:
+        logger.error(f"Failed to create output directory {output_dir}: {e}")
+        return 1
+
+    generators = get_generators()
+    logger.info(f"Generating {len(generators)} improved animal coloring pages...")
+
+    success_count = 0
+    error_count = 0
 
     for name, gen_func in generators:
-        save_path = OUTPUT_DIR / f"{name}.png"
-        print(f"  Generating: {name}...")
+        save_path = output_dir / f"{name}.png"
+        logger.info(f"  Generating: {name}...")
 
         try:
-            img = gen_func(size)
-            cv2.imwrite(str(save_path), img)
-            print(f"    Created: {save_path}")
-        except Exception as e:
-            print(f"    Error: {e}")
+            img = generate_image(name, gen_func, size)
+            save_image(img, save_path)
+            logger.info(f"    Created: {save_path}")
+            success_count += 1
+        except ImageGenerationError as e:
+            logger.error(f"    Generation failed: {e}")
+            error_count += 1
+        except ImageSaveError as e:
+            logger.error(f"    Save failed: {e}")
+            error_count += 1
 
-    print("\nDone! Run the following to copy to assets:")
-    print("  python3 scripts/add_borders.py --raw scripts/raw_downloads/improved_animals")
+    logger.info(f"\nCompleted: {success_count} succeeded, {error_count} failed")
+
+    if success_count > 0:
+        logger.info("\nTo copy to assets, run:")
+        logger.info(f"  python3 scripts/add_borders.py --raw {output_dir}")
+
+    return 0 if error_count == 0 else 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

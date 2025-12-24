@@ -1,11 +1,14 @@
 import Foundation
 
-struct ColoringPage: Identifiable {
+struct ColoringPage: Identifiable, Hashable {
     let id = UUID()
     let name: String
     let imageName: String
 
-    // Pages with actual images
+    // MARK: - Page Definitions
+    // Note: A pages.json file exists in Resources/ for future dynamic loading.
+    // To enable JSON-based loading, add PageDataLoader.swift and pages.json to the Xcode project.
+
     static let animals: [ColoringPage] = [
         ColoringPage(name: "Cat", imageName: "animal_cat"),
         ColoringPage(name: "Dog", imageName: "animal_dog"),
@@ -64,7 +67,6 @@ struct ColoringPage: Identifiable {
         ColoringPage(name: "Abstract 2", imageName: "abstract_04")
     ]
 
-    // New categories - pages to be added
     static let dinosaurs: [ColoringPage] = [
         ColoringPage(name: "T-Rex", imageName: "dino_trex"),
         ColoringPage(name: "Triceratops", imageName: "dino_triceratops"),
