@@ -95,6 +95,11 @@ final class VisionContoursEngine: LineArtEngineProtocol {
 
         if settings.closeLargeGaps {
             result = morphologicalClose(result, kernelSize: settings.largeGapKernel)  // Stage 2
+
+            // For toddler mode, apply additional closing to ensure 100% closure
+            if settings.simplifyRegions {
+                result = morphologicalClose(result, kernelSize: settings.largeGapKernel / 2)
+            }
         }
 
         // Step B: Thicken lines
@@ -104,7 +109,15 @@ final class VisionContoursEngine: LineArtEngineProtocol {
         result = hardThreshold(result, level: 128)
 
         // Step D: Remove tiny speckle components
-        result = removeTinyComponents(result, minArea: 30)
+        // Use minRegionArea from settings (larger for toddler mode)
+        let minArea = settings.simplifyRegions ? settings.minRegionArea : 30
+        result = removeTinyComponents(result, minArea: minArea)
+
+        // Step E: Simplify regions for toddler mode
+        // This fills in tiny enclosed areas to reduce region count
+        if settings.simplifyRegions {
+            result = simplifySmallRegions(result, minArea: settings.minRegionArea)
+        }
 
         return result
     }
@@ -227,6 +240,72 @@ final class VisionContoursEngine: LineArtEngineProtocol {
         result = morphologicalDilate(result, amount: kernelSize)
 
         return result
+    }
+
+    /// Simplify small regions by filling them with black (merging into lines)
+    /// This reduces the total region count for toddler mode
+    private func simplifySmallRegions(_ image: UIImage, minArea: Int) -> UIImage {
+        guard let cgImage = image.cgImage else { return image }
+
+        let width = cgImage.width
+        let height = cgImage.height
+
+        // Get grayscale pixels
+        guard let context = createGrayscaleContext(width: width, height: height),
+              let pixels = context.data?.assumingMemoryBound(to: UInt8.self) else {
+            return image
+        }
+
+        context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
+
+        // Create working copy
+        var pixelsCopy = [UInt8](repeating: 0, count: width * height)
+        for i in 0..<(width * height) {
+            pixelsCopy[i] = pixels[i]
+        }
+
+        // Find white regions (fillable areas) and fill small ones with black
+        var visited = [Bool](repeating: false, count: width * height)
+
+        for y in 0..<height {
+            for x in 0..<width {
+                let idx = y * width + x
+                if pixelsCopy[idx] > 200 && !visited[idx] {  // White pixel, unvisited
+                    // Flood fill to find region and its area
+                    var regionPixels: [(Int, Int)] = []
+                    var stack = [(x, y)]
+
+                    while !stack.isEmpty {
+                        let (cx, cy) = stack.removeLast()
+                        if cx < 0 || cx >= width || cy < 0 || cy >= height { continue }
+
+                        let cidx = cy * width + cx
+                        if visited[cidx] || pixelsCopy[cidx] <= 200 { continue }
+
+                        visited[cidx] = true
+                        regionPixels.append((cx, cy))
+
+                        stack.append((cx + 1, cy))
+                        stack.append((cx - 1, cy))
+                        stack.append((cx, cy + 1))
+                        stack.append((cx, cy - 1))
+                    }
+
+                    // If region is too small, fill it with black
+                    if regionPixels.count < minArea && regionPixels.count > 0 {
+                        for (px, py) in regionPixels {
+                            let pidx = py * width + px
+                            pixels[pidx] = 0  // Fill with black
+                        }
+                    }
+                }
+            }
+        }
+
+        if let outputCGImage = context.makeImage() {
+            return UIImage(cgImage: outputCGImage)
+        }
+        return image
     }
 
     // MARK: - Helper Methods

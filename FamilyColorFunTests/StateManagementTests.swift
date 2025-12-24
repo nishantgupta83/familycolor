@@ -130,7 +130,9 @@ final class StateManagementTests: XCTestCase {
     func testDrawingEngineUndo() {
         let engine = DrawingEngine()
 
+        // Need at least 2 points for path to be added
         engine.startPath(at: CGPoint(x: 100, y: 100), color: .red, lineWidth: 10, isEraser: false)
+        engine.addPoint(CGPoint(x: 150, y: 150))
         engine.endPath()
         XCTAssertEqual(engine.paths.count, 1)
 
@@ -155,7 +157,7 @@ final class StateManagementTests: XCTestCase {
     // MARK: - Category Tests
 
     func testCategoryCount() {
-        XCTAssertEqual(Category.all.count, 5)
+        XCTAssertEqual(Category.all.count, 20)
     }
 
     func testCategoryNames() {
@@ -176,7 +178,7 @@ final class StateManagementTests: XCTestCase {
     // MARK: - ColoringPage Tests
 
     func testAnimalsPageCount() {
-        XCTAssertEqual(ColoringPage.animals.count, 3)
+        XCTAssertEqual(ColoringPage.animals.count, 7)
     }
 
     func testVehiclesPageCount() {

@@ -36,6 +36,27 @@ struct ImagePreprocessor {
         return UIImage(cgImage: cgImage)
     }
 
+    /// Apply Gaussian blur to reduce detail (useful for toddler mode)
+    /// Higher radius = more blur = simpler output with fewer micro-contours
+    func gaussianBlur(_ image: UIImage, radius: Float) -> UIImage {
+        guard radius > 0 else { return image }
+        guard let ciImage = CIImage(image: image) else { return image }
+
+        let filter = CIFilter.gaussianBlur()
+        filter.inputImage = ciImage
+        filter.radius = radius
+
+        guard let output = filter.outputImage else { return image }
+
+        // Gaussian blur extends the image bounds, so we need to crop back
+        let croppedOutput = output.cropped(to: ciImage.extent)
+
+        guard let cgImage = context.createCGImage(croppedOutput, from: croppedOutput.extent) else {
+            return image
+        }
+        return UIImage(cgImage: cgImage)
+    }
+
     /// Light denoise using median filter
     func denoise(_ image: UIImage) -> UIImage {
         guard let ciImage = CIImage(image: image) else { return image }
@@ -92,6 +113,12 @@ struct ImagePreprocessor {
     func preprocess(_ image: UIImage, settings: LineArtSettings) -> UIImage {
         var result = resize(image, maxDimension: settings.maxDimension)
         result = enhanceContrast(result, boost: settings.contrastBoost)
+
+        // Apply blur for toddler mode (reduces micro-details)
+        if settings.blurAmount > 0 {
+            result = gaussianBlur(result, radius: settings.blurAmount)
+        }
+
         result = denoise(result)
         return result
     }

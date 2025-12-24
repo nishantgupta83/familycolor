@@ -11,11 +11,12 @@ struct PhotoUploadView: View {
     @State private var showError = false
     @State private var errorMessage = ""
 
-    // Settings
-    @State private var thickness: Double = 2
-    @State private var detail: Double = 0.5
-    @State private var selectedPreset: LineArtPreset? = .portrait
+    // Settings - Default to toddler mode for young children
+    @State private var thickness: Double = 6
+    @State private var detail: Double = 0.2
+    @State private var selectedPreset: LineArtPreset? = .toddler
     @State private var pageName: String = ""
+    @State private var isToddlerMode = true  // Toggle for toddler-friendly output
 
     private let engine = VisionContoursEngine()
 
@@ -168,22 +169,27 @@ struct PhotoUploadView: View {
 
     private func photoPreviewSection(_ photo: UIImage) -> some View {
         VStack(spacing: 20) {
+            // Toddler mode toggle - prominent at top
+            toddlerModeToggle
+
             // Before/After comparison
             HStack(spacing: 12) {
                 imagePreview(photo, label: "Original")
                 imagePreview(lineArtPreview ?? photo, label: "Preview")
             }
 
-            // Adjustment sliders
-            AdjustmentSliders(
-                thickness: $thickness,
-                detail: $detail,
-                selectedPreset: $selectedPreset
-            )
-            .onChange(of: thickness) { _ in updatePreview() }
-            .onChange(of: detail) { _ in updatePreview() }
-            .onChange(of: selectedPreset) { preset in
-                if preset != nil { updatePreview() }
+            // Adjustment sliders (only show if not in toddler mode)
+            if !isToddlerMode {
+                AdjustmentSliders(
+                    thickness: $thickness,
+                    detail: $detail,
+                    selectedPreset: $selectedPreset
+                )
+                .onChange(of: thickness) { _ in updatePreview() }
+                .onChange(of: detail) { _ in updatePreview() }
+                .onChange(of: selectedPreset) { preset in
+                    if preset != nil { updatePreview() }
+                }
             }
 
             // Page name input
@@ -191,6 +197,48 @@ struct PhotoUploadView: View {
 
             // Action buttons
             actionButtons
+        }
+    }
+
+    private var toddlerModeToggle: some View {
+        VStack(spacing: 12) {
+            Toggle(isOn: $isToddlerMode) {
+                HStack(spacing: 12) {
+                    Image(systemName: "figure.and.child.holdinghands")
+                        .font(.title2)
+                        .foregroundColor(.orange)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("For Toddlers")
+                            .font(.headline)
+                        Text("Simple, bold lines for ages 2-5")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            .toggleStyle(SwitchToggleStyle(tint: .orange))
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(isToddlerMode ? Color.orange.opacity(0.1) : Color(.systemGray6))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(isToddlerMode ? Color.orange : Color.clear, lineWidth: 2)
+            )
+            .onChange(of: isToddlerMode) { newValue in
+                if newValue {
+                    selectedPreset = .toddler
+                    thickness = 6
+                    detail = 0.2
+                } else {
+                    selectedPreset = .portrait
+                    thickness = 3
+                    detail = 0.5
+                }
+                updatePreview()
+            }
         }
     }
 
@@ -322,6 +370,11 @@ struct PhotoUploadView: View {
     }
 
     private func currentSettings() -> LineArtSettings {
+        // If toddler mode is enabled, always use toddler preset
+        if isToddlerMode {
+            return LineArtPreset.toddler.settings
+        }
+
         if let preset = selectedPreset {
             return preset.settings
         }
@@ -336,7 +389,10 @@ struct PhotoUploadView: View {
             thickness: Int(thickness),
             closeLargeGaps: thickness >= 3,
             largeGapKernel: thickness >= 4 ? 5 : 3,
-            contrastBoost: 1.2 + Float(detail) * 0.2
+            contrastBoost: 1.2 + Float(detail) * 0.2,
+            blurAmount: 0,
+            minRegionArea: 500,
+            simplifyRegions: false
         )
     }
 }

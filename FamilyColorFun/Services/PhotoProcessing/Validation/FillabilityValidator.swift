@@ -8,10 +8,20 @@ final class FillabilityValidator {
     private let targetLineWidth: CGFloat = 2.5
     private let minTapArea: Int = 500  // Minimum pixels for kid-friendly tapping
 
+    // Toddler mode thresholds (larger tap targets, fewer regions)
+    private let toddlerMinTapArea: Int = 2000
+    private let toddlerMaxRegions: Int = 30
+    private let toddlerMinRegions: Int = 5
+
     // MARK: - Public API
 
     /// Evaluate the fillability of a line art image
     func evaluate(_ lineArt: UIImage) -> FillabilityResult {
+        return evaluate(lineArt, forToddler: false)
+    }
+
+    /// Evaluate with toddler-specific thresholds
+    func evaluate(_ lineArt: UIImage, forToddler: Bool) -> FillabilityResult {
         // Normalize to canonical size
         guard let normalized = normalize(lineArt) else {
             return .skipped
@@ -22,30 +32,63 @@ final class FillabilityValidator {
         let endpoints = endpointScore(normalized)
         let leaks = leakPotential(normalized)
         let closure = closureRate(normalized, regionCount: regions)
-        let tappable = tapUsability(normalized)
+
+        // Use different tap area based on mode
+        let tapArea = forToddler ? toddlerMinTapArea : minTapArea
+        let tappable = tapUsability(normalized, minTapArea: tapArea)
 
         // Calculate overall score (weighted average)
-        let score = (endpoints * 0.2) +
+        // For toddler mode, closure and tappability are more important
+        let score: Double
+        if forToddler {
+            score = (endpoints * 0.1) +
+                    ((1.0 - leaks) * 0.3) +
+                    (closure * 0.35) +
+                    (tappable * 0.25)
+        } else {
+            score = (endpoints * 0.2) +
                     ((1.0 - leaks) * 0.3) +
                     (closure * 0.3) +
                     (tappable * 0.2)
+        }
 
-        // Generate suggestions
+        // Generate suggestions based on mode
         var suggestions: [String] = []
-        if regions > 500 {
-            suggestions.append("Try reducing detail")
-        }
-        if regions < 10 {
-            suggestions.append("Try increasing detail")
-        }
-        if leaks > 0.5 {
-            suggestions.append("Try increasing thickness")
-        }
-        if closure < 0.7 {
-            suggestions.append("Some areas may not fill perfectly")
-        }
-        if tappable < 0.8 {
-            suggestions.append("Some regions are very small")
+
+        if forToddler {
+            // Toddler-specific suggestions
+            if regions > toddlerMaxRegions {
+                suggestions.append("Too many areas - try a simpler photo")
+            }
+            if regions < toddlerMinRegions {
+                suggestions.append("Not enough areas to color")
+            }
+            if leaks > 0.3 {
+                suggestions.append("Some colors may leak - try a different photo")
+            }
+            if closure < 0.9 {
+                suggestions.append("Some areas may not fill completely")
+            }
+            if tappable < 0.9 {
+                suggestions.append("Some areas may be too small for little fingers")
+            }
+        } else {
+            // Standard suggestions
+            if regions > 500 {
+                suggestions.append("Try reducing detail")
+            }
+            if regions < 10 {
+                suggestions.append("Try increasing detail")
+            }
+            if leaks > 0.5 {
+                suggestions.append("Try increasing thickness")
+            }
+            if closure < 0.7 {
+                suggestions.append("Some areas may not fill perfectly")
+            }
+            if tappable < 0.8 {
+                suggestions.append("Some regions are very small")
+            }
         }
 
         return FillabilityResult(
@@ -199,11 +242,12 @@ final class FillabilityValidator {
     }
 
     /// Estimate tap usability (regions large enough for kids to tap)
-    private func tapUsability(_ image: UIImage) -> Double {
+    private func tapUsability(_ image: UIImage, minTapArea: Int? = nil) -> Double {
         guard let cgImage = image.cgImage else { return 1.0 }
 
         let width = cgImage.width
         let height = cgImage.height
+        let effectiveMinTapArea = minTapArea ?? self.minTapArea
 
         guard let pixelData = getGrayscalePixels(cgImage) else { return 1.0 }
 
@@ -225,7 +269,7 @@ final class FillabilityValidator {
                                              x: x, y: y, width: width, height: height)
                     if area >= 20 {  // Valid region
                         totalRegions += 1
-                        if area >= minTapArea {
+                        if area >= effectiveMinTapArea {
                             tappableRegions += 1
                         }
                     }

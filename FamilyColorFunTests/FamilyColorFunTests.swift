@@ -16,12 +16,17 @@ final class FamilyColorFunTests: XCTestCase {
         XCTAssertNotNil(category.id)
     }
 
-    func testCategoryAllContainsFiveCategories() {
-        XCTAssertEqual(Category.all.count, 5)
+    func testCategoryAllContainsTwentyCategories() {
+        XCTAssertEqual(Category.all.count, 20)
     }
 
     func testCategoryAllHasExpectedNames() {
-        let expectedNames = ["Animals", "Vehicles", "Houses", "Nature", "Ocean"]
+        let expectedNames = [
+            "Animals", "Vehicles", "Houses", "Nature", "Ocean",
+            "Retro 90s", "Mandalas", "Geometric", "Abstract", "Dinosaurs",
+            "Space", "Food", "Holidays", "Sports", "Music",
+            "Robots", "Fantasy", "Underwater", "Zen Patterns", "Portraits"
+        ]
         let categoryNames = Category.all.map { $0.name }
 
         XCTAssertEqual(categoryNames, expectedNames)
@@ -44,7 +49,7 @@ final class FamilyColorFunTests: XCTestCase {
     }
 
     func testAnimalsPageCount() {
-        XCTAssertEqual(ColoringPage.animals.count, 3)
+        XCTAssertEqual(ColoringPage.animals.count, 7)
     }
 
     func testVehiclesPageCount() {
