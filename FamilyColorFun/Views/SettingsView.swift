@@ -137,7 +137,7 @@ struct SettingsView: View {
                         HStack(spacing: 12) {
                             Image(systemName: "lock.shield.fill")
                                 .font(.title2)
-                                .foregroundStyle(.purple)
+                                .foregroundStyle(.teal)
                                 .frame(width: 32)
 
                             VStack(alignment: .leading, spacing: 2) {
@@ -228,7 +228,7 @@ struct PINEntrySheet: View {
             VStack(spacing: 24) {
                 Image(systemName: "lock.circle.fill")
                     .font(.system(size: 60))
-                    .foregroundStyle(.purple)
+                    .foregroundStyle(.teal)
 
                 Text("Enter PIN")
                     .font(.title2)
@@ -237,7 +237,7 @@ struct PINEntrySheet: View {
                 HStack(spacing: 16) {
                     ForEach(0..<4) { index in
                         Circle()
-                            .fill(pin.count > index ? Color.purple : Color.gray.opacity(0.3))
+                            .fill(pin.count > index ? Color.teal : Color.gray.opacity(0.3))
                             .frame(width: 16, height: 16)
                     }
                 }

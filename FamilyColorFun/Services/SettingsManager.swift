@@ -25,6 +25,14 @@ class SettingsManager: ObservableObject {
         didSet { UserDefaults.standard.set(showHints, forKey: "showHints") }
     }
 
+    @Published var colorSuggestionsEnabled: Bool {
+        didSet { UserDefaults.standard.set(colorSuggestionsEnabled, forKey: "colorSuggestionsEnabled") }
+    }
+
+    @Published var colorSuggestionMode: ColorSuggestionMode {
+        didSet { UserDefaults.standard.set(colorSuggestionMode.rawValue, forKey: "colorSuggestionMode") }
+    }
+
     // MARK: - Enums
     enum ColorPaletteType: String, CaseIterable, Identifiable {
         case vibrant = "Vibrant"
@@ -90,6 +98,11 @@ class SettingsManager: ObservableObject {
         self.soundEnabled = UserDefaults.standard.object(forKey: "soundEnabled") as? Bool ?? true
         self.hapticEnabled = UserDefaults.standard.object(forKey: "hapticEnabled") as? Bool ?? true
         self.showHints = UserDefaults.standard.object(forKey: "showHints") as? Bool ?? true
+
+        // Color suggestion settings
+        self.colorSuggestionsEnabled = UserDefaults.standard.object(forKey: "colorSuggestionsEnabled") as? Bool ?? true
+        let suggestionModeRaw = UserDefaults.standard.string(forKey: "colorSuggestionMode") ?? ColorSuggestionMode.realistic.rawValue
+        self.colorSuggestionMode = ColorSuggestionMode(rawValue: suggestionModeRaw) ?? .realistic
     }
 
     // MARK: - Helper
@@ -103,6 +116,8 @@ class SettingsManager: ObservableObject {
         soundEnabled = true
         hapticEnabled = true
         showHints = true
+        colorSuggestionsEnabled = true
+        colorSuggestionMode = .realistic
     }
 }
 

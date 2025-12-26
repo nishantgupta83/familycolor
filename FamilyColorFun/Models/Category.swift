@@ -28,7 +28,7 @@ struct Category: Identifiable {
             categoryId: "houses",
             name: "Houses",
             icon: "house.fill",
-            color: .purple,
+            color: .teal,
             pages: ColoringPage.houses
         ),
         Category(
@@ -80,7 +80,7 @@ struct Category: Identifiable {
         categoryId: "my_creations",
         name: "My Creations",
         icon: "camera.fill",
-        color: .purple,
+        color: .pink,
         pages: []
     )
 }

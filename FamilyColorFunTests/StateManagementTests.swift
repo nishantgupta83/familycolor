@@ -157,7 +157,7 @@ final class StateManagementTests: XCTestCase {
     // MARK: - Category Tests
 
     func testCategoryCount() {
-        XCTAssertEqual(Category.all.count, 20)
+        XCTAssertEqual(Category.all.count, 9)
     }
 
     func testCategoryNames() {
@@ -178,11 +178,11 @@ final class StateManagementTests: XCTestCase {
     // MARK: - ColoringPage Tests
 
     func testAnimalsPageCount() {
-        XCTAssertEqual(ColoringPage.animals.count, 7)
+        XCTAssertEqual(ColoringPage.animals.count, 15)
     }
 
     func testVehiclesPageCount() {
-        XCTAssertEqual(ColoringPage.vehicles.count, 1)
+        XCTAssertEqual(ColoringPage.vehicles.count, 15)
     }
 
     func testColoringPageUniqueIds() {

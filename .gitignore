@@ -44,3 +44,36 @@ scripts/outputs/
 
 # Local environment
 .env.local
+
+# Test Coverage
+*.xcresult
+*.profdata
+*.profraw
+coverage/
+coverage.json
+
+# Build Artifacts
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Xcode Cloud
+ci_scripts/
+Logs/
+
+# Test outputs
+TestResults/
+test-results/
+xctest-results/
+
+# Simulator data
+simctl/
+
+# Swift Package Manager
+.build/
+Package.resolved
+Packages/
+
+# CocoaPods (if used)
+Pods/
+Podfile.lock

@@ -112,9 +112,9 @@ struct ParentZoneView: View {
                 HStack(spacing: 12) {
                     Image(systemName: profile.avatarName)
                         .font(.title2)
-                        .foregroundStyle(.purple)
+                        .foregroundStyle(.teal)
                         .frame(width: 40, height: 40)
-                        .background(Color.purple.opacity(0.1))
+                        .background(Color.teal.opacity(0.1))
                         .clipShape(Circle())
 
                     VStack(alignment: .leading, spacing: 2) {
@@ -187,7 +187,7 @@ struct ParentZoneView: View {
                 icon: "calendar",
                 title: "This Week",
                 value: formatTime(parentalControls.weeklySummary.totalMinutes),
-                color: .purple
+                color: .teal
             )
 
             StatRow(
@@ -242,11 +242,11 @@ struct ParentZoneView: View {
                             } label: {
                                 Image(systemName: avatar)
                                     .font(.title)
-                                    .foregroundStyle(selectedAvatar == avatar ? .white : .purple)
+                                    .foregroundStyle(selectedAvatar == avatar ? .white : .teal)
                                     .frame(width: 50, height: 50)
                                     .background(
                                         Circle()
-                                            .fill(selectedAvatar == avatar ? Color.purple : Color.purple.opacity(0.1))
+                                            .fill(selectedAvatar == avatar ? Color.teal : Color.teal.opacity(0.1))
                                     )
                             }
                         }
@@ -325,7 +325,7 @@ struct PINSetupView: View {
             VStack(spacing: 24) {
                 Image(systemName: "lock.circle.fill")
                     .font(.system(size: 60))
-                    .foregroundStyle(.purple)
+                    .foregroundStyle(.teal)
 
                 Text(step == 1 ? "Enter a 4-digit PIN" : "Confirm your PIN")
                     .font(.title2)
@@ -335,7 +335,7 @@ struct PINSetupView: View {
                 HStack(spacing: 16) {
                     ForEach(0..<4) { index in
                         Circle()
-                            .fill(currentPIN.count > index ? Color.purple : Color.gray.opacity(0.3))
+                            .fill(currentPIN.count > index ? Color.teal : Color.gray.opacity(0.3))
                             .frame(width: 16, height: 16)
                     }
                 }

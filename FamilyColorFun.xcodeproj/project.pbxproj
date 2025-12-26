@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CS001001243B1A00009F1234 /* ColorSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CS001000243B1A00009F1234 /* ColorSuggestion.swift */; };
+		CSR001001243B1A00009F1234 /* ColorSuggestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CSR001000243B1A00009F1234 /* ColorSuggestionService.swift */; };
+		CSO001001243B1A00009F1234 /* ColorSuggestionOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CSO001000243B1A00009F1234 /* ColorSuggestionOverlay.swift */; };
+		JS001001243B1A00009F1234 /* JourneyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = JS001000243B1A00009F1234 /* JourneyStore.swift */; };
+		PE001001243B1A00009F1234 /* ProgressionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = PE001000243B1A00009F1234 /* ProgressionEngine.swift */; };
+		LO001001243B1A00009F1234 /* LockedPageOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = LO001000243B1A00009F1234 /* LockedPageOverlay.swift */; };
+		RC001001243B1A00009F1234 /* RewardConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = RC001000243B1A00009F1234 /* RewardConfig.json */; };
+		ST001001243B1A00009F1234 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ST001000243B1A00009F1234 /* Sticker.swift */; };
+		SS001001243B1A00009F1234 /* StickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = SS001000243B1A00009F1234 /* StickerStore.swift */; };
+		SP001001243B1A00009F1234 /* StickerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = SP001000243B1A00009F1234 /* StickerPicker.swift */; };
+		MC001001243B1A00009F1234 /* MetallicColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = MC001000243B1A00009F1234 /* MetallicColor.swift */; };
+		MP001001243B1A00009F1234 /* MetallicColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = MP001000243B1A00009F1234 /* MetallicColorPicker.swift */; };
+		CO001001243B1A00009F1234 /* Companion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CO001000243B1A00009F1234 /* Companion.swift */; };
+		CC001001243B1A00009F1234 /* CompanionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC001000243B1A00009F1234 /* CompanionController.swift */; };
+		CV001001243B1A00009F1234 /* CompanionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CV001000243B1A00009F1234 /* CompanionView.swift */; };
+		PF001001243B1A00009F1234 /* PatternFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = PF001000243B1A00009F1234 /* PatternFill.swift */; };
+		PG001001243B1A00009F1234 /* ParentalGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = PG001000243B1A00009F1234 /* ParentalGate.swift */; };
 		P1000001243B1A00009F1234 /* UserGeneratedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1000000243B1A00009F1234 /* UserGeneratedPage.swift */; };
 		P1100001243B1A00009F1234 /* PhotoUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1100000243B1A00009F1234 /* PhotoUploadView.swift */; };
 		P1200001243B1A00009F1234 /* AdjustmentSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = P1200000243B1A00009F1234 /* AdjustmentSliders.swift */; };
@@ -54,6 +71,9 @@
 		B1600003243B1A00009F1234 /* StateManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600002243B1A00009F1234 /* StateManagementTests.swift */; };
 		B1600005243B1A00009F1234 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1600004243B1A00009F1234 /* PerformanceTests.swift */; };
 		TS001001243B1A00009F1234 /* ProcessingStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = TS001000243B1A00009F1234 /* ProcessingStateTests.swift */; };
+		RS001001243B1A00009F1234 /* RewardSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = RS001000243B1A00009F1234 /* RewardSystemTests.swift */; };
+		MT001001243B1A00009F1234 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MT001000243B1A00009F1234 /* ModelTests.swift */; };
+		SV001001243B1A00009F1234 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV001000243B1A00009F1234 /* ServiceTests.swift */; };
 		B1700001243B1A00009F1234 /* NavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700000243B1A00009F1234 /* NavigationUITests.swift */; };
 		B1700003243B1A00009F1234 /* CanvasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700002243B1A00009F1234 /* CanvasUITests.swift */; };
 		B1700005243B1A00009F1234 /* GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1700004243B1A00009F1234 /* GalleryUITests.swift */; };
@@ -99,6 +119,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CS001000243B1A00009F1234 /* ColorSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSuggestion.swift; sourceTree = "<group>"; };
+		CSR001000243B1A00009F1234 /* ColorSuggestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSuggestionService.swift; sourceTree = "<group>"; };
+		CSO001000243B1A00009F1234 /* ColorSuggestionOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSuggestionOverlay.swift; sourceTree = "<group>"; };
+		JS001000243B1A00009F1234 /* JourneyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyStore.swift; sourceTree = "<group>"; };
+		PE001000243B1A00009F1234 /* ProgressionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionEngine.swift; sourceTree = "<group>"; };
+		LO001000243B1A00009F1234 /* LockedPageOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedPageOverlay.swift; sourceTree = "<group>"; };
+		RC001000243B1A00009F1234 /* RewardConfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RewardConfig.json; sourceTree = "<group>"; };
+		ST001000243B1A00009F1234 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		SS001000243B1A00009F1234 /* StickerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerStore.swift; sourceTree = "<group>"; };
+		SP001000243B1A00009F1234 /* StickerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerPicker.swift; sourceTree = "<group>"; };
+		MC001000243B1A00009F1234 /* MetallicColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetallicColor.swift; sourceTree = "<group>"; };
+		MP001000243B1A00009F1234 /* MetallicColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetallicColorPicker.swift; sourceTree = "<group>"; };
+		CO001000243B1A00009F1234 /* Companion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Companion.swift; sourceTree = "<group>"; };
+		CC001000243B1A00009F1234 /* CompanionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionController.swift; sourceTree = "<group>"; };
+		CV001000243B1A00009F1234 /* CompanionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionView.swift; sourceTree = "<group>"; };
+		PF001000243B1A00009F1234 /* PatternFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternFill.swift; sourceTree = "<group>"; };
+		PG001000243B1A00009F1234 /* ParentalGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentalGate.swift; sourceTree = "<group>"; };
 		P1000000243B1A00009F1234 /* UserGeneratedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratedPage.swift; sourceTree = "<group>"; };
 		P1100000243B1A00009F1234 /* PhotoUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadView.swift; sourceTree = "<group>"; };
 		P1200000243B1A00009F1234 /* AdjustmentSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustmentSliders.swift; sourceTree = "<group>"; };
@@ -147,6 +184,9 @@
 		B1600002243B1A00009F1234 /* StateManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManagementTests.swift; sourceTree = "<group>"; };
 		B1600004243B1A00009F1234 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		TS001000243B1A00009F1234 /* ProcessingStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingStateTests.swift; sourceTree = "<group>"; };
+		RS001000243B1A00009F1234 /* RewardSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardSystemTests.swift; sourceTree = "<group>"; };
+		MT001000243B1A00009F1234 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		SV001000243B1A00009F1234 /* ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
 		B1600010243B1A00009F1234 /* FamilyColorFunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FamilyColorFunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1700000243B1A00009F1234 /* NavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUITests.swift; sourceTree = "<group>"; };
 		B1700002243B1A00009F1234 /* CanvasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasUITests.swift; sourceTree = "<group>"; };
@@ -230,6 +270,7 @@
 				A1200008243B1A00009F1234 /* Views */,
 				A1400008243B1A00009F1234 /* Services */,
 				A1500002243B1A00009F1234 /* Extensions */,
+				CG001000243B1A00009F1234 /* Config */,
 				A1000004243B1A01009F1234 /* Assets.xcassets */,
 				D1600002243B1A00009F1234 /* Resources */,
 				A1000006243B1A01009F1234 /* Preview Content */,
@@ -256,6 +297,11 @@
 				F1100011243B1A00009F1234 /* Reward.swift */,
 				G1100011243B1A00009F1234 /* ChildProfile.swift */,
 				P1000000243B1A00009F1234 /* UserGeneratedPage.swift */,
+				ST001000243B1A00009F1234 /* Sticker.swift */,
+				MC001000243B1A00009F1234 /* MetallicColor.swift */,
+				CO001000243B1A00009F1234 /* Companion.swift */,
+				PF001000243B1A00009F1234 /* PatternFill.swift */,
+				CS001000243B1A00009F1234 /* ColorSuggestion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -285,6 +331,12 @@
 				A1300010243B1A00009F1234 /* TapFillCanvas.swift */,
 				A1300012243B1A00009F1234 /* PencilKitCanvas.swift */,
 				P1200000243B1A00009F1234 /* AdjustmentSliders.swift */,
+				LO001000243B1A00009F1234 /* LockedPageOverlay.swift */,
+				SP001000243B1A00009F1234 /* StickerPicker.swift */,
+				MP001000243B1A00009F1234 /* MetallicColorPicker.swift */,
+				CV001000243B1A00009F1234 /* CompanionView.swift */,
+				PG001000243B1A00009F1234 /* ParentalGate.swift */,
+				CSO001000243B1A00009F1234 /* ColorSuggestionOverlay.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -300,6 +352,11 @@
 				E1400011243B1A00009F1234 /* SettingsManager.swift */,
 				F1400011243B1A00009F1234 /* ProgressionManager.swift */,
 				G1400011243B1A00009F1234 /* ParentalControlsManager.swift */,
+				JS001000243B1A00009F1234 /* JourneyStore.swift */,
+				PE001000243B1A00009F1234 /* ProgressionEngine.swift */,
+				SS001000243B1A00009F1234 /* StickerStore.swift */,
+				CC001000243B1A00009F1234 /* CompanionController.swift */,
+				CSR001000243B1A00009F1234 /* ColorSuggestionService.swift */,
 				P1800000243B1A00009F1234 /* PhotoProcessing */,
 			);
 			path = Services;
@@ -411,6 +468,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CG001000243B1A00009F1234 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				RC001000243B1A00009F1234 /* RewardConfig.json */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		D1600002243B1A00009F1234 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +491,9 @@
 				B1600002243B1A00009F1234 /* StateManagementTests.swift */,
 				B1600004243B1A00009F1234 /* PerformanceTests.swift */,
 				TS001000243B1A00009F1234 /* ProcessingStateTests.swift */,
+				RS001000243B1A00009F1234 /* RewardSystemTests.swift */,
+				MT001000243B1A00009F1234 /* ModelTests.swift */,
+				SV001000243B1A00009F1234 /* ServiceTests.swift */,
 			);
 			path = FamilyColorFunTests;
 			sourceTree = "<group>";
@@ -565,6 +633,7 @@
 				A1000008243B1A01009F1234 /* Preview Assets.xcassets in Resources */,
 				A1000005243B1A01009F1234 /* Assets.xcassets in Resources */,
 				D1600001243B1A00009F1234 /* PageMetadata in Resources */,
+				RC001001243B1A00009F1234 /* RewardConfig.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +658,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CS001001243B1A00009F1234 /* ColorSuggestion.swift in Sources */,
+				CSR001001243B1A00009F1234 /* ColorSuggestionService.swift in Sources */,
+				CSO001001243B1A00009F1234 /* ColorSuggestionOverlay.swift in Sources */,
+				JS001001243B1A00009F1234 /* JourneyStore.swift in Sources */,
+				PE001001243B1A00009F1234 /* ProgressionEngine.swift in Sources */,
+				LO001001243B1A00009F1234 /* LockedPageOverlay.swift in Sources */,
+				ST001001243B1A00009F1234 /* Sticker.swift in Sources */,
+				SS001001243B1A00009F1234 /* StickerStore.swift in Sources */,
+				SP001001243B1A00009F1234 /* StickerPicker.swift in Sources */,
+				MC001001243B1A00009F1234 /* MetallicColor.swift in Sources */,
+				MP001001243B1A00009F1234 /* MetallicColorPicker.swift in Sources */,
+				CO001001243B1A00009F1234 /* Companion.swift in Sources */,
+				CC001001243B1A00009F1234 /* CompanionController.swift in Sources */,
+				CV001001243B1A00009F1234 /* CompanionView.swift in Sources */,
+				PF001001243B1A00009F1234 /* PatternFill.swift in Sources */,
+				PG001001243B1A00009F1234 /* ParentalGate.swift in Sources */,
 				A1000003243B1A00009F1234 /* ContentView.swift in Sources */,
 				A1000001243B1A00009F1234 /* FamilyColorFunApp.swift in Sources */,
 				A1100001243B1A00009F1234 /* Category.swift in Sources */,
@@ -652,6 +737,9 @@
 				B1600003243B1A00009F1234 /* StateManagementTests.swift in Sources */,
 				B1600005243B1A00009F1234 /* PerformanceTests.swift in Sources */,
 				TS001001243B1A00009F1234 /* ProcessingStateTests.swift in Sources */,
+				RS001001243B1A00009F1234 /* RewardSystemTests.swift in Sources */,
+				MT001001243B1A00009F1234 /* ModelTests.swift in Sources */,
+				SV001001243B1A00009F1234 /* ServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

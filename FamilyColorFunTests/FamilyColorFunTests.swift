@@ -7,25 +7,23 @@ final class FamilyColorFunTests: XCTestCase {
     // MARK: - Category Tests
 
     func testCategoryInitialization() {
-        let category = Category(name: "Test", icon: "star.fill", color: .red, pages: [])
+        let category = Category(categoryId: "test", name: "Test", icon: "star.fill", color: .red, pages: [])
 
+        XCTAssertEqual(category.categoryId, "test")
         XCTAssertEqual(category.name, "Test")
         XCTAssertEqual(category.icon, "star.fill")
-        XCTAssertEqual(category.color, .red)
         XCTAssertTrue(category.pages.isEmpty)
         XCTAssertNotNil(category.id)
     }
 
-    func testCategoryAllContainsTwentyCategories() {
-        XCTAssertEqual(Category.all.count, 20)
+    func testCategoryAllContainsNineCategories() {
+        XCTAssertEqual(Category.all.count, 9)
     }
 
     func testCategoryAllHasExpectedNames() {
         let expectedNames = [
             "Animals", "Vehicles", "Houses", "Nature", "Ocean",
-            "Retro 90s", "Mandalas", "Geometric", "Abstract", "Dinosaurs",
-            "Space", "Food", "Holidays", "Sports", "Music",
-            "Robots", "Fantasy", "Underwater", "Zen Patterns", "Portraits"
+            "Underwater", "Dinosaurs", "Fantasy", "Holidays"
         ]
         let categoryNames = Category.all.map { $0.name }
 
@@ -49,23 +47,23 @@ final class FamilyColorFunTests: XCTestCase {
     }
 
     func testAnimalsPageCount() {
-        XCTAssertEqual(ColoringPage.animals.count, 7)
+        XCTAssertEqual(ColoringPage.animals.count, 15)
     }
 
     func testVehiclesPageCount() {
-        XCTAssertEqual(ColoringPage.vehicles.count, 1)
+        XCTAssertEqual(ColoringPage.vehicles.count, 15)
     }
 
     func testHousesPageCount() {
-        XCTAssertEqual(ColoringPage.houses.count, 1)
+        XCTAssertEqual(ColoringPage.houses.count, 12)
     }
 
     func testNaturePageCount() {
-        XCTAssertEqual(ColoringPage.nature.count, 5)
+        XCTAssertEqual(ColoringPage.nature.count, 14)
     }
 
     func testOceanPageCount() {
-        XCTAssertEqual(ColoringPage.ocean.count, 1)
+        XCTAssertEqual(ColoringPage.ocean.count, 14)
     }
 
     func testColoringPageUniqueIDs() {
@@ -529,7 +527,7 @@ final class FamilyColorFunTests: XCTestCase {
         let storageService = StorageService.shared
         let testImage = createTestImage()
         let testPage = ColoringPage(name: "Test", imageName: "test")
-        let testCategory = Category(name: "Test", icon: "star.fill", color: .red, pages: [testPage])
+        let testCategory = Category(categoryId: "test", name: "Test", icon: "star.fill", color: .red, pages: [testPage])
 
         let savedArtwork = storageService.saveArtwork(image: testImage, page: testPage, category: testCategory, progress: 0.5)
 
@@ -551,7 +549,7 @@ final class FamilyColorFunTests: XCTestCase {
         let storageService = StorageService.shared
         let testImage = createTestImage()
         let testPage = ColoringPage(name: "Test", imageName: "test")
-        let testCategory = Category(name: "Test", icon: "star.fill", color: .red, pages: [testPage])
+        let testCategory = Category(categoryId: "test", name: "Test", icon: "star.fill", color: .red, pages: [testPage])
 
         let initialCount = storageService.artworks.count
 

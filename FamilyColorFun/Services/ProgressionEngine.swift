@@ -217,6 +217,7 @@ final class ProgressionEngine: ObservableObject {
                 if let daysDiff = calendar.dateComponents([.day], from: lastDate, to: todayDate).day,
                    daysDiff > 1 {
                     streak = 0  // Reset streak
+                    save()  // Persist the streak reset
                 }
             }
         }

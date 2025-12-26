@@ -111,7 +111,7 @@ struct GalleryHeader: View {
         case 0..<3: return ("Beginner Artist", "star", .gray, "⭐")
         case 3..<10: return ("Rising Star", "star.fill", .yellow, "🌟")
         case 10..<25: return ("Color Champion", "trophy.fill", .orange, "🏆")
-        default: return ("Master Artist", "crown.fill", .purple, "👑")
+        default: return ("Master Artist", "crown.fill", .pink, "👑")
         }
     }
 

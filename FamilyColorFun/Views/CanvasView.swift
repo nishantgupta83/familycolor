@@ -33,6 +33,14 @@ struct CanvasView: View {
     @State private var hasShownAutofillHint = false
     private let autofillThreshold: Double = 0.90 // 90% threshold for auto-fill suggestion
 
+    // Milestone dialogue tracking
+    @State private var triggeredMilestones: Set<Int> = []
+
+    // Color suggestion state
+    @State private var showColorSuggestions = false
+    @ObservedObject private var suggestionService = ColorSuggestionService.shared
+    @ObservedObject private var settingsManager = SettingsManager.shared
+
     @Environment(\.dismiss) private var dismiss
 
     private var hasUnsavedChanges: Bool {
@@ -147,6 +155,30 @@ struct CanvasView: View {
                         if showCompletion {
                             CompletionOverlay()
                         }
+
+                        // Color suggestion overlay
+                        if showColorSuggestions && suggestionService.isShowingSuggestions {
+                            GeometryReader { canvasGeometry in
+                                ColorSuggestionOverlay(
+                                    suggestions: suggestionService.currentSuggestions,
+                                    imageSize: fillEngine.metadata?.imageSize ?? CGSize(width: 1024, height: 1024),
+                                    displaySize: canvasGeometry.size,
+                                    onTapSuggestion: { suggestion in
+                                        let imageSize = fillEngine.metadata?.imageSize ?? CGSize(width: 1024, height: 1024)
+                                        suggestionService.applySuggestion(suggestion, to: fillEngine, imageSize: imageSize)
+                                        selectedColor = suggestion.suggestedColor
+
+                                        // Reset idle timer
+                                        startIdleTimer()
+                                    },
+                                    onDismiss: {
+                                        showColorSuggestions = false
+                                        suggestionService.hideSuggestions()
+                                        startIdleTimer()
+                                    }
+                                )
+                            }
+                        }
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .shadow(color: .black.opacity(0.1), radius: 4)
@@ -258,37 +290,18 @@ struct CanvasView: View {
             Image(systemName: "square.and.arrow.up")
         })
         .sheet(isPresented: $showShareSheet) {
-            ShareSheet(items: [fillEngine.currentImage])
+            ShareSheet(items: [mergeDrawingWithFill()])
         }
         .onChange(of: fillEngine.regionProgress) { newValue in
-            // Check completion based on region count if metadata available
-            if let totalRegions = fillEngine.metadata?.totalRegions, totalRegions > 0 {
-                let progressPercent = Double(newValue) / Double(totalRegions)
+            handleProgressChange(regionProgress: newValue)
 
-                // Auto-show autofill suggestion at 90%+ progress
-                if progressPercent >= autofillThreshold &&
-                   !hasShownAutofillHint &&
-                   newValue < totalRegions &&
-                   coloringMode == .fill {
-                    hasShownAutofillHint = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        showAutofillConfirmation = true
-                        SoundManager.shared.playTap()
-                    }
-                }
+            // Reset idle timer on user activity
+            startIdleTimer()
 
-                // Check for full completion
-                if newValue >= totalRegions && !showCompletion && coloringMode == .fill {
-                    withAnimation(.spring()) {
-                        showCompletion = true
-                    }
-                    SoundManager.shared.playCelebration()
-                }
-            } else if fillEngine.progress >= 1.0 && !showCompletion && coloringMode == .fill {
-                withAnimation(.spring()) {
-                    showCompletion = true
-                }
-                SoundManager.shared.playCelebration()
+            // Hide suggestions if user is actively filling
+            if showColorSuggestions {
+                showColorSuggestions = false
+                suggestionService.hideSuggestions()
             }
         }
         .confirmationDialog(
@@ -344,6 +357,21 @@ struct CanvasView: View {
                 }
             }
         }
+        .onAppear {
+            // Start or resume journey session
+            JourneyStore.shared.startOrResume(pageId: page.id.uuidString)
+            CompanionController.shared.trigger(.start, pageName: page.name)
+
+            // Start idle timer for color suggestions
+            startIdleTimer()
+        }
+        .onDisappear {
+            // End journey session
+            JourneyStore.shared.endSession(pageId: page.id.uuidString)
+
+            // Stop idle timer
+            stopIdleTimer()
+        }
     }
 
     // MARK: - Fill Mode Toolbar
@@ -377,6 +405,18 @@ struct CanvasView: View {
                 SoundManager.shared.playTap()
             }
             .accessibilityLabel("Fill remaining regions")
+
+            // COLOR HELP BUTTON
+            if settingsManager.colorSuggestionsEnabled {
+                ToolButton(
+                    icon: "questionmark.circle.fill",
+                    isEnabled: fillEngine.regionProgress < (fillEngine.metadata?.totalRegions ?? 0),
+                    color: .blue
+                ) {
+                    triggerColorSuggestions()
+                }
+                .accessibilityLabel("Show color suggestions")
+            }
 
             Spacer()
 
@@ -488,13 +528,142 @@ struct CanvasView: View {
 
     // MARK: - Actions
     private func shareArtwork() {
+        // Merge filled image with PencilKit drawing
+        let finalImage = mergeDrawingWithFill()
+
         _ = StorageService.shared.saveArtwork(
-            image: fillEngine.currentImage,
+            image: finalImage,
             page: page,
             category: category,
             progress: fillEngine.progress
         )
         showShareSheet = true
+    }
+
+    /// Handle progress changes and award milestones
+    private func handleProgressChange(regionProgress: Int) {
+        // Check completion based on region count if metadata available
+        if let totalRegions = fillEngine.metadata?.totalRegions, totalRegions > 0 {
+            let progressPercent = Double(regionProgress) / Double(totalRegions)
+
+            // Award milestone stars (25%, 50%, 75%)
+            ProgressionEngine.shared.awardProgressMilestone(pageId: page.id.uuidString, progress: progressPercent)
+
+            // Update journey progress
+            JourneyStore.shared.updateProgress(progressPercent, for: page.id.uuidString)
+
+            // Trigger companion dialogues at milestones
+            triggerMilestoneDialogue(progress: progressPercent)
+
+            // Auto-show autofill suggestion at 90%+ progress
+            if progressPercent >= autofillThreshold &&
+               !hasShownAutofillHint &&
+               regionProgress < totalRegions &&
+               coloringMode == .fill {
+                hasShownAutofillHint = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    showAutofillConfirmation = true
+                    SoundManager.shared.playTap()
+                }
+            }
+
+            // Check for full completion
+            if regionProgress >= totalRegions && !showCompletion && coloringMode == .fill {
+                withAnimation(.spring()) {
+                    showCompletion = true
+                }
+                SoundManager.shared.playCelebration()
+
+                // Award completion stars and mark journey complete
+                ProgressionEngine.shared.onPageComplete(pageId: page.id.uuidString, categoryId: category.categoryId)
+                JourneyStore.shared.markComplete(pageId: page.id.uuidString)
+            }
+        } else if fillEngine.progress >= 1.0 && !showCompletion && coloringMode == .fill {
+            withAnimation(.spring()) {
+                showCompletion = true
+            }
+            SoundManager.shared.playCelebration()
+
+            // Award completion for pixel-based progress
+            ProgressionEngine.shared.onPageComplete(pageId: page.id.uuidString, categoryId: category.categoryId)
+            JourneyStore.shared.markComplete(pageId: page.id.uuidString)
+        }
+    }
+
+    /// Trigger companion dialogue at milestone thresholds
+    private func triggerMilestoneDialogue(progress: Double) {
+        if progress >= 0.25 && progress < 0.50 && !triggeredMilestones.contains(25) {
+            triggeredMilestones.insert(25)
+            CompanionController.shared.trigger(.progress25, pageName: page.name)
+        } else if progress >= 0.50 && progress < 0.75 && !triggeredMilestones.contains(50) {
+            triggeredMilestones.insert(50)
+            CompanionController.shared.trigger(.progress50, pageName: page.name)
+        } else if progress >= 0.75 && progress < 1.0 && !triggeredMilestones.contains(75) {
+            triggeredMilestones.insert(75)
+            CompanionController.shared.trigger(.progress75, pageName: page.name)
+        }
+    }
+
+    // MARK: - Color Suggestions
+
+    /// Trigger color suggestions (manual or automatic)
+    private func triggerColorSuggestions() {
+        guard settingsManager.colorSuggestionsEnabled else { return }
+        guard fillEngine.regionProgress < (fillEngine.metadata?.totalRegions ?? 0) else { return }
+
+        let suggestions = suggestionService.generateSuggestions(
+            fillEngine: fillEngine,
+            pageName: page.name,
+            categoryId: category.categoryId,
+            mode: settingsManager.colorSuggestionMode,
+            palette: settingsManager.currentColors
+        )
+
+        guard !suggestions.isEmpty else { return }
+
+        suggestionService.showSuggestions(suggestions)
+        showColorSuggestions = true
+
+        // Trigger companion dialogue
+        CompanionController.shared.trigger(.colorHint, pageName: page.name)
+    }
+
+    /// Start the idle timer for automatic suggestions
+    private func startIdleTimer() {
+        guard settingsManager.colorSuggestionsEnabled else { return }
+
+        suggestionService.startIdleTimer { [self] in
+            // Only trigger if in fill mode and not already showing suggestions
+            if coloringMode == .fill && !showColorSuggestions {
+                triggerColorSuggestions()
+            }
+        }
+    }
+
+    /// Stop the idle timer
+    private func stopIdleTimer() {
+        suggestionService.stopIdleTimer()
+    }
+
+    /// Merge the PencilKit drawing layer with the filled image
+    private func mergeDrawingWithFill() -> UIImage {
+        let baseImage = fillEngine.currentImage
+
+        // If no drawing strokes, return base image
+        guard !drawing.strokes.isEmpty else { return baseImage }
+
+        let size = baseImage.size
+        let renderer = UIGraphicsImageRenderer(size: size)
+
+        return renderer.image { context in
+            // Draw the filled base image
+            baseImage.draw(at: .zero)
+
+            // Render PencilKit drawing on top
+            let drawingBounds = CGRect(origin: .zero, size: size)
+            let drawingImage = drawing.image(from: drawingBounds, scale: baseImage.scale)
+            drawingImage.draw(in: drawingBounds)
+        }
     }
 
     private static func createPlaceholderImage() -> UIImage {

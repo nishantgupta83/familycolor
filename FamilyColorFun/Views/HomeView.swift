@@ -89,7 +89,7 @@ struct HomeView: View {
                     .fontWeight(.bold)
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.orange, .pink, .purple],
+                            colors: [.orange, .pink, .pink],
                             startPoint: .leading,
                             endPoint: .trailing
                         )
@@ -114,7 +114,7 @@ struct HomeView: View {
                     Circle()
                         .fill(
                             LinearGradient(
-                                colors: [.purple, .pink],
+                                colors: [.pink, .pink],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             )
@@ -140,14 +140,14 @@ struct HomeView: View {
 
                 Image(systemName: "chevron.right.circle.fill")
                     .font(.title2)
-                    .foregroundStyle(.purple.opacity(0.6))
+                    .foregroundStyle(.pink.opacity(0.6))
             }
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
                     .fill(
                         LinearGradient(
-                            colors: [.purple.opacity(0.1), .pink.opacity(0.1)],
+                            colors: [.pink.opacity(0.1), .pink.opacity(0.1)],
                             startPoint: .leading,
                             endPoint: .trailing
                         )
@@ -157,7 +157,7 @@ struct HomeView: View {
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
                     .stroke(
                         LinearGradient(
-                            colors: [.purple.opacity(0.3), .pink.opacity(0.3)],
+                            colors: [.pink.opacity(0.3), .pink.opacity(0.3)],
                             startPoint: .leading,
                             endPoint: .trailing
                         ),
