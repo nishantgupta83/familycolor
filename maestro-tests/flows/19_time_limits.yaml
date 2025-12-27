@@ -1,0 +1,64 @@
+# Test: Time Limits Configuration
+# ================================
+# Tests setting daily time limits in Parent Zone
+
+appId: com.familycolorfun.app
+
+---
+
+# Launch app
+- launchApp
+- assertVisible: "Category"
+
+# Open settings
+- tapOn:
+    point: "92%,8%"
+
+- extendedWaitUntil:
+    visible: "Color Palette"
+    timeout: 5000
+
+# Scroll to Parent Zone
+- scroll
+
+# Tap Parent Zone
+- tapOn: "Parent Zone"
+
+- extendedWaitUntil:
+    visible: "Time Limits"
+    timeout: 5000
+
+- takeScreenshot: screenshots/19_time_01_initial
+
+# Enable Daily Time Limit toggle
+- tapOn: "Daily Time Limit"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 2000
+
+- takeScreenshot: screenshots/19_time_02_enabled
+
+# Increase time limit (tap plus button)
+- tapOn:
+    point: "75%,22%"
+- tapOn:
+    point: "75%,22%"
+- tapOn:
+    point: "75%,22%"
+
+- takeScreenshot: screenshots/19_time_03_increased
+
+# Decrease time limit (tap minus button)
+- tapOn:
+    point: "55%,22%"
+
+- takeScreenshot: screenshots/19_time_04_decreased
+
+# Disable time limit
+- tapOn: "Daily Time Limit"
+
+- takeScreenshot: screenshots/19_time_05_disabled
+
+# Close Parent Zone
+- tapOn: "Done"

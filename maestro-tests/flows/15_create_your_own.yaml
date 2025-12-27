@@ -10,75 +10,51 @@ appId: com.familycolorfun.app
 - launchApp
 - assertVisible: "Category"
 
-# Scroll to find "Create Your Own" or "My Creations"
-- scroll
-- scroll
+# Take screenshot of home with "Create Your Own" button visible
+- takeScreenshot: screenshots/15_create_01_home
 
-# Take screenshot to see available options
-- takeScreenshot: screenshots/15_create_01_scrolled
+# Tap on "Create Your Own!" button (visible on home screen)
+- tapOn: "Create Your Own!"
 
-# Look for photo/camera option
+# Wait for photo upload screen
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: screenshots/15_create_02_upload_screen
+
+# Look for photo selection options
 - tapOn:
-    text: "Create"
+    text: "Photo Library"
     optional: true
 - tapOn:
-    text: "My Creations"
-    optional: true
-- tapOn:
-    text: "Photo"
-    optional: true
-
-# Alternative: look for + button or camera icon
-- tapOn:
-    point: "50%,50%"
+    text: "Choose"
     optional: true
 
 - extendedWaitUntil:
     visible: ".*"
     timeout: 3000
 
-- takeScreenshot: screenshots/15_create_02_upload_screen
+- takeScreenshot: screenshots/15_create_03_options
 
-# If camera/photo picker appears, try to select from library
-- tapOn:
-    text: "Photo Library"
-    optional: true
-- tapOn:
-    text: "Choose Photo"
-    optional: true
-- tapOn:
-    text: "Library"
-    optional: true
-
-- extendedWaitUntil:
-    visible: ".*"
-    timeout: 5000
-
-- takeScreenshot: screenshots/15_create_03_library
-
-# Try selecting an image
+# If photo picker opens, try to select first image
 - tapOn:
     point: "25%,35%"
     optional: true
 
 - extendedWaitUntil:
     visible: ".*"
-    timeout: 5000
+    timeout: 3000
 
 - takeScreenshot: screenshots/15_create_04_selected
 
-# If conversion options appear
+# Close/dismiss any dialogs
 - tapOn:
-    text: "Convert"
-    optional: true
-- tapOn:
-    text: "Create"
+    text: "Cancel"
     optional: true
 - tapOn:
     text: "Done"
     optional: true
-
-- takeScreenshot: screenshots/15_create_05_result
 
 # Go back home
 - swipe:
@@ -86,8 +62,7 @@ appId: com.familycolorfun.app
     end: "95%,50%"
     duration: 500
 
-- swipe:
-    start: "3%,50%"
-    end: "95%,50%"
-    duration: 500
+- extendedWaitUntil:
+    visible: "Category"
+    timeout: 3000
     optional: true

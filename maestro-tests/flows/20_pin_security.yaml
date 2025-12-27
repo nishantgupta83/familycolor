@@ -1,0 +1,83 @@
+# Test: PIN Security Setup
+# ========================
+# Tests setting up PIN protection for Parent Zone
+
+appId: com.familycolorfun.app
+
+---
+
+# Launch app
+- launchApp
+- assertVisible: "Category"
+
+# Open settings
+- tapOn:
+    point: "92%,8%"
+
+- extendedWaitUntil:
+    visible: "Color Palette"
+    timeout: 5000
+
+# Scroll to Parent Zone
+- scroll
+
+# Tap Parent Zone
+- tapOn: "Parent Zone"
+
+- extendedWaitUntil:
+    visible: "Parent Zone"
+    timeout: 5000
+
+# Scroll to Security section
+- scroll
+
+- takeScreenshot: screenshots/20_pin_01_security_section
+
+# Tap Set PIN
+- tapOn: "Set PIN"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: screenshots/20_pin_02_pin_entry
+
+# Enter PIN digits (tap on number pad)
+# Enter 1-2-3-4
+- tapOn:
+    point: "20%,60%"
+- tapOn:
+    point: "50%,60%"
+- tapOn:
+    point: "80%,60%"
+- tapOn:
+    point: "20%,72%"
+
+- takeScreenshot: screenshots/20_pin_03_pin_entered
+
+# Confirm PIN (enter same digits again)
+- tapOn:
+    point: "20%,60%"
+- tapOn:
+    point: "50%,60%"
+- tapOn:
+    point: "80%,60%"
+- tapOn:
+    point: "20%,72%"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: screenshots/20_pin_04_pin_confirmed
+
+# Close any dialogs
+- tapOn:
+    text: "Done"
+    optional: true
+
+# Go back
+- swipe:
+    start: "3%,50%"
+    end: "95%,50%"
+    duration: 500

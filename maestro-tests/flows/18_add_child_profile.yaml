@@ -1,0 +1,77 @@
+# Test: Add Child Profile
+# =======================
+# Tests adding a new child profile in Parent Zone
+
+appId: com.familycolorfun.app
+
+---
+
+# Launch app
+- launchApp
+- assertVisible: "Category"
+
+# Open settings
+- tapOn:
+    point: "92%,8%"
+
+- extendedWaitUntil:
+    visible: "Color Palette"
+    timeout: 5000
+
+# Scroll to Parent Zone
+- scroll
+
+# Tap Parent Zone
+- tapOn: "Parent Zone"
+
+- extendedWaitUntil:
+    visible: "Parent Zone"
+    timeout: 5000
+
+- takeScreenshot: screenshots/18_add_child_01_parent_zone
+
+# Tap Add Child Profile
+- tapOn: "Add Child Profile"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: screenshots/18_add_child_02_add_form
+
+# Enter child name (tap on text field area)
+- tapOn:
+    point: "50%,25%"
+
+# Type a name
+- inputText: "Emma"
+
+- takeScreenshot: screenshots/18_add_child_03_name_entered
+
+# Select an avatar (tap on avatar grid)
+- tapOn:
+    point: "30%,45%"
+
+- takeScreenshot: screenshots/18_add_child_04_avatar_selected
+
+# Tap Add button
+- tapOn:
+    text: "Add"
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: screenshots/18_add_child_05_profile_added
+
+# Close Parent Zone
+- tapOn:
+    text: "Done"
+    optional: true
+
+- swipe:
+    start: "3%,50%"
+    end: "95%,50%"
+    duration: 500
+    optional: true

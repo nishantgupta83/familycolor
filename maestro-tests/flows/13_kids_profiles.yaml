@@ -1,6 +1,6 @@
-# Test: Kids Profiles Creation & Switching
-# =========================================
-# Tests creating multiple kid profiles and switching between them
+# Test: Kids Profiles (Parent Zone)
+# ==================================
+# Tests accessing Parent Zone and child profiles
 
 appId: com.familycolorfun.app
 
@@ -10,7 +10,7 @@ appId: com.familycolorfun.app
 - launchApp
 - assertVisible: "Category"
 
-# Open settings (gear icon)
+# Open settings (gear icon in top right)
 - tapOn:
     point: "92%,8%"
 
@@ -18,60 +18,57 @@ appId: com.familycolorfun.app
     visible: "Color Palette"
     timeout: 5000
 
-# Take screenshot of settings
 - takeScreenshot: screenshots/13_profiles_01_settings
 
-# Scroll to find profiles section
+# Scroll down to find Parent Zone
 - scroll
 
-# Look for profile or kid-related option
+- takeScreenshot: screenshots/13_profiles_02_scrolled
+
+# Tap on Parent Zone
+- tapOn:
+    text: "Parent Zone"
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: screenshots/13_profiles_03_parent_zone
+
+# Look for Add Child Profile button
+- tapOn:
+    text: "Add Child"
+    optional: true
+- tapOn:
+    text: "Add Child Profile"
+    optional: true
+
 - extendedWaitUntil:
     visible: ".*"
     timeout: 3000
 
-- takeScreenshot: screenshots/13_profiles_02_profiles_section
+- takeScreenshot: screenshots/13_profiles_04_add_profile
 
-# Close settings
-- tapOn: "Done"
-
-# Navigate to Houses category (different from Animals)
-- tapOn: "Houses"
-- assertVisible: "Houses"
-- takeScreenshot: screenshots/13_profiles_03_houses
-
-# Color a house page
+# Close any dialogs
 - tapOn:
-    point: "25%,35%"
-
-- extendedWaitUntil:
-    visible: "Fill"
-    timeout: 5000
-
-# Select red color (1st color - good for house roof)
+    text: "Cancel"
+    optional: true
 - tapOn:
-    point: "10%,92%"
-- tapOn:
-    point: "45%,30%"
+    text: "Done"
+    optional: true
 
-# Select brown color (for door/walls)
-- tapOn:
-    point: "85%,92%"
-- tapOn:
-    point: "50%,50%"
-
-# Select green color (for grass/garden)
-- tapOn:
-    point: "42%,92%"
-- tapOn:
-    point: "60%,70%"
-
-- takeScreenshot: screenshots/13_profiles_04_colored_house
-
-# Exit canvas
+# Go back
 - swipe:
     start: "3%,50%"
     end: "95%,50%"
     duration: 500
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+# Close settings if still open
 - tapOn:
-    text: "Exit without saving"
+    text: "Done"
     optional: true
