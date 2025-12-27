@@ -1,0 +1,65 @@
+Running on iPhone 16 Pro - iOS 26.0 - FED12881-FC78-4168-95A5-902E7EA2114F
+ > Flow persona_3_teen_creative
+Launch app "com.familycolorfun.app"... COMPLETED
+Assert that "Category" is visible... COMPLETED
+Take screenshot personas/p3_01_launch... COMPLETED
+Tap on point (92%,8%)... COMPLETED
+Assert that "Color Palette" is visible... COMPLETED
+Tap on "Pastel"... COMPLETED
+Take screenshot personas/p3_02_pastel_palette... COMPLETED
+Tap on "Done"... COMPLETED
+Assert that "Category" is visible... COMPLETED
+Scroll vertically... COMPLETED
+Tap on "Fantasy"... COMPLETED
+Assert that "Fantasy" is visible... COMPLETED
+Take screenshot personas/p3_03_fantasy... COMPLETED
+Tap on point (25%,35%)... COMPLETED
+Assert that "Fill" is visible... COMPLETED
+Take screenshot personas/p3_04_unicorn_blank... COMPLETED
+Tap on point (75%,92%)... COMPLETED
+Tap on point (50%,40%)... COMPLETED
+Tap on point (45%,45%)... COMPLETED
+Tap on point (55%,50%)... COMPLETED
+Tap on point (65%,92%)... COMPLETED
+Tap on point (40%,30%)... COMPLETED
+Tap on point (45%,35%)... COMPLETED
+Tap on point (25%,92%)... COMPLETED
+Tap on point (48%,20%)... COMPLETED
+Tap on point (55%,92%)... COMPLETED
+Tap on point (20%,15%)... COMPLETED
+Tap on point (80%,15%)... COMPLETED
+Tap on point (50%,10%)... COMPLETED
+Tap on point (42%,92%)... COMPLETED
+Tap on point (20%,75%)... COMPLETED
+Tap on point (50%,80%)... COMPLETED
+Tap on point (80%,75%)... COMPLETED
+Take screenshot personas/p3_05_unicorn_colored... COMPLETED
+Swipe from (3%,50%) to (95%,50%) in 500 ms... COMPLETED
+Tap on (Optional) "Exit without saving"... WARNED
+
+
+ Warning: Element not found: Text matching regex: Exit without saving
+Assert that (Optional) "Category" is visible... WARNED
+
+
+ Warning: Assertion is false: "Category" is visible
+Swipe from (3%,50%) to (95%,50%) in 500 ms... COMPLETED
+Assert that (Optional) "Category" is visible... WARNED
+
+
+ Warning: Assertion is false: "Category" is visible
+Scroll vertically... COMPLETED
+Tap on "Ocean"... FAILED
+
+Element not found: Text matching regex: Ocean
+
+Element with Text matching regex: Ocean not found. Check the UI hierarchy in debug artifacts to verify if the element exists.
+
+Possible causes:
+- Element selector may be incorrect - check if there are similar elements with slightly different names/properties.
+- Element may be temporarily unavailable due to loading state.
+- This could be a real regression that needs to be addressed.
+
+==== Debug output (logs & screenshots) ====
+
+/Users/nishantgupta/.maestro/tests/2025-12-27_133437
