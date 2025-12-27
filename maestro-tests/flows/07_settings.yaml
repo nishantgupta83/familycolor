@@ -1,0 +1,92 @@
+# Test: Settings Workflow
+# =======================
+# Tests the settings screen and all preferences
+
+appId: com.familycolorfun.app
+name: Settings Tests
+tags:
+  - settings
+  - preferences
+
+---
+
+# Launch app
+- launchApp
+- assertVisible: "Category"
+
+# Open settings
+- tapOn:
+    id: "gearshape.fill"
+
+# Wait for settings to load
+- extendedWaitUntil:
+    visible: "Settings"
+    timeout: 5000
+
+# Verify all sections are present
+- assertVisible: "Color Palette"
+- assertVisible: "Age Mode"
+- assertVisible: "Feedback"
+- assertVisible: "Parental Controls"
+- assertVisible: "About"
+
+# Take screenshot of settings
+- takeScreenshot: screenshots/07_settings_main
+
+# Test Color Palette section
+- assertVisible: "Vibrant"
+- assertVisible: "Pastel"
+- assertVisible: "Earth Tones"
+- assertVisible: "Rainbow"
+
+# Tap on Pastel palette
+- tapOn: "Pastel"
+
+# Take screenshot showing selection
+- takeScreenshot: screenshots/07_settings_pastel
+
+# Test Age Mode section
+- assertVisible: "Kids (4-8)"
+- assertVisible: "Family (8+)"
+
+# Tap Family mode
+- tapOn: "Family (8+)"
+
+# Scroll to see more options
+- scroll:
+    direction: DOWN
+
+# Verify toggles
+- assertVisible: "Sound Effects"
+- assertVisible: "Haptic Feedback"
+- assertVisible: "Show Hints"
+
+# Take screenshot of feedback section
+- takeScreenshot: screenshots/07_settings_feedback
+
+# Verify Parent Zone button
+- assertVisible: "Parent Zone"
+- assertVisible: "Time limits, profiles & stats"
+
+# Scroll to see About section
+- scroll:
+    direction: DOWN
+
+# Verify version and reset
+- assertVisible: "Version"
+- assertVisible: "1.0.0"
+- assertVisible: "Reset to Defaults"
+
+# Take screenshot of about section
+- takeScreenshot: screenshots/07_settings_about
+
+# Close settings
+- tapOn: "Done"
+
+# Verify back at home
+- assertVisible: "Category"
+
+# Test passed
+- runScript:
+    script: |
+      console.log("✅ Settings test passed")

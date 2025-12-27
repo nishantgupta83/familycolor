@@ -1,0 +1,18 @@
+# Maestro Test Configuration for FamilyColorFun
+# =============================================
+
+appId: com.familycolorfun.app
+name: FamilyColorFun Test Suite
+
+# Default settings
+tags:
+  - regression
+  - smoke
+
+# Environment variables
+env:
+  APP_NAME: FamilyColorFun
+  TIMEOUT: 10000
+
+# Device configuration
+# Run on iPhone simulators for best results

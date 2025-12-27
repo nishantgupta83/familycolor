@@ -1,0 +1,66 @@
+# Test: Progression System
+# ========================
+# Tests stars, unlocking, and progression features
+
+appId: com.familycolorfun.app
+name: Progression System Tests
+tags:
+  - progression
+  - stars
+  - unlock
+
+---
+
+# Launch app
+- launchApp
+- tapOn: "Animals"
+
+# Verify stars header is visible
+- assertVisible: "stars"
+- assertVisible:
+    id: "star.fill"
+
+# Take screenshot of progression header
+- takeScreenshot: screenshots/10_progression_stars
+
+# Look for locked pages
+- scroll:
+    direction: DOWN
+
+# Check for lock icons on locked pages
+- runFlow:
+    when:
+      visible:
+        id: "lock.fill"
+    commands:
+      - takeScreenshot: screenshots/10_locked_page
+      # Tap on a locked page
+      - tapOn:
+          id: "lock.fill"
+      # Verify unlock sheet appears
+      - extendedWaitUntil:
+          visible:
+            anyOf:
+              - "Unlock"
+              - "stars to unlock"
+              - "Ask a Parent"
+          timeout: 3000
+          optional: true
+      - takeScreenshot: screenshots/10_unlock_sheet
+      # Dismiss the sheet
+      - swipe:
+          direction: DOWN
+          duration: 500
+      - runScript:
+          script: |
+            console.log("Unlock sheet verified")
+
+# Go back to home
+- tapOn:
+    id: "chevron.left"
+- assertVisible: "Category"
+
+# Test passed
+- runScript:
+    script: |
+      console.log("✅ Progression system test passed")

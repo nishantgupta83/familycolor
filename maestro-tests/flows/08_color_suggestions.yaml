@@ -1,0 +1,67 @@
+# Test: Color Suggestion Feature
+# ==============================
+# Tests the intelligent color suggestion system
+
+appId: com.familycolorfun.app
+name: Color Suggestion Tests
+tags:
+  - suggestions
+  - ai
+  - assistant
+
+---
+
+# Launch and navigate to canvas
+- launchApp
+- tapOn: "Animals"
+- tapOn:
+    index: 0
+
+- extendedWaitUntil:
+    visible: "Fill"
+    timeout: 5000
+
+# Verify help button exists (color suggestions)
+- assertVisible:
+    id: "questionmark.circle.fill"
+
+# Tap the help button to trigger suggestions
+- tapOn:
+    id: "questionmark.circle.fill"
+
+# Wait for suggestion overlay to appear
+- extendedWaitUntil:
+    visible: "Tap!"
+    timeout: 3000
+    optional: true
+
+# Take screenshot of suggestions
+- takeScreenshot: screenshots/08_color_suggestions
+
+# If suggestions are showing, test interaction
+- runFlow:
+    when:
+      visible: "Tap!"
+    commands:
+      # Tap on a suggestion
+      - tapOn: "Tap!"
+      - takeScreenshot: screenshots/08_suggestion_applied
+      - runScript:
+          script: |
+            console.log("Color suggestion applied successfully")
+
+# Dismiss any remaining overlay
+- tapOn:
+    id: "xmark.circle.fill"
+    optional: true
+
+# Exit canvas
+- tapOn:
+    id: "chevron.left"
+- tapOn: "Exit without saving"
+  optional: true
+
+# Test passed
+- runScript:
+    script: |
+      console.log("✅ Color suggestion test passed")

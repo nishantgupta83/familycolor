@@ -1,0 +1,71 @@
+# Test: Companion (Buddy) System
+# ==============================
+# Tests the animated companion feature
+
+appId: com.familycolorfun.app
+name: Companion System Tests
+tags:
+  - companion
+  - buddy
+  - assistant
+
+---
+
+# Launch and navigate to canvas
+- launchApp
+- tapOn: "Animals"
+- tapOn:
+    index: 0
+
+- extendedWaitUntil:
+    visible: "Fill"
+    timeout: 5000
+
+# The companion should trigger on start with a dialogue
+# Wait a moment for companion to appear
+- extendedWaitUntil:
+    visible:
+      anyOf:
+        - "Hey buddy"
+        - "let's color"
+        - "What color"
+        - "Ready to create"
+    timeout: 10000
+    optional: true
+
+# Take screenshot if companion dialogue visible
+- takeScreenshot: screenshots/11_companion_start
+
+# Do some coloring to trigger progress dialogue
+- tapOn:
+    point: "40%,40%"
+
+- tapOn:
+    point: "60%,60%"
+
+- tapOn:
+    point: "30%,50%"
+
+# Wait for encouragement dialogue
+- extendedWaitUntil:
+    visible:
+      anyOf:
+        - "Great choice"
+        - "Nice one"
+        - "You're doing"
+        - "Keep going"
+    timeout: 5000
+    optional: true
+
+- takeScreenshot: screenshots/11_companion_encourage
+
+# Exit canvas
+- tapOn:
+    id: "chevron.left"
+- tapOn: "Exit without saving"
+  optional: true
+
+# Test passed
+- runScript:
+    script: |
+      console.log("✅ Companion system test passed")

@@ -1,0 +1,94 @@
+# Test: Canvas Coloring Workflow
+# ==============================
+# Tests the main coloring canvas functionality
+
+appId: com.familycolorfun.app
+name: Canvas Coloring Tests
+tags:
+  - canvas
+  - coloring
+  - core
+
+---
+
+# Launch and navigate to a coloring page
+- launchApp
+- assertVisible: "Category"
+
+# Go to Animals category
+- tapOn: "Animals"
+- assertVisible: "Animals"
+
+# Tap on first unlocked page
+- tapOn:
+    index: 0
+
+# Wait for canvas to load
+- extendedWaitUntil:
+    visible: "Fill"
+    timeout: 5000
+
+# Verify mode toggle is present
+- assertVisible: "Fill"
+- assertVisible: "Draw"
+
+# Verify color palette exists
+- assertVisible:
+    id: "paintpalette.fill"
+
+# Verify toolbar buttons
+- assertVisible:
+    id: "arrow.uturn.backward.circle.fill"
+- assertVisible:
+    id: "trash.circle.fill"
+- assertVisible:
+    id: "wand.and.stars"
+
+# Take screenshot of canvas
+- takeScreenshot: screenshots/04_canvas_fill_mode
+
+# Test tap to fill a region
+- tapOn:
+    point: "50%,50%"
+
+# Test undo button
+- tapOn:
+    id: "arrow.uturn.backward.circle.fill"
+
+# Test color selection (tap different colors)
+- tapOn:
+    point: "20%,92%"
+
+- tapOn:
+    point: "50%,50%"
+
+# Take screenshot after coloring
+- takeScreenshot: screenshots/04_canvas_colored
+
+# Switch to Draw mode
+- tapOn: "Draw"
+
+# Verify draw mode tools appear
+- assertVisible:
+    id: "pencil.tip"
+- assertVisible:
+    id: "eraser"
+
+# Take screenshot of draw mode
+- takeScreenshot: screenshots/04_canvas_draw_mode
+
+# Go back to category
+- tapOn:
+    id: "chevron.left"
+
+# Handle exit confirmation if shown
+- tapOn: "Exit without saving"
+  optional: true
+
+# Verify back at category
+- assertVisible: "Animals"
+
+# Test passed
+- runScript:
+    script: |
+      console.log("✅ Canvas coloring test passed")

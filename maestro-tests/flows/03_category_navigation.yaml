@@ -1,0 +1,63 @@
+# Test: Category Navigation
+# =========================
+# Tests navigating into different categories
+
+appId: com.familycolorfun.app
+name: Category Navigation Tests
+tags:
+  - navigation
+  - categories
+
+---
+
+# Launch app
+- launchApp
+- assertVisible: "Category"
+
+# Navigate to Animals category
+- tapOn: "Animals"
+
+# Verify we're in Animals category
+- assertVisible: "Animals"
+- assertVisible: "stars"
+
+# Verify page thumbnails are visible
+- assertVisible:
+    id: "star.fill"
+
+# Take screenshot
+- takeScreenshot: screenshots/03_animals_category
+
+# Go back to home
+- tapOn:
+    id: "chevron.left"
+
+- assertVisible: "Category"
+
+# Navigate to Vehicles category
+- tapOn: "Vehicles"
+- assertVisible: "Vehicles"
+
+# Take screenshot
+- takeScreenshot: screenshots/03_vehicles_category
+
+# Go back
+- tapOn:
+    id: "chevron.left"
+
+# Navigate to Fantasy category
+- tapOn: "Fantasy"
+- assertVisible: "Fantasy"
+
+# Take screenshot
+- takeScreenshot: screenshots/03_fantasy_category
+
+# Go back
+- tapOn:
+    id: "chevron.left"
+- assertVisible: "Category"
+
+# Test passed
+- runScript:
+    script: |
+      console.log("✅ Category navigation test passed")
