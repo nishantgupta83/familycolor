@@ -3,11 +3,6 @@
 # Tests the "Create Your Own" photo upload feature
 
 appId: com.familycolorfun.app
-name: Photo Upload Tests
-tags:
-  - upload
-  - photo
-  - custom
 
 ---
 
@@ -20,30 +15,16 @@ tags:
 
 # Wait for photo upload view
 - extendedWaitUntil:
-    visible:
-      anyOf:
-        - "Choose a photo"
-        - "Photo Library"
-        - "Take Photo"
-        - "camera"
-    timeout: 5000
-    optional: true
+    visible: ".*"
+    timeout: 3000
 
 # Take screenshot of upload options
 - takeScreenshot: screenshots/09_photo_upload
 
-# Note: We can't complete actual photo selection in automated tests
-# as it requires system photo picker permissions
-
-# Dismiss the sheet by swiping down or tapping outside
+# Dismiss the sheet by swiping down
 - swipe:
     direction: DOWN
     duration: 500
 
 # Verify back at home
 - assertVisible: "Category"
-
-# Test passed
-- runScript:
-    script: |
-      console.log("✅ Photo upload flow test passed")

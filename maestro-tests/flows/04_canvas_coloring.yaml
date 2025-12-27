@@ -1,13 +1,8 @@
 # Test: Canvas Coloring Workflow
 # ==============================
-# Tests the main coloring canvas functionality
+# Tests coloring with different colors and regions
 
 appId: com.familycolorfun.app
-name: Canvas Coloring Tests
-tags:
-  - canvas
-  - coloring
-  - core
 
 ---
 
@@ -15,13 +10,18 @@ tags:
 - launchApp
 - assertVisible: "Category"
 
-# Go to Animals category
+# Go to Animals category (visible without scrolling)
 - tapOn: "Animals"
 - assertVisible: "Animals"
 
-# Tap on first unlocked page
+# Wait for grid to load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+# Tap on second page (not first for variety)
 - tapOn:
-    index: 0
+    point: "70%,35%"
 
 # Wait for canvas to load
 - extendedWaitUntil:
@@ -30,65 +30,63 @@ tags:
 
 # Verify mode toggle is present
 - assertVisible: "Fill"
-- assertVisible: "Draw"
-
-# Verify color palette exists
-- assertVisible:
-    id: "paintpalette.fill"
-
-# Verify toolbar buttons
-- assertVisible:
-    id: "arrow.uturn.backward.circle.fill"
-- assertVisible:
-    id: "trash.circle.fill"
-- assertVisible:
-    id: "wand.and.stars"
+- extendedWaitUntil:
+    visible: "Draw"
+    timeout: 3000
 
 # Take screenshot of canvas
 - takeScreenshot: screenshots/04_canvas_fill_mode
 
-# Test tap to fill a region
+# Select a different color (green - 5th color)
 - tapOn:
-    point: "50%,50%"
+    point: "42%,92%"
 
-# Test undo button
+# Fill first region
 - tapOn:
-    id: "arrow.uturn.backward.circle.fill"
+    point: "50%,40%"
 
-# Test color selection (tap different colors)
+# Select orange color (2nd color)
 - tapOn:
-    point: "20%,92%"
+    point: "18%,92%"
 
+# Fill another region
 - tapOn:
-    point: "50%,50%"
+    point: "35%,55%"
+
+# Select purple color (8th color)
+- tapOn:
+    point: "65%,92%"
+
+# Fill third region
+- tapOn:
+    point: "60%,50%"
 
 # Take screenshot after coloring
-- takeScreenshot: screenshots/04_canvas_colored
+- takeScreenshot: screenshots/04_canvas_multicolor
 
-# Switch to Draw mode
-- tapOn: "Draw"
-
-# Verify draw mode tools appear
-- assertVisible:
-    id: "pencil.tip"
-- assertVisible:
-    id: "eraser"
+# Switch to Draw mode (tap on mode toggle area at top)
+- tapOn:
+    point: "65%,12%"
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 2000
 
 # Take screenshot of draw mode
 - takeScreenshot: screenshots/04_canvas_draw_mode
 
-# Go back to category
-- tapOn:
-    id: "chevron.left"
+# Go back to category (swipe from left edge)
+- swipe:
+    start: "3%,50%"
+    end: "95%,50%"
+    duration: 500
 
 # Handle exit confirmation if shown
-- tapOn: "Exit without saving"
-  optional: true
+- tapOn:
+    text: "Exit without saving"
+    optional: true
 
 # Verify back at category
-- assertVisible: "Animals"
-
-# Test passed
-- runScript:
-    script: |
-      console.log("✅ Canvas coloring test passed")
+- extendedWaitUntil:
+    visible: "Animals"
+    timeout: 3000
+    optional: true

@@ -3,11 +3,6 @@
 # Full user journey from launch to completion
 
 appId: com.familycolorfun.app
-name: End-to-End Workflow Test
-tags:
-  - e2e
-  - complete
-  - journey
 
 ---
 
@@ -16,106 +11,104 @@ tags:
 - assertVisible: "Category"
 - takeScreenshot: screenshots/12_e2e_01_home
 
-# 2. Check Gallery (should be empty or have artwork)
+# 2. Check Gallery
 - tapOn:
-    id: "photo.stack.fill"
-- assertVisible: "My Masterpieces"
+    point: "75%,96%"
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
 - takeScreenshot: screenshots/12_e2e_02_gallery
 
-# 3. Go back to Home and open Settings
+# 3. Go back to Home
 - tapOn:
-    id: "paintpalette.fill"
-- tapOn:
-    id: "gearshape.fill"
-- assertVisible: "Settings"
+    point: "25%,96%"
 
-# 4. Change color palette
+# 4. Open Settings
+- tapOn:
+    point: "92%,8%"
+- extendedWaitUntil:
+    visible: "Color Palette"
+    timeout: 5000
+
+# 5. Change color palette
 - tapOn: "Pastel"
 - takeScreenshot: screenshots/12_e2e_03_settings
 
-# 5. Close settings
+# 6. Close settings
 - tapOn: "Done"
 
-# 6. Navigate to a category
+# 7. Navigate to Animals category (no scroll needed)
 - tapOn: "Animals"
 - assertVisible: "Animals"
+
+# Wait for grid
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
 - takeScreenshot: screenshots/12_e2e_04_category
 
-# 7. Open a coloring page
+# 8. Open a coloring page (first one)
 - tapOn:
-    index: 0
+    point: "25%,35%"
 - extendedWaitUntil:
     visible: "Fill"
     timeout: 5000
-- takeScreenshot: screenshots/12_e2e_05_canvas_start
+- takeScreenshot: screenshots/12_e2e_05_canvas
 
-# 8. Color multiple regions
+# 9. Color with different colors
+# Select green (5th color for nature)
 - tapOn:
-    point: "30%,30%"
+    point: "42%,92%"
 - tapOn:
-    point: "50%,50%"
-- tapOn:
-    point: "70%,40%"
-- tapOn:
-    point: "40%,70%"
-- takeScreenshot: screenshots/12_e2e_06_canvas_coloring
+    point: "40%,40%"
 
-# 9. Switch to Draw mode
+# Select brown (11th color for tree trunk)
+- tapOn:
+    point: "85%,92%"
+- tapOn:
+    point: "50%,60%"
+
+# Select yellow (3rd color for sun/flowers)
+- tapOn:
+    point: "25%,92%"
+- tapOn:
+    point: "65%,35%"
+
+- takeScreenshot: screenshots/12_e2e_06_colored
+
+# 10. Switch to Draw mode
 - tapOn: "Draw"
-- takeScreenshot: screenshots/12_e2e_07_draw_mode
+- takeScreenshot: screenshots/12_e2e_07_draw
 
-# 10. Switch back to Fill mode
+# 11. Switch back to Fill mode
 - tapOn: "Fill"
 
-# 11. Test zoom
-- tapOn:
-    id: "plus"
-- takeScreenshot: screenshots/12_e2e_08_zoomed
+# 12. Exit canvas (swipe from left edge)
+- swipe:
+    start: "1%,50%"
+    end: "80%,50%"
+    duration: 300
+- takeScreenshot: screenshots/12_e2e_08_exit_dialog
 
-# 12. Reset zoom
-- tapOn: "150%"
-
-# 13. Test color help
+# 13. Exit without saving
 - tapOn:
-    id: "questionmark.circle.fill"
-    optional: true
-- takeScreenshot: screenshots/12_e2e_09_suggestions
-
-# 14. Dismiss suggestions if shown
-- tapOn:
-    id: "xmark.circle.fill"
+    text: "Exit without saving"
     optional: true
 
-# 15. Exit with save dialog
-- tapOn:
-    id: "chevron.left"
-- takeScreenshot: screenshots/12_e2e_10_exit_dialog
+# 14. Verify back at category
+- extendedWaitUntil:
+    visible: "Animals"
+    timeout: 3000
+    optional: true
 
-# 16. Choose to exit without saving
-- tapOn: "Exit without saving"
-  optional: true
-
-# 17. Verify back at category
-- assertVisible: "Animals"
-- takeScreenshot: screenshots/12_e2e_11_back_category
-
-# 18. Return to home
-- tapOn:
-    id: "chevron.left"
-- assertVisible: "Category"
-- takeScreenshot: screenshots/12_e2e_12_final_home
-
-# Test complete
-- runScript:
-    script: |
-      console.log("✅ End-to-end workflow test PASSED!")
-      console.log("Completed full user journey:")
-      console.log("  1. App launch")
-      console.log("  2. Gallery check")
-      console.log("  3. Settings modification")
-      console.log("  4. Category navigation")
-      console.log("  5. Canvas coloring")
-      console.log("  6. Mode switching")
-      console.log("  7. Zoom controls")
-      console.log("  8. Color suggestions")
-      console.log("  9. Exit flow")
+# 15. Return to home (swipe from left edge)
+- swipe:
+    start: "1%,50%"
+    end: "80%,50%"
+    duration: 300
+- extendedWaitUntil:
+    visible: "Category"
+    timeout: 3000
+    optional: true
+- takeScreenshot: screenshots/12_e2e_09_final

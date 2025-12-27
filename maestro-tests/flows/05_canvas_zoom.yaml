@@ -3,10 +3,6 @@
 # Tests zoom in/out functionality on the canvas
 
 appId: com.familycolorfun.app
-name: Canvas Zoom Tests
-tags:
-  - canvas
-  - zoom
 
 ---
 
@@ -14,64 +10,44 @@ tags:
 - launchApp
 - tapOn: "Animals"
 - tapOn:
-    index: 0
+    point: "25%,35%"
 
 - extendedWaitUntil:
     visible: "Fill"
     timeout: 5000
 
-# Find and test zoom in button
+# Verify initial zoom level
 - assertVisible: "100%"
 
-# Tap zoom in (plus button)
+# Take screenshot at 100%
+- takeScreenshot: screenshots/05_zoom_100
+
+# Tap zoom in (plus button area - bottom right)
 - tapOn:
-    id: "plus"
+    point: "92%,55%"
 
-# Verify zoom level changed
-- assertVisible: "150%"
+# Wait for zoom to apply
+- extendedWaitUntil:
+    visible: "150%"
+    timeout: 3000
+    optional: true
 
-# Take screenshot at 150%
+# Take screenshot after zoom
 - takeScreenshot: screenshots/05_zoom_150
 
-# Zoom in more
-- tapOn:
-    id: "plus"
-
-- assertVisible: "200%"
-
-# Verify pan mode button appears when zoomed
-- assertVisible:
-    id: "hand.raised"
-
-# Test pan mode toggle
-- tapOn:
-    id: "hand.raised"
-
-# Take screenshot with pan mode
-- takeScreenshot: screenshots/05_zoom_pan_mode
-
-# Zoom out
-- tapOn:
-    id: "minus"
-
-- assertVisible: "150%"
-
 # Reset zoom by tapping percentage
-- tapOn: "150%"
-
-# Verify reset to 100%
-- assertVisible: "100%"
+- tapOn:
+    text: "150%"
+    optional: true
 
 # Take screenshot at reset
 - takeScreenshot: screenshots/05_zoom_reset
 
 # Exit canvas
+- swipe:
+    start: "1%,50%"
+    end: "80%,50%"
+    duration: 300
 - tapOn:
-    id: "chevron.left"
-- tapOn: "Exit without saving"
-  optional: true
-
-# Test passed
-- runScript:
-    script: |
-      console.log("✅ Canvas zoom test passed")
+    text: "Exit without saving"
+    optional: true

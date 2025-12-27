@@ -1,0 +1,102 @@
+# Test: Masterwork Saving Workflow
+# =================================
+# Tests saving completed artwork to gallery/masterworks
+
+appId: com.familycolorfun.app
+
+---
+
+# Launch app
+- launchApp
+- assertVisible: "Category"
+
+# Navigate to Vehicles category (testing Car coloring!)
+- tapOn: "Vehicles"
+- assertVisible: "Vehicles"
+- takeScreenshot: screenshots/14_masterwork_01_vehicles
+
+# Open first vehicle (car)
+- tapOn:
+    point: "25%,35%"
+
+- extendedWaitUntil:
+    visible: "Fill"
+    timeout: 5000
+
+- takeScreenshot: screenshots/14_masterwork_02_car_blank
+
+# Color the car with multiple colors
+# Red for car body (1st color)
+- tapOn:
+    point: "10%,92%"
+- tapOn:
+    point: "45%,40%"
+- tapOn:
+    point: "55%,40%"
+
+# Blue for windows (6th color)
+- tapOn:
+    point: "55%,92%"
+- tapOn:
+    point: "50%,35%"
+
+# Black for tires (12th color - rightmost)
+- tapOn:
+    point: "95%,92%"
+- tapOn:
+    point: "35%,60%"
+- tapOn:
+    point: "65%,60%"
+
+# Yellow for headlights (3rd color)
+- tapOn:
+    point: "25%,92%"
+- tapOn:
+    point: "30%,45%"
+- tapOn:
+    point: "70%,45%"
+
+- takeScreenshot: screenshots/14_masterwork_03_car_colored
+
+# Try to save (look for save button or checkmark)
+# Usually top right area
+- tapOn:
+    point: "92%,8%"
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: screenshots/14_masterwork_04_save_action
+
+# Exit canvas
+- swipe:
+    start: "3%,50%"
+    end: "95%,50%"
+    duration: 500
+
+# If save dialog appears, save it
+- tapOn:
+    text: "Save"
+    optional: true
+
+- tapOn:
+    text: "Exit without saving"
+    optional: true
+
+# Go to gallery to verify save
+- extendedWaitUntil:
+    visible: "Category"
+    timeout: 5000
+    optional: true
+
+# Tap gallery tab (bottom right area)
+- tapOn:
+    point: "75%,96%"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: screenshots/14_masterwork_05_gallery

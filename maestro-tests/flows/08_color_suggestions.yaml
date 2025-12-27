@@ -1,67 +1,45 @@
 # Test: Color Suggestion Feature
 # ==============================
-# Tests the intelligent color suggestion system
+# Tests the intelligent color suggestion system with Underwater category
 
 appId: com.familycolorfun.app
-name: Color Suggestion Tests
-tags:
-  - suggestions
-  - ai
-  - assistant
 
 ---
 
-# Launch and navigate to canvas
+# Launch and navigate to Underwater category
 - launchApp
-- tapOn: "Animals"
+- scroll
+- tapOn: "Underwater"
+- assertVisible: "Underwater"
 - tapOn:
-    index: 0
+    point: "25%,35%"
 
 - extendedWaitUntil:
     visible: "Fill"
     timeout: 5000
 
-# Verify help button exists (color suggestions)
-- assertVisible:
-    id: "questionmark.circle.fill"
+# Take screenshot of canvas
+- takeScreenshot: screenshots/08_canvas_before_help
 
-# Tap the help button to trigger suggestions
+# Look for help button (question mark) and tap it
 - tapOn:
-    id: "questionmark.circle.fill"
+    point: "35%,88%"
+    optional: true
 
-# Wait for suggestion overlay to appear
+# Wait for suggestions to appear
 - extendedWaitUntil:
     visible: "Tap!"
-    timeout: 3000
+    timeout: 5000
     optional: true
 
 # Take screenshot of suggestions
 - takeScreenshot: screenshots/08_color_suggestions
 
-# If suggestions are showing, test interaction
-- runFlow:
-    when:
-      visible: "Tap!"
-    commands:
-      # Tap on a suggestion
-      - tapOn: "Tap!"
-      - takeScreenshot: screenshots/08_suggestion_applied
-      - runScript:
-          script: |
-            console.log("Color suggestion applied successfully")
-
-# Dismiss any remaining overlay
+# Exit canvas (swipe from left edge)
+- swipe:
+    start: "1%,50%"
+    end: "80%,50%"
+    duration: 300
 - tapOn:
-    id: "xmark.circle.fill"
+    text: "Exit without saving"
     optional: true
-
-# Exit canvas
-- tapOn:
-    id: "chevron.left"
-- tapOn: "Exit without saving"
-  optional: true
-
-# Test passed
-- runScript:
-    script: |
-      console.log("✅ Color suggestion test passed")

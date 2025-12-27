@@ -1,0 +1,94 @@
+# Test: Holidays Category (Christmas/Halloween)
+# =============================================
+# Tests holiday-themed coloring pages
+
+appId: com.familycolorfun.app
+
+---
+
+# Launch app
+- launchApp
+- assertVisible: "Category"
+
+# Scroll down to find Holidays category (at bottom of list)
+- scroll
+- scroll
+- scroll
+
+# Wait for grid to stabilize
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 2000
+
+- tapOn: "Holidays"
+- assertVisible: "Holidays"
+- takeScreenshot: screenshots/17_holidays_01_category
+
+# Wait for page grid to load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+# Open first holiday page
+- tapOn:
+    point: "25%,35%"
+
+- extendedWaitUntil:
+    visible: "Fill"
+    timeout: 8000
+
+- takeScreenshot: screenshots/17_holidays_02_blank
+
+# Color with holiday colors
+# Red (1st color - Christmas/Valentine)
+- tapOn:
+    point: "10%,92%"
+- tapOn:
+    point: "45%,40%"
+
+# Green (5th color - Christmas)
+- tapOn:
+    point: "42%,92%"
+- tapOn:
+    point: "55%,50%"
+
+# Gold/Yellow (3rd color - Stars/Ornaments)
+- tapOn:
+    point: "25%,92%"
+- tapOn:
+    point: "50%,30%"
+
+# White/Silver (11th color - Snow)
+- tapOn:
+    point: "88%,92%"
+- tapOn:
+    point: "30%,20%"
+- tapOn:
+    point: "70%,20%"
+
+- takeScreenshot: screenshots/17_holidays_03_colored
+
+# Add more colors to this holiday page
+# Orange for accents (2nd color)
+- tapOn:
+    point: "18%,92%"
+- tapOn:
+    point: "40%,60%"
+
+# Purple for decorations (8th color)
+- tapOn:
+    point: "65%,92%"
+- tapOn:
+    point: "60%,50%"
+
+- takeScreenshot: screenshots/17_holidays_04_final
+
+# Exit
+- swipe:
+    start: "3%,50%"
+    end: "95%,50%"
+    duration: 500
+
+- tapOn:
+    text: "Exit without saving"
+    optional: true

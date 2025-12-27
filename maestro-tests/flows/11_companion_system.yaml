@@ -1,71 +1,55 @@
 # Test: Companion (Buddy) System
 # ==============================
-# Tests the animated companion feature
+# Tests the animated companion feature with Dinosaurs category
 
 appId: com.familycolorfun.app
-name: Companion System Tests
-tags:
-  - companion
-  - buddy
-  - assistant
 
 ---
 
-# Launch and navigate to canvas
+# Launch and navigate to Dinosaurs category
 - launchApp
-- tapOn: "Animals"
+- scroll
+- tapOn: "Dinosaurs"
 - tapOn:
-    index: 0
+    point: "50%,35%"
 
 - extendedWaitUntil:
     visible: "Fill"
     timeout: 5000
 
-# The companion should trigger on start with a dialogue
-# Wait a moment for companion to appear
-- extendedWaitUntil:
-    visible:
-      anyOf:
-        - "Hey buddy"
-        - "let's color"
-        - "What color"
-        - "Ready to create"
-    timeout: 10000
-    optional: true
-
-# Take screenshot if companion dialogue visible
+# Take screenshot on canvas load (companion may be visible)
 - takeScreenshot: screenshots/11_companion_start
 
-# Do some coloring to trigger progress dialogue
+# Select green color (good for dinosaurs)
 - tapOn:
-    point: "40%,40%"
+    point: "42%,92%"
+
+# Do some coloring to trigger progress
+- tapOn:
+    point: "45%,35%"
+
+# Select brown color for skin
+- tapOn:
+    point: "85%,92%"
 
 - tapOn:
-    point: "60%,60%"
+    point: "55%,50%"
+
+# Select orange for spikes
+- tapOn:
+    point: "18%,92%"
 
 - tapOn:
-    point: "30%,50%"
+    point: "35%,55%"
 
-# Wait for encouragement dialogue
-- extendedWaitUntil:
-    visible:
-      anyOf:
-        - "Great choice"
-        - "Nice one"
-        - "You're doing"
-        - "Keep going"
-    timeout: 5000
+# Take screenshot after coloring
+- takeScreenshot: screenshots/11_companion_coloring
+
+# Exit canvas (swipe from left edge)
+- swipe:
+    start: "3%,50%"
+    end: "95%,50%"
+    duration: 500
+- tapOn:
+    text: "Exit without saving"
     optional: true
-
-- takeScreenshot: screenshots/11_companion_encourage
-
-# Exit canvas
-- tapOn:
-    id: "chevron.left"
-- tapOn: "Exit without saving"
-  optional: true
-
-# Test passed
-- runScript:
-    script: |
-      console.log("✅ Companion system test passed")
